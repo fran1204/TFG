@@ -37,9 +37,8 @@ PÁGINA ENCARGADA DE REGISTRAR UN USUARIO
             <s:textfield cssClass="form-control" name="email"/>
             <s:textfield cssClass="form-control" name="name"/>
             <s:textfield cssClass="form-control" name="company_name"/>
-            <s:textfield cssClass="form-control" name="birthdate"/>           
-            <s:textfield cssClass="form-control" name="photo"/>
-            <s:select name="sector" cssClass="form-control" list="sectores" listKey="sector" listValue="sector"/>
+            <s:textfield cssClass="form-control" name="birthdate"/>
+            <s:select name="sector" cssClass="form-control" list="sectores" listKey="id" listValue="sector"/>
             <s:textfield cssClass="form-control" name="bank"/>
              <s:password cssClass="form-control" name="password"/>
             
@@ -55,8 +54,7 @@ PÁGINA ENCARGADA DE REGISTRAR UN USUARIO
             $("#addUsuario_name").attr("placeholder","Nombre");
             $("#addUsuario_company_name").attr("placeholder","Nombre empresa");
             $("#addUsuario_password").attr("placeholder","Password");
-            $("#addUsuario_birthdate").attr("placeholder","Fecha de nacimiento");
-            $("#addUsuario_photo").attr("placeholder","Imagen");
+            $("#addUsuario_birthdate").attr("placeholder","Fecha de nacimiento")
             $("#addUsuario_sector").attr("placeholder","Elige el sector de tu empresa");
             $("#addUsuario_bank").attr("placeholder","Cuenta bancaria");
         </script>

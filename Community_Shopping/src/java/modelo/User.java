@@ -35,13 +35,14 @@ public class User  implements java.io.Serializable {
     }
 
 	
-    public User(String name, Date birthdate, String email, String password, String photo, int bank, String companyName, boolean provider, Date createDate) {
+    public User(String name, Date birthdate, String email, String password, String photo, int bank, Sector sector ,String companyName, boolean provider, Date createDate) {
         this.name = name;
         this.birthdate = birthdate;
         this.email = email;
         this.password = password;
         this.photo = photo;
         this.bank = bank;
+        this.sector = sector;
         this.companyName = companyName;
         this.provider = provider;
         this.createDate = createDate;

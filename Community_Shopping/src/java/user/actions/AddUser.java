@@ -5,13 +5,16 @@
  */
 package user.actions;
 
+import DAO.SectorDAO;
 import DAO.SessionDAO;
 import DAO.UserDAO;
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.validator.annotations.RegexFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.StringLengthFieldValidator;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import modelo.Sector;
 import modelo.User;
 
 /**
@@ -20,12 +23,17 @@ import modelo.User;
  */
 public class AddUser extends ActionSupport {
 
+    private Boolean provider;
     private String email;
-   // private String ciudad;
+    private String sector;
     private String name;
+    private String company_name;
+    private Date birthdate;
+    private List<Sector> sectores;
+    private Integer bank;
     private String password;
     private User u;
-    //private List<Ciudad> ciudades;
+
     private String existeUsuario;
 
     public AddUser() {
@@ -39,26 +47,25 @@ public class AddUser extends ActionSupport {
             existeUsuario = "El usuario ya existe.";
             return ERROR;
         } else {
-            u = new User();
-            //u.setFoto("defecto.jpeg");
+            Date ahora = new Date();
+            SimpleDateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
+            formateador.format(ahora);
+            u = new User(name, birthdate, email, password, null, bank, new Sector(sector), company_name, provider, ahora);
+            u.setPhoto("defecto.jpeg");
             dao.add(u);
             sdao.getSession().put("email", email);
             return SUCCESS;
         }
     }
-    
+
     @Override
-    public void validate(){
-        if(email==null || email.equals("")){
+    public void validate() {
+        if (email == null || email.equals("")) {
             addFieldError("email", "Se requiere un email.");
-        }else{
-            if(email.length()>45){
-                addFieldError("email", "El tamaño del email es de máximo 45 caracteres");
-             }else{
-                if(!email.matches("^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")){
-                    addFieldError("email","Formato del email incorrecto");
-                }
-            }
+        } else if (email.length() > 45) {
+            addFieldError("email", "El tamaño del email es de máximo 45 caracteres");
+        } else if (!email.matches("^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")) {
+            addFieldError("email", "Formato del email incorrecto");
         }
     }
 
@@ -70,13 +77,13 @@ public class AddUser extends ActionSupport {
         this.email = email;
     }
 
-//    public String getCiudad() {
-//        return ciudad;
-//    }
-//
-//    public void setCiudad(String ciudad) {
-//        this.ciudad = ciudad;
-//    }
+    public String getSector() {
+        return sector;
+    }
+
+    public void setSector(String sector) {
+        this.sector = sector;
+    }
 
     public String getName() {
         return name;
@@ -84,8 +91,8 @@ public class AddUser extends ActionSupport {
 
     @RequiredStringValidator(message = "Se requiere un nombre.")
     @StringLengthFieldValidator(
-        maxLength = "45",
-        message = "El tamaño del nombre es de máximo ${maxLength} caracteres"
+            maxLength = "45",
+            message = "El tamaño del nombre es de máximo ${maxLength} caracteres"
     )
     public void setName(String name) {
         this.name = name;
@@ -97,12 +104,53 @@ public class AddUser extends ActionSupport {
 
     @RequiredStringValidator(message = "Se requiere una contraseña.")
     @StringLengthFieldValidator(
-        minLength="5",
-        maxLength = "45",
-        message = "La contraseña debe tener entre ${minLength} y ${maxLength} caracteres"
+            minLength = "5",
+            maxLength = "45",
+            message = "La contraseña debe tener entre ${minLength} y ${maxLength} caracteres"
     )
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getCompany_name() {
+        return company_name;
+    }
+
+    public void setCompany_name(String company_name) {
+        this.company_name = company_name;
+    }
+
+    public Date getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public List<Sector> getSectores() {
+        sectores = new SectorDAO().getAll();
+        return sectores;
+    }
+
+    public void setSectores(List<Sector> sectores) {
+        this.sectores = sectores;
+    }
+
+    public Integer getBank() {
+        return bank;
+    }
+
+    public void setBank(Integer bank) {
+        this.bank = bank;
+    }
+
+    public Boolean getProvider() {
+        return provider;
+    }
+
+    public void setProvider(Boolean provider) {
+        this.provider = provider;
     }
 
 //    public List<Ciudad> getCiudades() {
@@ -113,7 +161,6 @@ public class AddUser extends ActionSupport {
 //    public void setCiudades(List<Ciudad> ciudades) {
 //        this.ciudades = ciudades;
 //    }
-
     public String isExisteUsuario() {
         return existeUsuario;
     }
