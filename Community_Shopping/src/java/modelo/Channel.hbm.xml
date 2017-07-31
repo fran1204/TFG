@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-jul-2017 12:27:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Channel" table="channel" catalog="community_shopping" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <property name="socialNetwork" type="string">
+            <column name="Social_network" length="100" not-null="true" />
+        </property>
+        <set name="shares" table="share" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_channel" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Share" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<%-- 
+DECIDE SI ENVIAR AL USUARIO A PRINCIPAL1 O PRINCIPAL2
+    Document   : index
+    Created on : 23-abr-2016, 16:59:49
+    Author     : cayetano
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="img/favicon.ico">
+
+        <title>Index</title>
+
+    </head>
+
+    <body>
+        <s:action name="validarSesion" namespace="/" executeResult="true"/>
+    </body>
+</html>

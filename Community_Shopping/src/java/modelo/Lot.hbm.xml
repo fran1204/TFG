@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-jul-2017 12:27:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Lot" table="lot" catalog="community_shopping" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="category" class="modelo.Category" fetch="select">
+            <column name="id_category" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="modelo.User" fetch="select">
+            <column name="Id_provider" not-null="true" />
+        </many-to-one>
+        <property name="title" type="string">
+            <column name="Title" length="150" not-null="true" />
+        </property>
+        <property name="numSet" type="int">
+            <column name="Num_set" not-null="true" />
+        </property>
+        <property name="expiryDate" type="date">
+            <column name="expiry_date" length="10" />
+        </property>
+        <property name="individual" type="boolean">
+            <column name="Individual" not-null="true" />
+        </property>
+        <property name="createDate" type="timestamp">
+            <column name="Create_date" length="19" not-null="true" />
+        </property>
+        <property name="deletionDate" type="date">
+            <column name="deletion_date" length="10" not-null="true" />
+        </property>
+        <set name="lotDetails" table="lot_detail" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_lot" not-null="true" />
+            </key>
+            <one-to-many class="modelo.LotDetail" />
+        </set>
+        <set name="shares" table="share" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_lot" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Share" />
+        </set>
+        <set name="orders" table="order" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_lot" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Order" />
+        </set>
+    </class>
+</hibernate-mapping>

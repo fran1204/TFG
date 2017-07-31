@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-jul-2017 12:27:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.PayOrder" table="pay_order" catalog="community_shopping" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="advertising" class="modelo.Advertising" fetch="select">
+            <column name="Id_advertising" not-null="true" />
+        </many-to-one>
+        <property name="paymentDate" type="date">
+            <column name="Payment_date" length="10" not-null="true" />
+        </property>
+        <property name="total" type="int">
+            <column name="Total" not-null="true" />
+        </property>
+        <property name="pdf" type="string">
+            <column name="Pdf" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
