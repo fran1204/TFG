@@ -1,0 +1,29 @@
+
+<!-- AQUÍ ESTÁN TODAS LAS LÍNEAS COMUNES DE JAVASCRIPT DE TODAS LAS PÁGINAS -->
+
+<script src="bootstrap/js/jquery.min.js" type="text/javascript"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/jquery.tooltipster.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('input[name="bank"]').hide();
+        $('input[name="company_name"]').hide();
+        $('select[name="sector"]').hide();
+        $('input[name="provider"]').on('change', function () {
+            if ($('input[name="provider"]').is(':checked')) {
+                $('input[name="bank"]').show();
+                $('select[name="sector"]').show();
+                $('input[name="company_name"]').show();
+                $('input[name="name"]').hide();
+
+            } else {
+                $('input[name="bank"]').hide();
+                $('select[name="sector"]').hide();
+                $('input[name="company_name"]').hide();
+                $('input[name="name"]').show();
+            }
+        });
+
+    });
+</script>
+

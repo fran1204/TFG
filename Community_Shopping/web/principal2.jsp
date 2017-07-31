@@ -22,6 +22,7 @@ PANTALLA PRINCIPAL CUANDO EL USUARIO ESTÁ REGISTRADO
 
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="bootstrap/css/dashboard.css" rel="stylesheet">
+        <%@ include file="javascript.html" %>
         
 
     </head>
