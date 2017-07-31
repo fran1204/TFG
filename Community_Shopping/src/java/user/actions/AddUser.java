@@ -21,8 +21,8 @@ import modelo.User;
 public class AddUser extends ActionSupport {
 
     private String email;
-    private String ciudad;
-    private String nombre;
+   // private String ciudad;
+    private String name;
     private String password;
     private User u;
     //private List<Ciudad> ciudades;
@@ -70,16 +70,16 @@ public class AddUser extends ActionSupport {
         this.email = email;
     }
 
-    public String getCiudad() {
-        return ciudad;
-    }
+//    public String getCiudad() {
+//        return ciudad;
+//    }
+//
+//    public void setCiudad(String ciudad) {
+//        this.ciudad = ciudad;
+//    }
 
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
     @RequiredStringValidator(message = "Se requiere un nombre.")
@@ -87,8 +87,8 @@ public class AddUser extends ActionSupport {
         maxLength = "45",
         message = "El tamaño del nombre es de máximo ${maxLength} caracteres"
     )
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {
@@ -97,7 +97,7 @@ public class AddUser extends ActionSupport {
 
     @RequiredStringValidator(message = "Se requiere una contraseña.")
     @StringLengthFieldValidator(
-        minLength="6",
+        minLength="5",
         maxLength = "45",
         message = "La contraseña debe tener entre ${minLength} y ${maxLength} caracteres"
     )

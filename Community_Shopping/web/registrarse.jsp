@@ -27,17 +27,18 @@ PÁGINA ENCARGADA DE REGISTRAR UN USUARIO
     </head>
 
     <body>
-
-        <%@ include file="nav1.jsp" %>
-
         <s:form cssClass="form-signin" action="addUsuario">
             <h2 class="form-signin-heading">Regístrate </h2>
             <%--<s:actionerror></s:actionerror>--%>
             <span style="color:red"><s:property value="existeUsuario"/></span>
             <s:fielderror/>
+            <s:checkbox name="provider" fieldValue="true" label="¿Eres proveedor?"/>
             <s:textfield cssClass="form-control" name="email"/>
-            <s:textfield cssClass="form-control" name="nombre"/>
-            <s:select name="ciudad" cssClass="form-control" list="ciudades" listKey="nombre" listValue="nombre"/>
+            <s:textfield cssClass="form-control" name="name"/>
+            <s:textfield cssClass="form-control" name="birthdate"/>
+            <s:textfield cssClass="form-control" name="photo"/>
+            <s:textfield cssClass="form-control" name="sector"/>
+            <s:textfield cssClass="form-control" name="bank"/>
             <s:password cssClass="form-control" name="password"/>
 
             <s:submit cssClass="btn btn-lg btn-primary btn-bloc" value="registrarse"/>
@@ -48,9 +49,9 @@ PÁGINA ENCARGADA DE REGISTRAR UN USUARIO
         <script>
             $("#addUsuario_email").attr("placeholder","email");
             $("#addUsuario_email").attr("autofocus","");
-            $("#addUsuario_nombre").attr("placeholder","nombre");
-            $("#addUsuario_ciudad").attr("placeholder","ciudad");
+            $("#addUsuario_name").attr("placeholder","name");
             $("#addUsuario_password").attr("placeholder","password");
+            $("#addUsuario_provider").attr("placeholder","password");
         </script>
 
     </body>
