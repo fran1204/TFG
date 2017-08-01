@@ -14,9 +14,6 @@
         <property name="name" type="string">
             <column name="name" length="150" not-null="true" />
         </property>
-        <property name="birthdate" type="date">
-            <column name="birthdate" length="10" not-null="true" />
-        </property>
         <property name="email" type="string">
             <column name="email" length="150" not-null="true" />
         </property>

@@ -28,7 +28,6 @@ public class AddUser extends ActionSupport {
     private String sector;
     private String name;
     private String company_name;
-    private Date birthdate;
     private List<Sector> sectores;
     private Integer bank;
     private String password;
@@ -42,6 +41,7 @@ public class AddUser extends ActionSupport {
     public String execute() throws Exception {
         UserDAO dao = new UserDAO();
         SessionDAO sdao = new SessionDAO();
+        SectorDAO sectordao = new SectorDAO();
 
         if (dao.existeUsuario(email)) {
             existeUsuario = "El usuario ya existe.";
@@ -50,7 +50,12 @@ public class AddUser extends ActionSupport {
             Date ahora = new Date();
             SimpleDateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
             formateador.format(ahora);
-            u = new User(name, birthdate, email, password, null, bank, new Sector(sector), company_name, provider, ahora);
+            System.out.println(name + " " + email + " " + password + " " + bank + " " + sector + " " + company_name + " " + ahora);
+            if(provider){
+                u = new User(name, email, password, null, bank, sectordao.getSectorById(sector), company_name, provider, ahora);
+            }else {
+                u = new User(name, email, password, null, 0, null, null, provider, ahora);
+            }
             u.setPhoto("defecto.jpeg");
             dao.add(u);
             sdao.getSession().put("email", email);
@@ -118,14 +123,6 @@ public class AddUser extends ActionSupport {
 
     public void setCompany_name(String company_name) {
         this.company_name = company_name;
-    }
-
-    public Date getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
     }
 
     public List<Sector> getSectores() {

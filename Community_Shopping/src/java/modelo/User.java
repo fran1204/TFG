@@ -15,7 +15,6 @@ public class User  implements java.io.Serializable {
      private Integer id;
      private Sector sector;
      private String name;
-     private Date birthdate;
      private String email;
      private String password;
      private String photo;
@@ -35,9 +34,8 @@ public class User  implements java.io.Serializable {
     }
 
 	
-    public User(String name, Date birthdate, String email, String password, String photo, int bank, Sector sector ,String companyName, boolean provider, Date createDate) {
+    public User(String name, String email, String password, String photo, int bank, Sector sector ,String companyName, boolean provider, Date createDate) {
         this.name = name;
-        this.birthdate = birthdate;
         this.email = email;
         this.password = password;
         this.photo = photo;
@@ -47,10 +45,9 @@ public class User  implements java.io.Serializable {
         this.provider = provider;
         this.createDate = createDate;
     }
-    public User(Sector sector, String name, Date birthdate, String email, String password, String photo, int bank, String companyName, boolean provider, Date createDate, Date deleteDate, Set interlocutorOrders, Set lots, Set orders, Set purchases, Set advertisings, Set shares) {
+    public User(Sector sector, String name, String email, String password, String photo, int bank, String companyName, boolean provider, Date createDate, Date deleteDate, Set interlocutorOrders, Set lots, Set orders, Set purchases, Set advertisings, Set shares) {
        this.sector = sector;
        this.name = name;
-       this.birthdate = birthdate;
        this.email = email;
        this.password = password;
        this.photo = photo;
@@ -66,6 +63,7 @@ public class User  implements java.io.Serializable {
        this.advertisings = advertisings;
        this.shares = shares;
     }
+    
    
     public Integer getId() {
         return this.id;
@@ -88,13 +86,7 @@ public class User  implements java.io.Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    public Date getBirthdate() {
-        return this.birthdate;
-    }
-    
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
-    }
+   
     public String getEmail() {
         return this.email;
     }
