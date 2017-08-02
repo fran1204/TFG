@@ -32,17 +32,6 @@
                 <div class="col-md-3"></div>
             </div>
 
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <s:form cssClass="form-signin" method="post" action="buscarEvento">
-                        <s:hidden cssClass="filtro_ciudad" name="filtro_ciudad" value=""/>
-                        <s:textfield id="filtro_nombre" cssClass="form-control" name="filtro_nombre"/>
-                    </s:form>
-                </div>
-                <div class="col-md-3"></div>
-            </div>
-
             <div class="row"><br/><br/></div>
 
             <div class="row placeholders">

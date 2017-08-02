@@ -1,5 +1,5 @@
 package modelo;
-// Generated 31-jul-2017 12:27:36 by Hibernate Tools 4.3.1
+// Generated 02-ago-2017 17:17:28 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -18,7 +18,7 @@ public class User  implements java.io.Serializable {
      private String email;
      private String password;
      private String photo;
-     private int bank;
+     private Integer bank;
      private String companyName;
      private boolean provider;
      private Date createDate;
@@ -34,18 +34,24 @@ public class User  implements java.io.Serializable {
     }
 
 	
-    public User(String name, String email, String password, String photo, int bank, Sector sector ,String companyName, boolean provider, Date createDate) {
+    public User(String name,String email, String password, boolean provider, Date createDate) {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.photo = photo;
-        this.bank = bank;
-        this.sector = sector;
-        this.companyName = companyName;
         this.provider = provider;
         this.createDate = createDate;
     }
-    public User(Sector sector, String name, String email, String password, String photo, int bank, String companyName, boolean provider, Date createDate, Date deleteDate, Set interlocutorOrders, Set lots, Set orders, Set purchases, Set advertisings, Set shares) {
+    public User(String name,String email, String password, boolean provider,Sector sector,Integer bank, String company ,Date createDate) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.provider = provider;
+        this.sector=sector;
+        this.companyName = company;
+        this.bank=bank;
+        this.createDate = createDate;
+    }
+    public User(Sector sector, String name, String email, String password, String photo, Integer bank, String companyName, boolean provider, Date createDate, Date deleteDate, Set interlocutorOrders, Set lots, Set orders, Set purchases, Set advertisings, Set shares) {
        this.sector = sector;
        this.name = name;
        this.email = email;
@@ -63,7 +69,6 @@ public class User  implements java.io.Serializable {
        this.advertisings = advertisings;
        this.shares = shares;
     }
-    
    
     public Integer getId() {
         return this.id;
@@ -86,7 +91,6 @@ public class User  implements java.io.Serializable {
     public void setName(String name) {
         this.name = name;
     }
-   
     public String getEmail() {
         return this.email;
     }
@@ -108,11 +112,11 @@ public class User  implements java.io.Serializable {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
-    public int getBank() {
+    public Integer getBank() {
         return this.bank;
     }
     
-    public void setBank(int bank) {
+    public void setBank(Integer bank) {
         this.bank = bank;
     }
     public String getCompanyName() {

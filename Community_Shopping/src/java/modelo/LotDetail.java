@@ -1,5 +1,5 @@
 package modelo;
-// Generated 31-jul-2017 12:27:36 by Hibernate Tools 4.3.1
+// Generated 02-ago-2017 17:17:28 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -13,17 +13,16 @@ public class LotDetail  implements java.io.Serializable {
 
 
      private Integer id;
-     private Gallery gallery;
      private Lot lot;
      private String title;
      private String description;
      private boolean publish;
      private Date createdDate;
-     private int quantity;
-     private int price;
-     private int size;
-     private int color;
-     private int capacity;
+     private Integer quantity;
+     private Integer price;
+     private String size;
+     private String color;
+     private Integer capacity;
      private Date deletionDate;
      private Set interlocutorOrders = new HashSet(0);
      private Set galleries = new HashSet(0);
@@ -32,22 +31,14 @@ public class LotDetail  implements java.io.Serializable {
     }
 
 	
-    public LotDetail(Gallery gallery, Lot lot, String title, String description, boolean publish, Date createdDate, int quantity, int price, int size, int color, int capacity, Date deletionDate) {
-        this.gallery = gallery;
+    public LotDetail(Lot lot, String title, String description, boolean publish, Date createdDate) {
         this.lot = lot;
         this.title = title;
         this.description = description;
         this.publish = publish;
         this.createdDate = createdDate;
-        this.quantity = quantity;
-        this.price = price;
-        this.size = size;
-        this.color = color;
-        this.capacity = capacity;
-        this.deletionDate = deletionDate;
     }
-    public LotDetail(Gallery gallery, Lot lot, String title, String description, boolean publish, Date createdDate, int quantity, int price, int size, int color, int capacity, Date deletionDate, Set interlocutorOrders, Set galleries) {
-       this.gallery = gallery;
+    public LotDetail(Lot lot, String title, String description, boolean publish, Date createdDate, Integer quantity, Integer price, String size, String color, Integer capacity, Date deletionDate, Set interlocutorOrders, Set galleries) {
        this.lot = lot;
        this.title = title;
        this.description = description;
@@ -69,13 +60,6 @@ public class LotDetail  implements java.io.Serializable {
     
     public void setId(Integer id) {
         this.id = id;
-    }
-    public Gallery getGallery() {
-        return this.gallery;
-    }
-    
-    public void setGallery(Gallery gallery) {
-        this.gallery = gallery;
     }
     public Lot getLot() {
         return this.lot;
@@ -112,39 +96,39 @@ public class LotDetail  implements java.io.Serializable {
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
-    public int getQuantity() {
+    public Integer getQuantity() {
         return this.quantity;
     }
     
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
-    public int getPrice() {
+    public Integer getPrice() {
         return this.price;
     }
     
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
-    public int getSize() {
+    public String getSize() {
         return this.size;
     }
     
-    public void setSize(int size) {
+    public void setSize(String size) {
         this.size = size;
     }
-    public int getColor() {
+    public String getColor() {
         return this.color;
     }
     
-    public void setColor(int color) {
+    public void setColor(String color) {
         this.color = color;
     }
-    public int getCapacity() {
+    public Integer getCapacity() {
         return this.capacity;
     }
     
-    public void setCapacity(int capacity) {
+    public void setCapacity(Integer capacity) {
         this.capacity = capacity;
     }
     public Date getDeletionDate() {

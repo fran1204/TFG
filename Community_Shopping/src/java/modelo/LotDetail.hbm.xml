@@ -1,16 +1,13 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 31-jul-2017 12:27:37 by Hibernate Tools 4.3.1 -->
+<!-- Generated 02-ago-2017 17:17:29 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.LotDetail" table="lot_detail" catalog="community_shopping" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
             <column name="Id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="gallery" class="modelo.Gallery" fetch="select">
-            <column name="id_gallery" not-null="true" />
-        </many-to-one>
         <many-to-one name="lot" class="modelo.Lot" fetch="select">
             <column name="Id_lot" not-null="true" />
         </many-to-one>
@@ -26,23 +23,23 @@
         <property name="createdDate" type="timestamp">
             <column name="Created_date" length="19" not-null="true" />
         </property>
-        <property name="quantity" type="int">
-            <column name="Quantity" not-null="true" />
+        <property name="quantity" type="java.lang.Integer">
+            <column name="Quantity" />
         </property>
-        <property name="price" type="int">
-            <column name="Price" not-null="true" />
+        <property name="price" type="java.lang.Integer">
+            <column name="Price" />
         </property>
-        <property name="size" type="int">
-            <column name="size" not-null="true" />
+        <property name="size" type="string">
+            <column name="size" length="5" />
         </property>
-        <property name="color" type="int">
-            <column name="color" not-null="true" />
+        <property name="color" type="string">
+            <column name="color" length="50" />
         </property>
-        <property name="capacity" type="int">
-            <column name="capacity" not-null="true" />
+        <property name="capacity" type="java.lang.Integer">
+            <column name="capacity" />
         </property>
         <property name="deletionDate" type="date">
-            <column name="deletion_date" length="10" not-null="true" />
+            <column name="deletion_date" length="10" />
         </property>
         <set name="interlocutorOrders" table="interlocutor_order" inverse="true" lazy="true" fetch="select">
             <key>

@@ -42,7 +42,7 @@ public class AddUser extends ActionSupport {
         UserDAO dao = new UserDAO();
         SessionDAO sdao = new SessionDAO();
         SectorDAO sectordao = new SectorDAO();
-
+      
         if (dao.existeUsuario(email)) {
             existeUsuario = "El usuario ya existe.";
             return ERROR;
@@ -52,9 +52,9 @@ public class AddUser extends ActionSupport {
             formateador.format(ahora);
             System.out.println(name + " " + email + " " + password + " " + bank + " " + sector + " " + company_name + " " + ahora);
             if(provider){
-                u = new User(name, email, password, null, bank, sectordao.getSectorById(sector), company_name, provider, ahora);
+                u = new User(name, email, password, provider, sectordao.getSectorById(sector), bank,company_name, ahora);
             }else {
-                u = new User(name, email, password, null, 0, null, null, provider, ahora);
+                u = new User(name, email, password, provider, ahora);
             }
             u.setPhoto("defecto.jpeg");
             dao.add(u);
@@ -149,15 +149,7 @@ public class AddUser extends ActionSupport {
     public void setProvider(Boolean provider) {
         this.provider = provider;
     }
-
-//    public List<Ciudad> getCiudades() {
-//        ciudades = new CiudadDAO().getAll();
-//        return ciudades;
-//    }
-//
-//    public void setCiudades(List<Ciudad> ciudades) {
-//        this.ciudades = ciudades;
-//    }
+    
     public String isExisteUsuario() {
         return existeUsuario;
     }
