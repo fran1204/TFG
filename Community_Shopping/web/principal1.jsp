@@ -79,14 +79,16 @@
                                         <th>Nombre</th>
                                         <th>Cantidad</th>
                                         <th>Fecha Fin</th>
+                                        <th>Detalle</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <s:iterator value="lotes">
+                                <s:iterator value="lotDetails">                                    
                                     <tr>
-                                        <td><s:property value="Title"/></td>
-                                        <td><s:property value="numSet"/></td>
-                                        <td><s:property value="expiryDate"/></td>
+                                        <td><s:property value="%{title}"/></td>
+                                        <td><s:property value="%{lot.expiryDate}"/></td>
+                                        <td><s:property value="description"/></td>
+                                        <td><s:property value="price"/></td>
                                     </tr>
                                 </s:iterator>
                             </tbody>

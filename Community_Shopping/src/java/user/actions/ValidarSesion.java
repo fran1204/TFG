@@ -5,11 +5,11 @@
  */
 package user.actions;
 
-import DAO.LotDAO;
+import DAO.LotDetailDAO;
 import DAO.SessionDAO;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
-import modelo.Lot;
+import modelo.LotDetail;
 
 /**
  *
@@ -17,10 +17,10 @@ import modelo.Lot;
  */
 public class ValidarSesion extends ActionSupport {
     
-    private List<Lot> lotes;
+    private List<LotDetail> lotDetails;
     
     public ValidarSesion() {
-        lotes = new LotDAO().getAll();
+        lotDetails = new LotDetailDAO().getAll();
     }
     
     public String execute() throws Exception {
@@ -32,12 +32,12 @@ public class ValidarSesion extends ActionSupport {
         }
     }
 
-    public List<Lot> getLotes() {
-        return lotes;
+    public List<LotDetail> getLotDetails() {
+        return lotDetails;
     }
 
-    public void setLotes(List<Lot> eventos) {
-        this.lotes = lotes;
+    public void setLotDetails(List<LotDetail> lotDetails) {
+        this.lotDetails = lotDetails;
     }
     
     

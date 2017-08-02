@@ -94,11 +94,6 @@ public class AddUser extends ActionSupport {
         return name;
     }
 
-    @RequiredStringValidator(message = "Se requiere un nombre.")
-    @StringLengthFieldValidator(
-            maxLength = "45",
-            message = "El tamaño del nombre es de máximo ${maxLength} caracteres"
-    )
     public void setName(String name) {
         this.name = name;
     }
