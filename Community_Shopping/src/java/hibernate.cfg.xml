@@ -47,6 +47,10 @@ Contributor(s):
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">root</property>
     <property name="hibernate.current_session_context_class">thread</property>
+    <property name="current_session_context_class">thread</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.format_sql">true</property>
+    <property name="hbm2ddl.auto">update</property>
     <mapping resource="modelo/Lot.hbm.xml"/>
     <mapping resource="modelo/Channel.hbm.xml"/>
     <mapping resource="modelo/Sector.hbm.xml"/>

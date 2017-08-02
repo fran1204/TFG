@@ -13,7 +13,7 @@ import com.opensymphony.xwork2.validator.annotations.StringLengthFieldValidator;
 
 /**
  *
- * @author cayetano
+ * @author fmrodriguez
  */
 public class ValidarLogin extends ActionSupport {
 

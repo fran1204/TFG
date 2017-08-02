@@ -13,7 +13,7 @@ import java.io.StringBufferInputStream;
 
 /**
  *
- * @author cayetano
+ * @author fmrodriguez
  */
 public class ExisteUsuario extends ActionSupport {
 

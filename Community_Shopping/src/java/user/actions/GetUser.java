@@ -14,7 +14,7 @@ import modelo.User;
 
 /**
  *
- * @author cayetano
+ * @author fmrodriguez
  */
 public class GetUser extends ActionSupport {
     

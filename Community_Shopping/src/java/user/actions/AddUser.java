@@ -19,7 +19,7 @@ import modelo.User;
 
 /**
  *
- * @author Naiara
+ * @author fmrodriguez
  */
 public class AddUser extends ActionSupport {
 

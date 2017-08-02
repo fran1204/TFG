@@ -10,7 +10,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 /**
  *
- * @author cayetano
+ * @author fmrodriguez
  */
 public class Logout extends ActionSupport {
     

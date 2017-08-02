@@ -8,7 +8,7 @@ import org.hibernate.Session;
 
 /**
  *
- * @author cayetano
+ * @author fmrodriguez
  */
 public class UserDAO {
     

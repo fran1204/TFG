@@ -11,7 +11,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
- * @author cayetano
+ * @author fmrodriguez
  */
 public class SessionDAO implements SessionAware{
     

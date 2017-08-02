@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author cayetano
+ * @author fmrodriguez
  */
 public class ValidarSesion extends ActionSupport {
     

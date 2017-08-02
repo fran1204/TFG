@@ -2,7 +2,7 @@
 "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 
-<!-- Author: cayetano -->
+<!-- Author: fmrodriguez -->
  
 <struts>
       <package name="user" namespace="/" extends="struts-default">
