@@ -1,10 +1,3 @@
-<%-- 
-PANTALLA PRINCIPAL CUANDO EL USUARIO NO ESTÁ REGISTRADO
-    Document   : principal1
-    Created on : 23-abr-2016, 16:59:49
-    Author     : cayetano
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
@@ -23,7 +16,7 @@ PANTALLA PRINCIPAL CUANDO EL USUARIO NO ESTÁ REGISTRADO
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="bootstrap/css/dashboard.css" rel="stylesheet">
         <%@ include file="javascript.html" %>
-        
+
     </head>
 
     <body>
@@ -34,7 +27,7 @@ PANTALLA PRINCIPAL CUANDO EL USUARIO NO ESTÁ REGISTRADO
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <h1 class="page-header text-center">¡Encuentra eventos cerca de ti! Principal 1</h1>
+                    <h1 class="page-header text-center">¡Chollos a compartir! Principal 1</h1>
                 </div>
                 <div class="col-md-3"></div>
             </div>
@@ -67,34 +60,61 @@ PANTALLA PRINCIPAL CUANDO EL USUARIO NO ESTÁ REGISTRADO
                 </s:url>
                 <div class="col-xs-6 col-md-3 placeholder">
                     <s:a href="%{futbol}"><img src="img/futbol.jpg" width="200" height="200" class="img-responsive" alt="futbol"></s:a>
-                    <h4>Fútbol</h4>
-                    <span class="text-muted">Eventos sobre fútbol</span>
-                </div>
-                <div class="col-xs-6 col-md-3 placeholder">
+                        <h4>Fútbol</h4>
+                        <span class="text-muted">Eventos sobre fútbol</span>
+                    </div>
+                    <div class="col-xs-6 col-md-3 placeholder">
                     <s:a href="%{baloncesto}"><img src="img/baloncesto.jpg" width="200" height="200" class="img-responsive" alt="baloncesto"></s:a>
-                    <h4>Baloncesto</h4>
-                    <span class="text-muted">Eventos sobre baloncesto</span>
-                </div>
-                <div class="col-xs-6 col-md-3 placeholder">
+                        <h4>Baloncesto</h4>
+                        <span class="text-muted">Eventos sobre baloncesto</span>
+                    </div>
+                    <div class="col-xs-6 col-md-3 placeholder">
                     <s:a href="%{padel}"><img src="img/padel.jpg" width="200" height="200" class="img-responsive" alt="padel"></s:a>
-                    <h4>Padel</h4>
-                    <span class="text-muted">Eventos sobre padel</span>
-                </div>
-                <div class="col-xs-6 col-md-3 placeholder">
+                        <h4>Padel</h4>
+                        <span class="text-muted">Eventos sobre padel</span>
+                    </div>
+                    <div class="col-xs-6 col-md-3 placeholder">
                     <s:a href="%{tenis}"><img src="img/tenis.jpg" width="200" height="200" class="img-responsive" alt="tenis"></s:a>
-                    <h4>Tenis</h4>
-                    <span class="text-muted">Eventos sobre tenis</span>
+                        <h4>Tenis</h4>
+                        <span class="text-muted">Eventos sobre tenis</span>
+                    </div>
+                </div> 
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Cantidad</th>
+                                        <th>Fecha Fin</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <s:iterator value="lotes">
+                                    <tr>
+                                        <td><s:property value="Title"/></td>
+                                        <td><s:property value="numSet"/></td>
+                                        <td><s:property value="expiryDate"/></td>
+                                    </tr>
+                                </s:iterator>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div> 
-        </div>
+                    
+                    
+            </div>
 
 
-        <!-- ==========================================JAVASCRIPT======================================== -->  
-        
-        <script>
-            $(document).ready(function () {
-                $("#filtro_nombre").attr("placeholder", "Inserta nombre del evento...");
-            });
-        </script>
+            <!-- ==========================================JAVASCRIPT======================================== -->  
+
+            <script>
+                $(document).ready(function () {
+                    $("#filtro_nombre").attr("placeholder", "Inserta nombre del evento...");
+                });
+            </script>
     </body>
 </html>

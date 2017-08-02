@@ -1,0 +1,66 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Author: fmrodriguez -->
+ 
+<struts>
+      <package name="lot" namespace="/" extends="struts-default">
+        <action name="validarLogin" class="user.actions.ValidarLogin">
+            <result name="success">principal2.jsp</result>
+            <result name="error">login.jsp</result>
+            <result name="input">login.jsp</result>
+        </action>
+        <action name="validarSesion" class="user.actions.ValidarSesion">
+            <result name="success">principal2.jsp</result>
+            <result name="error">principal1.jsp</result>
+        </action>
+        <action name="logout" class="user.actions.Logout">
+            <result name="success">principal1.jsp</result>
+        </action>
+        <action name="getUsuario" class="user.actions.GetUser">
+            <result name="success">perfil.jsp</result>
+        </action>
+        <action name="addUsuario" class="user.actions.AddUser">
+            <result name="success">principal2.jsp</result>
+            <result name="input">registrarse.jsp</result>
+            <result name="error">registrarse.jsp</result>
+        </action>
+        <action name="registrarse" class="sector.actions.GetAll">
+            <result name="success">registrarse.jsp</result>
+        </action>
+<!--        <action name="updateUsuario" class="user.actions.UpdateUsuario">
+            <result name="success">perfil.jsp</result>
+            <result name="input">perfil.jsp</result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">getUsuario</param>
+                <param name="perfil_email">${sesion_email}</param>
+            </result>
+        </action>-->
+<!--        <action name="deleteUsuario" class="user.actions.DeleteUsuario">
+            <result name="success">principal1.jsp</result>
+        </action>-->
+<!--        <action name="updateFotoPerfil" class="user.actions.UpdateFotoPerfil">
+            <result type="redirectAction">
+                <param name="actionName">getUsuario</param>
+                <param name="perfil_email">${perfil_email}</param>
+            </result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">getUsuario</param>
+                <param name="perfil_email">${perfil_email}</param>
+            </result>
+        </action>
+        <action name="deleteFotoPerfil" class="user.actions.DeleteFotoPerfil">
+            <result type="redirectAction">
+                <param name="actionName">getUsuario</param>
+                <param name="perfil_email">${perfil_email}</param>
+            </result>
+        </action>-->
+        <action name="existeUsuario" class="user.actions.ExisteUsuario">
+            <result type="stream">
+                <param name="contentType">text/plain</param>
+                <param name="inputName">respuesta</param>
+            </result>
+        </action>
+    </package>
+</struts>

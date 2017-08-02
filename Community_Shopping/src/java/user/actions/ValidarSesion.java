@@ -5,9 +5,11 @@
  */
 package user.actions;
 
+import DAO.LotDAO;
 import DAO.SessionDAO;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
+import modelo.Lot;
 
 /**
  *
@@ -15,10 +17,10 @@ import java.util.List;
  */
 public class ValidarSesion extends ActionSupport {
     
-   // private List<Evento> eventos;
+    private List<Lot> lotes;
     
     public ValidarSesion() {
-      //  eventos = new EventoDAO().getAll();
+        lotes = new LotDAO().getAll();
     }
     
     public String execute() throws Exception {
@@ -30,13 +32,13 @@ public class ValidarSesion extends ActionSupport {
         }
     }
 
-//    public List<Evento> getEventos() {
-//        return eventos;
-//    }
-//
-//    public void setEventos(List<Evento> eventos) {
-//        this.eventos = eventos;
-//    }
+    public List<Lot> getLotes() {
+        return lotes;
+    }
+
+    public void setLotes(List<Lot> eventos) {
+        this.lotes = lotes;
+    }
     
     
     
