@@ -5,11 +5,12 @@
  */
 package user.actions;
 
+import DAO.SectorDAO;
 import DAO.SessionDAO;
 import DAO.UserDAO;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
-import modelo.Lot;
+import modelo.Sector;
 import modelo.User;
 
 /**
@@ -21,7 +22,7 @@ public class GetUser extends ActionSupport {
     private User usuario;
     private String perfil_email;
     private String sesion_email;
-    private List<Lot> lotes;
+    private List<Sector> sectores;
     
     public GetUser() {
         this.sesion_email = (String)new SessionDAO().getSession().get("email");
@@ -29,9 +30,9 @@ public class GetUser extends ActionSupport {
     
     public String execute() throws Exception {
         UserDAO dao = new UserDAO();
-        //CiudadDAO cdao = new CiudadDAO();
-        //ciudades = cdao.getAll();
+        SectorDAO sdao = new SectorDAO();
         usuario = dao.get(perfil_email);
+        sectores = sdao.getAll();
         return SUCCESS;
     }
 
@@ -59,13 +60,13 @@ public class GetUser extends ActionSupport {
         this.sesion_email = sesion_email;
     }
 
-//    public List<Ciudad> getCiudades() {
-//        return ciudades;
-//    }
-//
-//    public void setCiudades(List<Ciudad> ciudades) {
-//        this.ciudades = ciudades;
-//    }
+    public List<Sector> getSectores() {
+        return sectores;
+    }
+
+    public void setSectores(List<Sector> sectores) {
+        this.sectores = sectores;
+    }
 
     
     
