@@ -1,5 +1,5 @@
 package modelo;
-// Generated 02-ago-2017 17:17:28 by Hibernate Tools 4.3.1
+// Generated 03-ago-2017 9:57:55 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -15,14 +15,12 @@ public class LotDetail  implements java.io.Serializable {
      private Integer id;
      private Lot lot;
      private String title;
-     private String description;
      private boolean publish;
-     private Date createdDate;
-     private Integer quantity;
-     private Integer price;
-     private String size;
+     private int quantity;
      private String color;
+     private String size;
      private Integer capacity;
+     private Date createdDate;
      private Date deletionDate;
      private Set interlocutorOrders = new HashSet(0);
      private Set galleries = new HashSet(0);
@@ -31,24 +29,22 @@ public class LotDetail  implements java.io.Serializable {
     }
 
 	
-    public LotDetail(Lot lot, String title, String description, boolean publish, Date createdDate) {
+    public LotDetail(Lot lot, String title, boolean publish, int quantity, Date createdDate) {
         this.lot = lot;
         this.title = title;
-        this.description = description;
         this.publish = publish;
+        this.quantity = quantity;
         this.createdDate = createdDate;
     }
-    public LotDetail(Lot lot, String title, String description, boolean publish, Date createdDate, Integer quantity, Integer price, String size, String color, Integer capacity, Date deletionDate, Set interlocutorOrders, Set galleries) {
+    public LotDetail(Lot lot, String title, boolean publish, int quantity, String color, String size, Integer capacity, Date createdDate, Date deletionDate, Set interlocutorOrders, Set galleries) {
        this.lot = lot;
        this.title = title;
-       this.description = description;
        this.publish = publish;
-       this.createdDate = createdDate;
        this.quantity = quantity;
-       this.price = price;
-       this.size = size;
        this.color = color;
+       this.size = size;
        this.capacity = capacity;
+       this.createdDate = createdDate;
        this.deletionDate = deletionDate;
        this.interlocutorOrders = interlocutorOrders;
        this.galleries = galleries;
@@ -75,13 +71,6 @@ public class LotDetail  implements java.io.Serializable {
     public void setTitle(String title) {
         this.title = title;
     }
-    public String getDescription() {
-        return this.description;
-    }
-    
-    public void setDescription(String description) {
-        this.description = description;
-    }
     public boolean isPublish() {
         return this.publish;
     }
@@ -89,33 +78,12 @@ public class LotDetail  implements java.io.Serializable {
     public void setPublish(boolean publish) {
         this.publish = publish;
     }
-    public Date getCreatedDate() {
-        return this.createdDate;
-    }
-    
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-    public Integer getQuantity() {
+    public int getQuantity() {
         return this.quantity;
     }
     
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-    public Integer getPrice() {
-        return this.price;
-    }
-    
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-    public String getSize() {
-        return this.size;
-    }
-    
-    public void setSize(String size) {
-        this.size = size;
     }
     public String getColor() {
         return this.color;
@@ -124,12 +92,26 @@ public class LotDetail  implements java.io.Serializable {
     public void setColor(String color) {
         this.color = color;
     }
+    public String getSize() {
+        return this.size;
+    }
+    
+    public void setSize(String size) {
+        this.size = size;
+    }
     public Integer getCapacity() {
         return this.capacity;
     }
     
     public void setCapacity(Integer capacity) {
         this.capacity = capacity;
+    }
+    public Date getCreatedDate() {
+        return this.createdDate;
+    }
+    
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
     public Date getDeletionDate() {
         return this.deletionDate;

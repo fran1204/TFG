@@ -54,9 +54,9 @@ public class LotDetailDAO {
         tx.commit();
     }
 
-    public LotDetail update(Integer id, Lot lot,String title, String description,
-             Boolean publish, Integer quantity, Integer price,
-            String size, String color, Integer capacity) {
+    public LotDetail update(Integer id, Lot lot,String title,
+             Boolean publish, Integer quantity,String size, String color, 
+             Integer capacity) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
         Query q = sesion.createQuery("from LotDetail WHERE id='"+id+"'");
@@ -64,10 +64,8 @@ public class LotDetailDAO {
        // Usuario u = (Usuario) sesion.load(Usuario.class, email);
        u.setLot(lot);
        u.setTitle(title);
-       u.setDescription(description);
        u.setPublish(publish);
        u.setQuantity(quantity);
-       u.setPrice(price);
        u.setSize(size);
        u.setColor(color);
        u.setCapacity(capacity);

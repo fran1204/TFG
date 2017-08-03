@@ -1,5 +1,5 @@
 package modelo;
-// Generated 02-ago-2017 17:17:28 by Hibernate Tools 4.3.1
+// Generated 03-ago-2017 9:57:55 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -19,28 +19,27 @@ public class Order  implements java.io.Serializable {
      private Date createdDate;
      private Date datePurchase;
      private Date deletionDate;
-     private Set purchases = new HashSet(0);
      private Set interlocutorOrders = new HashSet(0);
+     private Set purchases = new HashSet(0);
 
     public Order() {
     }
 
 	
-    public Order(Lot lot, String stateOrder, Date createdDate, Date deletionDate) {
+    public Order(Lot lot, String stateOrder, Date createdDate) {
         this.lot = lot;
         this.stateOrder = stateOrder;
         this.createdDate = createdDate;
-        this.deletionDate = deletionDate;
     }
-    public Order(Lot lot, User user, String stateOrder, Date createdDate, Date datePurchase, Date deletionDate, Set purchases, Set interlocutorOrders) {
+    public Order(Lot lot, User user, String stateOrder, Date createdDate, Date datePurchase, Date deletionDate, Set interlocutorOrders, Set purchases) {
        this.lot = lot;
        this.user = user;
        this.stateOrder = stateOrder;
        this.createdDate = createdDate;
        this.datePurchase = datePurchase;
        this.deletionDate = deletionDate;
-       this.purchases = purchases;
        this.interlocutorOrders = interlocutorOrders;
+       this.purchases = purchases;
     }
    
     public Integer getId() {
@@ -92,19 +91,19 @@ public class Order  implements java.io.Serializable {
     public void setDeletionDate(Date deletionDate) {
         this.deletionDate = deletionDate;
     }
-    public Set getPurchases() {
-        return this.purchases;
-    }
-    
-    public void setPurchases(Set purchases) {
-        this.purchases = purchases;
-    }
     public Set getInterlocutorOrders() {
         return this.interlocutorOrders;
     }
     
     public void setInterlocutorOrders(Set interlocutorOrders) {
         this.interlocutorOrders = interlocutorOrders;
+    }
+    public Set getPurchases() {
+        return this.purchases;
+    }
+    
+    public void setPurchases(Set purchases) {
+        this.purchases = purchases;
     }
 
 

@@ -1,5 +1,5 @@
 package modelo;
-// Generated 02-ago-2017 17:17:28 by Hibernate Tools 4.3.1
+// Generated 03-ago-2017 9:57:55 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -24,14 +24,13 @@ public class InterlocutorOrder  implements java.io.Serializable {
     }
 
 	
-    public InterlocutorOrder(LotDetail lotDetail, Order order, User user, int paidTotal, int amount, Date createdDate, Date deletionDate) {
+    public InterlocutorOrder(LotDetail lotDetail, Order order, User user, int paidTotal, int amount, Date createdDate) {
         this.lotDetail = lotDetail;
         this.order = order;
         this.user = user;
         this.paidTotal = paidTotal;
         this.amount = amount;
         this.createdDate = createdDate;
-        this.deletionDate = deletionDate;
     }
     public InterlocutorOrder(LotDetail lotDetail, Order order, User user, int paidTotal, int amount, Date datePurchase, Date createdDate, Date deletionDate) {
        this.lotDetail = lotDetail;

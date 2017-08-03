@@ -1,5 +1,5 @@
 package modelo;
-// Generated 02-ago-2017 17:17:28 by Hibernate Tools 4.3.1
+// Generated 03-ago-2017 9:57:55 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -24,50 +24,31 @@ public class User  implements java.io.Serializable {
      private Date createDate;
      private Date deleteDate;
      private Set interlocutorOrders = new HashSet(0);
-     private Set lots = new HashSet(0);
      private Set orders = new HashSet(0);
+     private Set shares = new HashSet(0);
+     private Set lots = new HashSet(0);
      private Set purchases = new HashSet(0);
      private Set advertisings = new HashSet(0);
-     private Set shares = new HashSet(0);
 
     public User() {
     }
 
 	
-    public User(String name,String email, String password, boolean provider, Date createDate) {
-        this.name = name;
+    public User(String name, String email, String password, boolean provider, Date createDate) {
         this.email = email;
         this.password = password;
         this.provider = provider;
         this.createDate = createDate;
     }
-    public User(String name,String email, String password, boolean provider,Sector sector,Integer bank, String company ,Date createDate) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.provider = provider;
-        this.sector=sector;
-        this.companyName = company;
-        this.bank=bank;
-        this.createDate = createDate;
-    }
-    public User(Sector sector, String name, String email, String password, String photo, Integer bank, String companyName, boolean provider, Date createDate, Date deleteDate, Set interlocutorOrders, Set lots, Set orders, Set purchases, Set advertisings, Set shares) {
+    public User(Sector sector, String name, String email, String password, Integer bank, String companyName, boolean provider, Date createDate) {
        this.sector = sector;
        this.name = name;
        this.email = email;
        this.password = password;
-       this.photo = photo;
        this.bank = bank;
        this.companyName = companyName;
        this.provider = provider;
        this.createDate = createDate;
-       this.deleteDate = deleteDate;
-       this.interlocutorOrders = interlocutorOrders;
-       this.lots = lots;
-       this.orders = orders;
-       this.purchases = purchases;
-       this.advertisings = advertisings;
-       this.shares = shares;
     }
    
     public Integer getId() {
@@ -154,19 +135,26 @@ public class User  implements java.io.Serializable {
     public void setInterlocutorOrders(Set interlocutorOrders) {
         this.interlocutorOrders = interlocutorOrders;
     }
-    public Set getLots() {
-        return this.lots;
-    }
-    
-    public void setLots(Set lots) {
-        this.lots = lots;
-    }
     public Set getOrders() {
         return this.orders;
     }
     
     public void setOrders(Set orders) {
         this.orders = orders;
+    }
+    public Set getShares() {
+        return this.shares;
+    }
+    
+    public void setShares(Set shares) {
+        this.shares = shares;
+    }
+    public Set getLots() {
+        return this.lots;
+    }
+    
+    public void setLots(Set lots) {
+        this.lots = lots;
     }
     public Set getPurchases() {
         return this.purchases;
@@ -181,13 +169,6 @@ public class User  implements java.io.Serializable {
     
     public void setAdvertisings(Set advertisings) {
         this.advertisings = advertisings;
-    }
-    public Set getShares() {
-        return this.shares;
-    }
-    
-    public void setShares(Set shares) {
-        this.shares = shares;
     }
 
 

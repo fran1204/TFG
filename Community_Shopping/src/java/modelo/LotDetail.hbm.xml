@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 02-ago-2017 17:17:29 by Hibernate Tools 4.3.1 -->
+<!-- Generated 03-ago-2017 9:57:57 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.LotDetail" table="lot_detail" catalog="community_shopping" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -14,29 +14,23 @@
         <property name="title" type="string">
             <column name="Title" length="150" not-null="true" />
         </property>
-        <property name="description" type="string">
-            <column name="Description" length="200" not-null="true" />
-        </property>
         <property name="publish" type="boolean">
             <column name="Publish" not-null="true" />
         </property>
-        <property name="createdDate" type="timestamp">
-            <column name="Created_date" length="19" not-null="true" />
-        </property>
-        <property name="quantity" type="java.lang.Integer">
-            <column name="Quantity" />
-        </property>
-        <property name="price" type="java.lang.Integer">
-            <column name="Price" />
-        </property>
-        <property name="size" type="string">
-            <column name="size" length="5" />
+        <property name="quantity" type="int">
+            <column name="Quantity" not-null="true" />
         </property>
         <property name="color" type="string">
-            <column name="color" length="50" />
+            <column name="color" length="20" />
+        </property>
+        <property name="size" type="string">
+            <column name="size" length="10" />
         </property>
         <property name="capacity" type="java.lang.Integer">
             <column name="capacity" />
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="Created_date" length="19" not-null="true" />
         </property>
         <property name="deletionDate" type="date">
             <column name="deletion_date" length="10" />

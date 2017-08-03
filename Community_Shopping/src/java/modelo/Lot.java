@@ -1,5 +1,5 @@
 package modelo;
-// Generated 02-ago-2017 17:17:28 by Hibernate Tools 4.3.1
+// Generated 03-ago-2017 9:57:55 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -16,39 +16,42 @@ public class Lot  implements java.io.Serializable {
      private Category category;
      private User user;
      private String title;
+     private String desciption;
      private int numSet;
+     private int price;
      private Date expiryDate;
-     private boolean individual;
      private Date createDate;
      private Date deletionDate;
-     private Set lotDetails = new HashSet(0);
      private Set shares = new HashSet(0);
      private Set orders = new HashSet(0);
+     private Set lotDetails = new HashSet(0);
 
     public Lot() {
     }
 
 	
-    public Lot(Category category, User user, String title, int numSet, boolean individual, Date createDate) {
+    public Lot(Category category, User user, String title, String desciption, int numSet, int price, Date createDate) {
         this.category = category;
         this.user = user;
         this.title = title;
+        this.desciption = desciption;
         this.numSet = numSet;
-        this.individual = individual;
+        this.price = price;
         this.createDate = createDate;
     }
-    public Lot(Category category, User user, String title, int numSet, Date expiryDate, boolean individual, Date createDate, Date deletionDate, Set lotDetails, Set shares, Set orders) {
+    public Lot(Category category, User user, String title, String desciption, int numSet, int price, Date expiryDate, Date createDate, Date deletionDate, Set shares, Set orders, Set lotDetails) {
        this.category = category;
        this.user = user;
        this.title = title;
+       this.desciption = desciption;
        this.numSet = numSet;
+       this.price = price;
        this.expiryDate = expiryDate;
-       this.individual = individual;
        this.createDate = createDate;
        this.deletionDate = deletionDate;
-       this.lotDetails = lotDetails;
        this.shares = shares;
        this.orders = orders;
+       this.lotDetails = lotDetails;
     }
    
     public Integer getId() {
@@ -79,6 +82,13 @@ public class Lot  implements java.io.Serializable {
     public void setTitle(String title) {
         this.title = title;
     }
+    public String getDesciption() {
+        return this.desciption;
+    }
+    
+    public void setDesciption(String desciption) {
+        this.desciption = desciption;
+    }
     public int getNumSet() {
         return this.numSet;
     }
@@ -86,19 +96,19 @@ public class Lot  implements java.io.Serializable {
     public void setNumSet(int numSet) {
         this.numSet = numSet;
     }
+    public int getPrice() {
+        return this.price;
+    }
+    
+    public void setPrice(int price) {
+        this.price = price;
+    }
     public Date getExpiryDate() {
         return this.expiryDate;
     }
     
     public void setExpiryDate(Date expiryDate) {
         this.expiryDate = expiryDate;
-    }
-    public boolean isIndividual() {
-        return this.individual;
-    }
-    
-    public void setIndividual(boolean individual) {
-        this.individual = individual;
     }
     public Date getCreateDate() {
         return this.createDate;
@@ -114,13 +124,6 @@ public class Lot  implements java.io.Serializable {
     public void setDeletionDate(Date deletionDate) {
         this.deletionDate = deletionDate;
     }
-    public Set getLotDetails() {
-        return this.lotDetails;
-    }
-    
-    public void setLotDetails(Set lotDetails) {
-        this.lotDetails = lotDetails;
-    }
     public Set getShares() {
         return this.shares;
     }
@@ -134,6 +137,13 @@ public class Lot  implements java.io.Serializable {
     
     public void setOrders(Set orders) {
         this.orders = orders;
+    }
+    public Set getLotDetails() {
+        return this.lotDetails;
+    }
+    
+    public void setLotDetails(Set lotDetails) {
+        this.lotDetails = lotDetails;
     }
 
 

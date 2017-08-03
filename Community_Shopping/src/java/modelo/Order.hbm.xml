@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 02-ago-2017 17:17:29 by Hibernate Tools 4.3.1 -->
+<!-- Generated 03-ago-2017 9:57:57 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Order" table="order" catalog="community_shopping" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -24,19 +24,19 @@
             <column name="Date_purchase" length="10" />
         </property>
         <property name="deletionDate" type="date">
-            <column name="deletion_date" length="10" not-null="true" />
+            <column name="deletion_date" length="10" />
         </property>
-        <set name="purchases" table="purchase" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="Id_order" not-null="true" />
-            </key>
-            <one-to-many class="modelo.Purchase" />
-        </set>
         <set name="interlocutorOrders" table="interlocutor_order" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="Id_order" not-null="true" />
             </key>
             <one-to-many class="modelo.InterlocutorOrder" />
+        </set>
+        <set name="purchases" table="purchase" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_order" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Purchase" />
         </set>
     </class>
 </hibernate-mapping>

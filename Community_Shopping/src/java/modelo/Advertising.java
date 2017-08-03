@@ -1,5 +1,5 @@
 package modelo;
-// Generated 02-ago-2017 17:17:28 by Hibernate Tools 4.3.1
+// Generated 03-ago-2017 9:57:55 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -25,13 +25,12 @@ public class Advertising  implements java.io.Serializable {
     }
 
 	
-    public Advertising(User user, String image, String url, Date createdDate, int duration, Date deletionDate) {
+    public Advertising(User user, String image, String url, Date createdDate, int duration) {
         this.user = user;
         this.image = image;
         this.url = url;
         this.createdDate = createdDate;
         this.duration = duration;
-        this.deletionDate = deletionDate;
     }
     public Advertising(User user, String image, String url, Date createdDate, int duration, Date deletionDate, Set payOrders) {
        this.user = user;

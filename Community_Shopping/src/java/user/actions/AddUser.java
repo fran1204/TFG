@@ -52,7 +52,7 @@ public class AddUser extends ActionSupport {
             formateador.format(ahora);
             System.out.println(name + " " + email + " " + password + " " + bank + " " + sector + " " + company_name + " " + ahora);
             if(provider){
-                u = new User(name, email, password, provider, sectordao.getSectorById(sector), bank,company_name, ahora);
+                u = new User(sectordao.getSectorById(sector),name, email, password, bank,company_name, provider, ahora);
             }else {
                 u = new User(name, email, password, provider, ahora);
             }
