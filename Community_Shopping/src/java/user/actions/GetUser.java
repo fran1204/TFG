@@ -33,14 +33,15 @@ public class GetUser extends ActionSupport {
         SectorDAO sdao = new SectorDAO();
         usuario = dao.get(perfil_email);
         sectores = sdao.getAll();
+        System.out.println("TEMITA "+usuario);
         return SUCCESS;
     }
 
-    public User getUser() {
+    public User getUsuario() {
         return usuario;
     }
 
-    public void setUser(User usuario) {
+    public void setUsuario(User usuario) {
         this.usuario = usuario;
     }
 

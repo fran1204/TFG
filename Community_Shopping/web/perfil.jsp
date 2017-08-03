@@ -69,6 +69,7 @@ PERFIL DEL USUARIO
                             </div>
                             <div class="col-md-4">
                                 <%--<s:form method="post">--%>
+                                <s:hidden name="perfil_email" value="%{usuario.email}"/>
                                 <s:submit cssClass="btn btn-primary" value="Actualizar" action="updateUsuario"/>
                                 <s:submit cssClass="btn btn-primary" cssStyle="background-color: rgba(220, 38, 7, 0.94);border-color: rgba(220, 38, 7, 0.94);" value="Eliminar" action="deleteUsuario"/>
                             </s:form>

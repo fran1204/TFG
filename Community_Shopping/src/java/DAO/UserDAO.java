@@ -56,14 +56,14 @@ public class UserDAO {
         tx.commit();
     }
 
-    public User update(String email, String password, String nombre, String ciudad, String movil) {
+    public User update(String email, String password, String nombre) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
         Query q = sesion.createQuery("from User WHERE email='"+email+"'");
         User u = (User) q.uniqueResult();
        // Usuario u = (Usuario) sesion.load(Usuario.class, email);
-//        u.setPassword(password);
-//        u.setNombre(nombre);
+        u.setPassword(password);
+        u.setName(nombre);
 //        u.setCiudad(new Ciudad(ciudad));
 //        u.setMovil(movil);
         sesion.update(u);

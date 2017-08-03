@@ -35,6 +35,15 @@
             <div class="row"><br/><br/></div>
 
             <div class="row placeholders">
+                <s:iterator value="lotes">    
+                    <tr>
+                        <td><s:property value="title"/></td>
+                        <td><s:property value="desciption"/></td>
+                        <td><s:property value="numSet"/></td>
+                        <td><s:property value="expiryDate"/></td>
+                        <td><s:property value="price"/></td>
+                    </tr>
+                </s:iterator>
                 <s:url var="futbol" namespace="/" action="buscarEvento">
                     <s:param name="filtro_deporte">Futbol</s:param>
                 </s:url>

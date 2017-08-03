@@ -25,43 +25,6 @@
                 <li><s:a action="logout">Logout</s:a></li>
                 <!--<span id="notificacion" class="glyphicon glyphicon-comment"/>--> 
             </ul>
-<!--            <s:form method="post" action="buscarEvento" cssClass="navbar-form navbar-left">
-                <s:hidden cssClass="filtro_ciudad" name="filtro_ciudad" value=""/>
-                <s:textfield cssClass="form-control" name="filtro_nombre"/>
-                <button class="btn btn-link"><span style="color:white" class="glyphicon glyphicon-search"/></button>
-            </s:form>-->
         </div>
     </div>
 </nav>
-
-<% String email = (String) session.getAttribute("email");%>
-<script>
-    $(document).ready(function () {
-        //Notificaciones de mensajes
-        if ($("#notificacion").css("display") === "none") {
-            var email = "<%=email%>";
-            $.post('hayNotificacion', {
-                email: email
-            }, function (respuesta) {
-                if (respuesta === "nuevaNotificacion") {
-                    $("#notificacion").show();
-                }
-            });
-        }
-    });
-</script>
-<script>
-    $(document).ready(setInterval(function () {
-        //Notificaciones de mensajes
-        if ($("#notificacion").css("display") === "none") {
-            var email = "<%=email%>";
-            $.post('hayNotificacion', {
-                email: email
-            }, function (respuesta) {
-                if (respuesta === "nuevaNotificacion") {
-                    $("#notificacion").show();
-                }
-            });
-        }
-    }, 5000));
-</script>
