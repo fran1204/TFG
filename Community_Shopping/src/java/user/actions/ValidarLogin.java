@@ -5,11 +5,13 @@
  */
 package user.actions;
 
+import DAO.LotDAO;
 import DAO.SessionDAO;
 import DAO.UserDAO;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
 import com.opensymphony.xwork2.validator.annotations.StringLengthFieldValidator;
+import modelo.Lot;
 
 /**
  *
@@ -19,11 +21,11 @@ public class ValidarLogin extends ActionSupport {
 
     private String email;
     private String password;
-    //private List<Evento> eventos;
+    private List<Lot> lotes;
     private String mensajeError;
 
     public ValidarLogin() {
-        //eventos = new EventoDAO().getAll();
+        lotes = new LotDAO().getAll();
     }
 
     public String execute() throws Exception {
@@ -61,13 +63,13 @@ public class ValidarLogin extends ActionSupport {
         this.password = password;
     }
 
-//    public List<Evento> getEventos() {
-//        return eventos;
-//    }
-//
-//    public void setEventos(List<Evento> eventos) {
-//        this.eventos = eventos;
-//    }
+    public List<Lot> getLotes() {
+        return lotes;
+    }
+
+    public void setLotes(List<Lot> lotes) {
+        this.lotes = lotes;
+    }
 
     public String getMensajeError() {
         return mensajeError;

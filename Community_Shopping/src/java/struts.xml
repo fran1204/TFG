@@ -4,6 +4,9 @@
 
 <struts>
     <include file="user.xml"/>
+    <include file="lot.xml"/>
+    <include file="navegacion.xml"/>
+    
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
     </package>

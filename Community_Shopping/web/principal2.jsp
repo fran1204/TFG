@@ -23,7 +23,7 @@ PANTALLA PRINCIPAL CUANDO EL USUARIO ESTÁ REGISTRADO
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="bootstrap/css/dashboard.css" rel="stylesheet">
         <%@ include file="javascript.html" %>
-        
+
 
     </head>
 
@@ -86,20 +86,20 @@ PANTALLA PRINCIPAL CUANDO EL USUARIO ESTÁ REGISTRADO
                                     <thead>
                                         <tr>
                                             <th>Nombre</th>
-                                            <th>Fecha Inicio</th>
+                                            <th>Descripcion</th>
+                                            <th>Cantidad</th>
                                             <th>Fecha Fin</th>
-                                            <th>Deporte</th>
-                                            <th>Ciudad</th>
+                                            <th>Precio</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <s:iterator value="eventos">
+                                    <s:iterator value="lotes">    
                                         <tr>
-                                            <td><s:property value="nombre"/></td>
-                                            <td><s:property value="fechaInicio"/></td>
-                                            <td><s:property value="fechaFin"/></td>
-                                            <td><s:property value="%{deporte.nombre}"/></td>
-                                            <td><s:property value="%{ciudad.nombre}"/></td>
+                                            <td><s:property value="title"/></td>
+                                            <td><s:property value="desciption"/></td>
+                                            <td><s:property value="numSet"/></td>
+                                            <td><s:property value="expiryDate"/></td>
+                                            <td><s:property value="price"/></td>
                                         </tr>
                                     </s:iterator>
                                 </tbody>

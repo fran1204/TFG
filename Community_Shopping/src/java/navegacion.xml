@@ -1,0 +1,28 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Author: cayetano -->
+ 
+<struts>
+    <package name="navegacion" namespace="/" extends="struts-default">
+        <action name="index">
+            <result>index.jsp</result>
+        </action>
+        <action name="principal1">
+            <result>principal1.jsp</result>
+        </action>
+        <action name="principal2">
+            <result>principal2.jsp</result>
+        </action>
+        <action name="login">
+            <result>login.jsp</result>
+        </action>
+        <action name="crearMensaje">
+            <result>crearMensaje.jsp</result>
+        </action>
+        <action name="grupos">
+            <result>grupos.jsp</result>
+        </action>
+    </package>
+</struts>

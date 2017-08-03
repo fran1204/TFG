@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <h1 class="page-header text-center">¡Chollos a compartir! Principal 1</h1>
+                    <h1 class="page-header text-center">¡Chollos a compartir! Principal 11</h1>
                 </div>
                 <div class="col-md-3"></div>
             </div>
@@ -84,12 +84,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <s:iterator value="lotDetails">    
+                                <s:iterator value="lotes">    
                                     <tr>
-                                        <td><s:property value="#lot"/></td>
-                                        <td><s:property value="description"/></td>
-                                        <td><s:property value="#lot.numSet"/></td>
-                                        <td><s:property value="#detail.expiryDate"/></td>
+                                        <td><s:property value="title"/></td>
+                                        <td><s:property value="desciption"/></td>
+                                        <td><s:property value="numSet"/></td>
+                                        <td><s:property value="expiryDate"/></td>
                                         <td><s:property value="price"/></td>
                                     </tr>
                                 </s:iterator>
