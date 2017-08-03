@@ -1,5 +1,5 @@
 package modelo;
-// Generated 03-ago-2017 9:57:55 by Hibernate Tools 4.3.1
+// Generated 04-ago-2017 0:17:22 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -19,6 +19,7 @@ public class Lot  implements java.io.Serializable {
      private String desciption;
      private int numSet;
      private int price;
+     private String photo;
      private Date expiryDate;
      private Date createDate;
      private Date deletionDate;
@@ -39,13 +40,14 @@ public class Lot  implements java.io.Serializable {
         this.price = price;
         this.createDate = createDate;
     }
-    public Lot(Category category, User user, String title, String desciption, int numSet, int price, Date expiryDate, Date createDate, Date deletionDate, Set shares, Set orders, Set lotDetails) {
+    public Lot(Category category, User user, String title, String desciption, int numSet, int price, String photo, Date expiryDate, Date createDate, Date deletionDate, Set shares, Set orders, Set lotDetails) {
        this.category = category;
        this.user = user;
        this.title = title;
        this.desciption = desciption;
        this.numSet = numSet;
        this.price = price;
+       this.photo = photo;
        this.expiryDate = expiryDate;
        this.createDate = createDate;
        this.deletionDate = deletionDate;
@@ -102,6 +104,13 @@ public class Lot  implements java.io.Serializable {
     
     public void setPrice(int price) {
         this.price = price;
+    }
+    public String getPhoto() {
+        return this.photo;
+    }
+    
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
     public Date getExpiryDate() {
         return this.expiryDate;
