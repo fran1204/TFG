@@ -100,8 +100,6 @@ public class AddLote extends ActionSupport {
         return price;
     }
 
-    @IntRangeFieldValidator(min = "0",
-            message = "No puede ser menor de 0")
     public void setPrice(float price) {
         this.price = price;
     }
