@@ -39,14 +39,35 @@
             <s:iterator value="lotes"> 
                 <div class="col-md-3 col-sm-3">
                     <div class="feature-gallery">
-                        <img class="thumb" src="img/<s:property value='photo'/>" alt="" title="">
-                        <div class="fg-overlay">
-                            <h2><s:property value='title'/></h2>
-                            <p><s:property value='desciption'/></p>
-                            <p>Lote: <s:property value='numSet'/> und.</p>
-                            <p>Precio: <s:property value='price'/>€</p>
-                            <s:submit action="compartir" type="button">Comparte!</s:submit>
-                        </div>
+                        <s:url var="detalle" namespace="/" action="detalleLote" >
+                            <s:param name="id" value="%{id}"/>
+                        </s:url>
+                        <s:a href="%{detalle}">
+                            <img class="thumb" src="img/<s:property value='photo'/>" alt="" title="">
+
+                            <div class="fg-overlay">
+                                <h2><s:property value='title'/></h2>
+                                <p><s:property value='desciption'/></p>
+                                <p>Lote: <s:property value='numSet'/> und.</p>
+                                <p>Precio: <s:property value='price'/>€</p>
+                            </div>
+                        </s:a>
+                    </div>
+                    <div>
+                        <s:url var="compartir" namespace="/" action="compartirRedes" >
+                            <s:param name="id" value="%{id}"/>
+                        </s:url>
+                        <s:a href="%{compartir}">
+                            Compartir!
+                        </s:a>
+                    </div>
+                    <div>
+                        <s:url var="adherirse" namespace="/" action="adherirse" >
+                            <s:param name="id" value="%{id}"/>
+                        </s:url>
+                        <s:a href="%{adherirse}">
+                            Lo quiero!
+                        </s:a>
                     </div>
                 </div>
             </s:iterator>
