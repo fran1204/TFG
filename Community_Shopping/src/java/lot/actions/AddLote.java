@@ -51,7 +51,6 @@ public class AddLote extends ActionSupport {
         if (expiryDate.before(ahora)) {
             fechaErronea = "La fecha no puede ser menor que el día actual";
             return ERROR;
-
         } else {
             User u = dao.get((String) new SessionDAO().getSession().get("email"));
             lote = new Lot(category, u, title, desciption, numSet, price, photo, expiryDate, ahora);
@@ -97,7 +96,7 @@ public class AddLote extends ActionSupport {
         this.numSet = numSet;
     }
 
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 
