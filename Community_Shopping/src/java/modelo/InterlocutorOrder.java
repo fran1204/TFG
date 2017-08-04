@@ -1,5 +1,5 @@
 package modelo;
-// Generated 04-ago-2017 0:17:22 by Hibernate Tools 4.3.1
+// Generated 04-ago-2017 17:52:38 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -14,7 +14,7 @@ public class InterlocutorOrder  implements java.io.Serializable {
      private LotDetail lotDetail;
      private Order order;
      private User user;
-     private int paidTotal;
+     private float paidTotal;
      private int amount;
      private Date datePurchase;
      private Date createdDate;
@@ -24,7 +24,7 @@ public class InterlocutorOrder  implements java.io.Serializable {
     }
 
 	
-    public InterlocutorOrder(LotDetail lotDetail, Order order, User user, int paidTotal, int amount, Date createdDate) {
+    public InterlocutorOrder(LotDetail lotDetail, Order order, User user, float paidTotal, int amount, Date createdDate) {
         this.lotDetail = lotDetail;
         this.order = order;
         this.user = user;
@@ -32,7 +32,7 @@ public class InterlocutorOrder  implements java.io.Serializable {
         this.amount = amount;
         this.createdDate = createdDate;
     }
-    public InterlocutorOrder(LotDetail lotDetail, Order order, User user, int paidTotal, int amount, Date datePurchase, Date createdDate, Date deletionDate) {
+    public InterlocutorOrder(LotDetail lotDetail, Order order, User user, float paidTotal, int amount, Date datePurchase, Date createdDate, Date deletionDate) {
        this.lotDetail = lotDetail;
        this.order = order;
        this.user = user;
@@ -71,11 +71,11 @@ public class InterlocutorOrder  implements java.io.Serializable {
     public void setUser(User user) {
         this.user = user;
     }
-    public int getPaidTotal() {
+    public float getPaidTotal() {
         return this.paidTotal;
     }
     
-    public void setPaidTotal(int paidTotal) {
+    public void setPaidTotal(float paidTotal) {
         this.paidTotal = paidTotal;
     }
     public int getAmount() {

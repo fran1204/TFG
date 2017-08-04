@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 04-ago-2017 0:17:23 by Hibernate Tools 4.3.1 -->
+<!-- Generated 04-ago-2017 17:52:39 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.InterlocutorOrder" table="interlocutor_order" catalog="community_shopping" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -17,8 +17,8 @@
         <many-to-one name="user" class="modelo.User" fetch="select">
             <column name="Id_interlocutor" not-null="true" />
         </many-to-one>
-        <property name="paidTotal" type="int">
-            <column name="Paid_total" not-null="true" />
+        <property name="paidTotal" type="float">
+            <column name="Paid_total" precision="12" scale="0" not-null="true" />
         </property>
         <property name="amount" type="int">
             <column name="Amount" not-null="true" />

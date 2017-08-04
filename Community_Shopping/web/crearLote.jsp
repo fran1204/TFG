@@ -11,42 +11,41 @@
         <meta name="author" content="">
         <link rel="icon" href="img/favicon.ico">
 
-        <title>Registrarse</title>
+        <title>Crear Lote</title>
 
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="bootstrap/css/signin.css" rel="stylesheet">
         <link href="bootstrap/css/dashboard.css" rel="stylesheet">
         <%@ include file="javascript.html" %>
-        
+
     </head>
 
     <body>
         <s:form cssClass="form-signin" action="addLote">
             <h2 class="form-signin-heading">Crear Lote </h2>
-            <%--<s:actionerror></s:actionerror>--%>
+            <span style="color:red"><s:property value="fechaErronea"/></span>
+            <s:fielderror/>
             <s:textfield cssClass="form-control" name="title"/>
             <s:textfield cssClass="form-control" name="desciption"/>
             <s:textfield cssClass="form-control" name="numSet"/>
             <s:textfield cssClass="form-control" name="price"/>
             <s:textfield cssClass="form-control" name="expiryDate"/>
-            <s:select name="category" cssClass="form-control" list="categoru" listKey="id" listValue="category"/>
-            <s:textfield cssClass="form-control" name="bank"/>
-             <s:password cssClass="form-control" name="password"/>
-            
+            <s:select name="category" cssClass="form-control" list="category" listKey="category" listValue="type"/>
 
-            <s:submit cssClass="btn btn-lg btn-primary btn-bloc" value="registrarse"/>
+            <s:submit cssClass="btn btn-lg btn-primary btn-bloc" value="Crear"/>
         </s:form>
 
-            
-<!-- ==========================================JAVASCRIPT======================================== -->              
+
+        <!-- ==========================================JAVASCRIPT======================================== -->              
         <script>
-            $("#addUsuario_email").attr("placeholder","Email");
-            $("#addUsuario_email").attr("autofocus","");
-            $("#addUsuario_name").attr("placeholder","Nombre");
-            $("#addUsuario_company_name").attr("placeholder","Nombre empresa");
-            $("#addUsuario_password").attr("placeholder","Password");
-            $("#addUsuario_sector").attr("placeholder","Elige el sector de tu empresa");
-            $("#addUsuario_bank").attr("placeholder","Cuenta bancaria");
+            $("#addLote_title").attr("placeholder", "Titulo");
+            $("#addLote_title").attr("autofocus", "");
+            $("#addLote_desciption").attr("placeholder", "Descripción");
+            $("#addLote_numSet").attr("placeholder", "Cantidad del lote");
+            $("#addLote_price").attr("placeholder", "Precio unidad");
+            $("#addLote_expiryDate").attr("placeholder", "Fecha máxima en venta");
+            $("#addLote_category").attr("placeholder", "Categoria del producto");
+
         </script>
 
     </body>

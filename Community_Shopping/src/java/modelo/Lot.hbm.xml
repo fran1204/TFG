@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 04-ago-2017 0:17:23 by Hibernate Tools 4.3.1 -->
+<!-- Generated 04-ago-2017 17:52:39 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Lot" table="lot" catalog="community_shopping" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -23,8 +23,8 @@
         <property name="numSet" type="int">
             <column name="Num_set" not-null="true" />
         </property>
-        <property name="price" type="int">
-            <column name="price" not-null="true" />
+        <property name="price" type="float">
+            <column name="price" precision="12" scale="0" not-null="true" />
         </property>
         <property name="photo" type="string">
             <column name="photo" />

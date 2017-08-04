@@ -16,7 +16,7 @@ import org.hibernate.Session;
  * @author fmrodriguez
  */
 public class LotDAO {
-    
+
     private Session sesion = null;
 
     public List<Lot> getAll() {
@@ -27,5 +27,12 @@ public class LotDAO {
         tx.commit();
         return lotes;
     }
-    
+
+    public void add(Lot lote) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        sesion.save(lote);
+        tx.commit();
+    }
+
 }

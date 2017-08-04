@@ -1,5 +1,5 @@
 package modelo;
-// Generated 04-ago-2017 0:17:22 by Hibernate Tools 4.3.1
+// Generated 04-ago-2017 17:52:38 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -18,7 +18,7 @@ public class Lot  implements java.io.Serializable {
      private String title;
      private String desciption;
      private int numSet;
-     private int price;
+     private float price;
      private String photo;
      private Date expiryDate;
      private Date createDate;
@@ -31,16 +31,18 @@ public class Lot  implements java.io.Serializable {
     }
 
 	
-    public Lot(Category category, User user, String title, String desciption, int numSet, int price, Date createDate) {
+    public Lot(Category category, User user, String title, String desciption, int numSet, float price, String photo, Date expiryDate, Date createDate) {
         this.category = category;
         this.user = user;
         this.title = title;
         this.desciption = desciption;
         this.numSet = numSet;
         this.price = price;
+        this.photo=photo;
+        this.expiryDate = expiryDate;
         this.createDate = createDate;
     }
-    public Lot(Category category, User user, String title, String desciption, int numSet, int price, String photo, Date expiryDate, Date createDate, Date deletionDate, Set shares, Set orders, Set lotDetails) {
+    public Lot(Category category, User user, String title, String desciption, int numSet, float price, String photo, Date expiryDate, Date createDate, Date deletionDate, Set shares, Set orders, Set lotDetails) {
        this.category = category;
        this.user = user;
        this.title = title;
@@ -98,11 +100,11 @@ public class Lot  implements java.io.Serializable {
     public void setNumSet(int numSet) {
         this.numSet = numSet;
     }
-    public int getPrice() {
+    public float getPrice() {
         return this.price;
     }
     
-    public void setPrice(int price) {
+    public void setPrice(float price) {
         this.price = price;
     }
     public String getPhoto() {

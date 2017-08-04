@@ -1,5 +1,5 @@
 package modelo;
-// Generated 04-ago-2017 0:17:22 by Hibernate Tools 4.3.1
+// Generated 04-ago-2017 17:52:38 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -34,29 +34,22 @@ public class User  implements java.io.Serializable {
     }
 
 	
-    public User(String email, String password, boolean provider, Date createDate) {
+    public User(String name,String email, String password, boolean provider, Date createDate) {
         this.email = email;
+        this.name = name;
         this.password = password;
         this.provider = provider;
         this.createDate = createDate;
     }
-    public User(Sector sector, String name, String email, String password, String photo, Integer bank, String companyName, boolean provider, Date createDate, Date deleteDate, Set interlocutorOrders, Set orders, Set shares, Set lots, Set purchases, Set advertisings) {
+    public User(Sector sector, String name, String email, String password, Integer bank, String companyName, boolean provider, Date createDate) {
        this.sector = sector;
        this.name = name;
        this.email = email;
        this.password = password;
-       this.photo = photo;
        this.bank = bank;
        this.companyName = companyName;
        this.provider = provider;
        this.createDate = createDate;
-       this.deleteDate = deleteDate;
-       this.interlocutorOrders = interlocutorOrders;
-       this.orders = orders;
-       this.shares = shares;
-       this.lots = lots;
-       this.purchases = purchases;
-       this.advertisings = advertisings;
     }
    
     public Integer getId() {
