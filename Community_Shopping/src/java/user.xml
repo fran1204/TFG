@@ -8,6 +8,7 @@
       <package name="user" namespace="/" extends="struts-default">
         <action name="validarLogin" class="user.actions.ValidarLogin">
             <result name="success">principal2.jsp</result>
+            <result name="none">principal3.jsp</result>
             <result name="error">login.jsp</result>
             <result name="input">login.jsp</result>
         </action>

@@ -37,7 +37,11 @@ public class ValidarLogin extends ActionSupport {
             sdao.getSession().put("email", email);
             sdao.getSession().put("id", dao.get(email).getId());
             sdao.getSession().put("proveedor", dao.get(email).isProvider());
-            return SUCCESS;
+            if(dao.get(email).isProvider()){
+                return NONE;
+            }else{
+                return SUCCESS;
+            }            
         } else {
             mensajeError = "Usuario o contraseña incorrectos";
             return ERROR;

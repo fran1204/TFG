@@ -27,11 +27,13 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><s:a href="%{perfilPrivado}">Perfil</s:a></li>
-                <li><s:a href="%{misPedidos}">Mis Pedidos</s:a></li>
                 <s:if test="%{#session.proveedor ==true}">
                     <li><s:a action="%{misAnuncios}">Mis Anuncios</s:a></li>
                     <li><s:a action="%{misLotes}">Mis Lotes</s:a></li>
                 </s:if>
+                <s:else>
+                    <li><s:a href="%{misPedidos}">Mis Pedidos</s:a></li>
+                </s:else>
                 <li><s:a action="logout">Logout</s:a></li>
                 <!--<span id="notificacion" class="glyphicon glyphicon-comment"/>--> 
             </ul>
