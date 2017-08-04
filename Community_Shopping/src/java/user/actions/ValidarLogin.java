@@ -6,12 +6,14 @@
 package user.actions;
 
 import DAO.LotDAO;
+import DAO.OrderDAO;
 import DAO.SessionDAO;
 import DAO.UserDAO;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
 import com.opensymphony.xwork2.validator.annotations.StringLengthFieldValidator;
 import modelo.Lot;
+import modelo.Order;
 
 /**
  *
@@ -23,7 +25,7 @@ public class ValidarLogin extends ActionSupport {
     private String password;
     private List<Lot> lotes;
     private String mensajeError;
-
+    
     public ValidarLogin() {
         lotes = new LotDAO().getAll();
     }
@@ -33,6 +35,8 @@ public class ValidarLogin extends ActionSupport {
         UserDAO dao = new UserDAO();
         if (dao.validarLogin(email, password)) {
             sdao.getSession().put("email", email);
+            sdao.getSession().put("id", dao.get(email).getId());
+            sdao.getSession().put("proveedor", dao.get(email).isProvider());
             return SUCCESS;
         } else {
             mensajeError = "Usuario o contraseña incorrectos";
@@ -78,9 +82,5 @@ public class ValidarLogin extends ActionSupport {
     public void setMensajeError(String mensajeError) {
         this.mensajeError = mensajeError;
     }
-    
-    
-    
-    
 
 }

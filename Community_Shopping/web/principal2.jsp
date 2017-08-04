@@ -1,10 +1,3 @@
-<%-- 
-PANTALLA PRINCIPAL CUANDO EL USUARIO ESTÁ REGISTRADO
-    Document   : principal2
-    Created on : 23-abr-2016, 16:59:49
-    Author     : cayetano
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
@@ -19,11 +12,14 @@ PANTALLA PRINCIPAL CUANDO EL USUARIO ESTÁ REGISTRADO
         <link rel="icon" href="img/favicon.ico">
 
         <title>Principal</title>
+        <!-- Bootstrap core CSS -->
+        <link href="bootstrap/css/navbar.css" rel="stylesheet">
+        <link href="bootstrap/css/style.css" rel="stylesheet">
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="bootstrap/css/dashboard.css" rel="stylesheet">
         <%@ include file="javascript.html" %>
-
 
     </head>
 
@@ -31,89 +27,59 @@ PANTALLA PRINCIPAL CUANDO EL USUARIO ESTÁ REGISTRADO
 
         <%@ include file="nav2.jsp" %>
 
-
         <div class="container-fluid">
-            <div class="col-md-offset-1">
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="page-header">Deportes</h1>
-                    </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <h1 class="page-header text-center">¡Chollos a compartir! Principal 11</h1>
                 </div>
-                <div class="row placeholders">
-                    <s:url var="futbol" namespace="/" action="buscarEvento">
-                        <s:param name="filtro_deporte">Futbol</s:param>
-                    </s:url>
-                    <s:url var="baloncesto" namespace="/" action="buscarEvento">
-                        <s:param name="filtro_deporte">Baloncesto</s:param>
-                    </s:url>
-                    <s:url var="padel" namespace="/" action="buscarEvento">
-                        <s:param name="filtro_deporte">Deporte</s:param>
-                    </s:url>
-                    <s:url var="tenis" namespace="/" action="buscarEvento">
-                        <s:param name="filtro_deporte">Tenis</s:param>
-                    </s:url>
-                    <div class="col-xs-6 col-md-3 placeholder">
-                        <s:a href="%{futbol}"><img src="img/futbol.jpg" width="200" height="200" class="img-responsive" alt="futbol"></s:a>
-                            <h4>Fútbol</h4>
-                            <span class="text-muted">Eventos sobre fútbol</span>
-                        </div>
-                        <div class="col-xs-6 col-md-3 placeholder">
-                        <s:a href="%{baloncesto}"><img src="img/baloncesto.jpg" width="200" height="200" class="img-responsive" alt="baloncesto"></s:a>
-                            <h4>Baloncesto</h4>
-                            <span class="text-muted">Eventos sobre baloncesto</span>
-                        </div>
-                        <div class="col-xs-6 col-md-3 placeholder">
-                        <s:a href="%{padel}"><img src="img/padel.jpg" width="200" height="200" class="img-responsive" alt="padel"></s:a>
-                            <h4>Padel</h4>
-                            <span class="text-muted">Eventos sobre padel</span>
-                        </div>
-                        <div class="col-xs-6 col-md-3 placeholder">
-                        <s:a href="%{tenis}"><img src="img/tenis.jpg" width="200" height="200" class="img-responsive" alt="tenis"></s:a>
-                            <h4>Tenis</h4>
-                            <span class="text-muted">Eventos sobre tenis</span>
-                        </div>
-                    </div>  
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2 class="sub-header">Últimos eventos</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Nombre</th>
-                                            <th>Descripcion</th>
-                                            <th>Cantidad</th>
-                                            <th>Fecha Fin</th>
-                                            <th>Precio</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <s:iterator value="lotes">    
-                                        <tr>
-                                            <td><s:property value="title"/></td>
-                                            <td><s:property value="desciption"/></td>
-                                            <td><s:property value="numSet"/></td>
-                                            <td><s:property value="expiryDate"/></td>
-                                            <td><s:property value="price"/></td>
-                                        </tr>
-                                    </s:iterator>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-
+                <div class="col-md-3"></div>
             </div>
+
+            <s:iterator value="lotes"> 
+                <div class="col-md-3 col-sm-3">
+                    <div class="feature-gallery">
+                        <s:url var="detalle" namespace="/" action="detalleLote" >
+                            <s:param name="id" value="%{id}"/>
+                        </s:url>
+                        <s:a href="%{detalle}">
+                            <img class="thumb" src="img/<s:property value='photo'/>" alt="" title="">
+
+                            <div class="fg-overlay">
+                                <h2><s:property value='title'/></h2>
+                                <p><s:property value='desciption'/></p>
+                                <p>Lote: <s:property value='numSet'/> und.</p>
+                                <p>Precio: <s:property value='price'/>€</p>
+                            </div>
+                        </s:a>
+                    </div>
+                    <div>
+                        <s:url var="compartir" namespace="/" action="compartirRedes" >
+                            <s:param name="id" value="%{id}"/>
+                        </s:url>
+                        <s:a href="%{compartir}">
+                            Compartir!
+                        </s:a>
+                    </div>
+                    <div>
+                        <s:url var="adherirse" namespace="/" action="adherirse" >
+                            <s:param name="id" value="%{id}"/>
+                        </s:url>
+                        <s:a href="%{adherirse}">
+                            Lo quiero!
+                        </s:a>
+                    </div>
+                </div>
+            </s:iterator>
         </div>
 
 
         <!-- ==========================================JAVASCRIPT======================================== -->  
 
+        <script>
+            $(document).ready(function () {
+                $("#filtro_nombre").attr("placeholder", "Inserta nombre del evento...");
+            });
+        </script>
     </body>
 </html>

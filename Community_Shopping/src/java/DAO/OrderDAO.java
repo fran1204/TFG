@@ -66,4 +66,14 @@ public class OrderDAO {
         tx.commit();
         return u;
     }
+    
+    public List<Order> getOrderClienteLider(Integer id){
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from Order WHERE id_leader = '"+id+"'");
+         List<Order> order = (List<Order>) q.list();
+        tx.commit();
+        return order;
+    }
+    
 }
