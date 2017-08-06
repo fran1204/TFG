@@ -3,14 +3,14 @@
 <s:url var="perfilPrivado" namespace="/" action="getUsuario">
     <s:param name="perfil_email"><%= session.getAttribute("email")%></s:param>
 </s:url>
-<s:url var="misPedidos" namespace="/" action="getPedidos">
-    <s:param name="id"><%= session.getAttribute("id")%></s:param>
+<s:url var="misPedidos" namespace="/" action="misPedidos">
+    <s:param name="id"><%= session.getAttribute("email")%></s:param>
 </s:url>
-<s:url var="misAnuncios" namespace="/" action="getAnuncios">
-    <s:param name="id"><%= session.getAttribute("id")%></s:param>
+<s:url var="misAnuncios" namespace="/" action="misAnuncios">
+    <s:param name="id"><%= session.getAttribute("email")%></s:param>
 </s:url>
-<s:url var="misLotes" namespace="/" action="getAnuncios">
-    <s:param name="id"><%= session.getAttribute("id")%></s:param>
+<s:url var="misLotes" namespace="/" action="misLotes">
+    <s:param name="id"><%= session.getAttribute("email")%></s:param>
 </s:url>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -22,14 +22,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <s:a cssClass="navbar-brand" action="validarSesion">E-Sport</s:a>
+            <s:a cssClass="navbar-brand" action="validarSesion">Community Shopping</s:a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><s:a href="%{perfilPrivado}">Perfil</s:a></li>
                 <s:if test="%{#session.proveedor ==true}">
-                    <li><s:a action="%{misAnuncios}">Mis Anuncios</s:a></li>
-                    <li><s:a action="%{misLotes}">Mis Lotes</s:a></li>
+                    <li><s:a href="%{misAnuncios}">Mis Anuncios</s:a></li>
+                    <li><s:a href="%{misLotes}">Mis Lotes</s:a></li>
                 </s:if>
                 <s:else>
                     <li><s:a href="%{misPedidos}">Mis Pedidos</s:a></li>

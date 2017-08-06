@@ -25,13 +25,13 @@ import modelo.Lot;
  */
 public class AddLote extends ActionSupport {
 
-    private Category category;
+    private int category;
     private String title;
     private String desciption;
     private int numSet;
     private float price;
     private String photo;
-    private Date expiryDate;
+    private String expiryDate;
     private Date createDate;
     private Lot lote;
     private String fechaErronea;
@@ -46,25 +46,28 @@ public class AddLote extends ActionSupport {
         LotDAO ldao = new LotDAO();
         CategoryDAO cdao = new CategoryDAO();
         Date ahora = new Date();
+        Date expiry = new Date();
         SimpleDateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
         formateador.format(ahora);
-        if (expiryDate.before(ahora)) {
+        expiry = formateador.parse(expiryDate);
+        if (expiry.before(ahora)) {
             fechaErronea = "La fecha no puede ser menor que el día actual";
             return ERROR;
         } else {
             User u = dao.get((String) new SessionDAO().getSession().get("email"));
-            lote = new Lot(category, u, title, desciption, numSet, price, photo, expiryDate, ahora);
+            lote = new Lot(cdao.get(category), u, title, desciption, numSet, price, photo, expiry, ahora);
             ldao.add(lote);
+            
             return SUCCESS;
         }
 
     }
 
-    public Category getCategory() {
+    public int getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(int category) {
         this.category = category;
     }
 
@@ -113,11 +116,11 @@ public class AddLote extends ActionSupport {
         this.photo = photo;
     }
 
-    public Date getExpiryDate() {
+    public String getExpiryDate() {
         return expiryDate;
     }
 
-    public void setExpiryDate(Date expiryDate) {
+    public void setExpiryDate(String expiryDate) {
         this.expiryDate = expiryDate;
     }
 

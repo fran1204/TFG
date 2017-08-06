@@ -5,6 +5,7 @@
 <struts>
     <include file="user.xml"/>
     <include file="lot.xml"/>
+    <include file="advertising.xml"/>
     <include file="navegacion.xml"/>
     
     <!-- Configuration for the default package. -->

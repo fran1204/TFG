@@ -36,6 +36,15 @@ public class AdvertisingDAO {
         tx.commit();
         return advertising;
     }
+    
+    public List<Advertising> getAllUser(User u) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from Advertising Where id_provider="+u.getId());
+        List<Advertising> advertising = (List<Advertising>) q.list();
+        tx.commit();
+        return advertising;
+    }
 
     public void add(Advertising u) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -52,18 +61,16 @@ public class AdvertisingDAO {
         tx.commit();
     }
 
-    public Advertising update(Integer id, User user, String image, String url) {
+    public Advertising update(Integer id, String image, String url,Integer duration) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
         Query q = sesion.createQuery("from Advertising WHERE id='"+id+"'");
         Advertising u = (Advertising) q.uniqueResult();
-       // Usuario u = (Usuario) sesion.load(Usuario.class, email);
-        u.setUser(user);
         u.setImage(image);
         u.setUrl(url);
+        u.setDuration(duration);
         sesion.update(u);
         tx.commit();
         return u;
     }
-    
 }

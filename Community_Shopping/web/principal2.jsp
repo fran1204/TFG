@@ -74,12 +74,5 @@
         </div>
 
 
-        <!-- ==========================================JAVASCRIPT======================================== -->  
-
-        <script>
-            $(document).ready(function () {
-                $("#filtro_nombre").attr("placeholder", "Inserta nombre del evento...");
-            });
-        </script>
     </body>
 </html>

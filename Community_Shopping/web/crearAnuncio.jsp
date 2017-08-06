@@ -11,7 +11,7 @@
         <meta name="author" content="">
         <link rel="icon" href="img/favicon.ico">
 
-        <title>Crear Lote</title>
+        <title>Crear Anuncio</title>
 
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="bootstrap/css/signin.css" rel="stylesheet">
@@ -20,24 +20,21 @@
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-       
+
         <%@ include file="javascript.html" %>
 
     </head>
 
     <body>
         <%@ include file="nav2.jsp" %>
-        <s:form cssClass="form-signin" action="addLote">
-            <h2 class="form-signin-heading">Crear Lote </h2>
-            <span style="color:red"><s:property value="fechaErronea"/></span>
-            <s:fielderror/>
-            <s:textfield cssClass="form-control" name="title"/>
-            <s:textfield cssClass="form-control" name="desciption"/>
+        <s:form cssClass="form-signin" action="addAnuncio">
+            <h2 class="form-signin-heading">Crear Anuncio </h2>
             <s:file name="photo" multiple="multiple"/>
-            <s:textfield cssClass="form-control" name="numSet"/>
-            <s:textfield cssClass="form-control" name="price"/>
-            <s:select name="category" cssClass="form-control" list="category" listKey="id" listValue="type"/>
-            <s:textfield cssClass="form-control" name="expiryDate" size="10" />
+            <s:textfield cssClass="form-control" name="url"/>
+            <select name="duracion">
+                <option value="1">1 Mes</option>
+                <option value="3">3 Meses</option>
+            </select>
             <s:submit cssClass="btn btn-lg btn-primary btn-bloc" value="Crear"/>
         </s:form>
 
