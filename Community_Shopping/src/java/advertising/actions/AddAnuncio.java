@@ -10,11 +10,13 @@ import DAO.SessionDAO;
 import DAO.UserDAO;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import modelo.Advertising;
 import modelo.User;
+import org.apache.struts2.ServletActionContext;
 
 /**
  *
@@ -23,7 +25,9 @@ import modelo.User;
 public class AddAnuncio extends ActionSupport {
 
     private List<Advertising> anuncios;
-    private String image;
+    private File image;
+    private String fileUploadContentType;
+    private String fileUploadFileName;
     private String url;
     private int duration;
     private Advertising a;
@@ -40,7 +44,9 @@ public class AddAnuncio extends ActionSupport {
         Date ahora = new Date();
         SimpleDateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
         formateador.format(ahora);
-        a = new Advertising(u, image, url,ahora,duration);
+        String extension = (fileUploadFileName.split("\\."))[1];
+        fileUploadFileName = System.currentTimeMillis() + "." + extension;
+        a = new Advertising(u, fileUploadFileName, url, ahora, duration);
         adao.add(a);
         return SUCCESS;
     }
@@ -53,12 +59,30 @@ public class AddAnuncio extends ActionSupport {
         this.anuncios = anuncios;
     }
 
-    public String getImage() {
+    public File getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(File image) {
         this.image = image;
+    }
+
+  
+
+    public String getFileUploadContentType() {
+        return fileUploadContentType;
+    }
+
+    public void setFileUploadContentType(String fileUploadContentType) {
+        this.fileUploadContentType = fileUploadContentType;
+    }
+
+    public String getFileUploadFileName() {
+        return fileUploadFileName;
+    }
+
+    public void setFileUploadFileName(String fileUploadFileName) {
+        this.fileUploadFileName = fileUploadFileName;
     }
 
     public String getUrl() {
@@ -84,7 +108,5 @@ public class AddAnuncio extends ActionSupport {
     public void setA(Advertising a) {
         this.a = a;
     }
-
-    
 
 }

@@ -22,7 +22,7 @@
         <table class="table">
             <tbody>
                 <s:iterator value="lotes"> 
-                    <s:url var="actualizar" namespace="/" action="actualizarLote" >
+                    <s:url var="actualizar" namespace="/" action="getLoteUpdate" >
                         <s:param name="id" value="%{id}"/>
                     </s:url>
                     <s:url var="borrar" namespace="/" action="eliminarLote" >

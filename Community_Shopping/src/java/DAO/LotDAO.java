@@ -5,7 +5,9 @@
  */
 package DAO;
 
+import java.util.Date;
 import java.util.List;
+import modelo.Category;
 import modelo.HibernateUtil;
 import modelo.Lot;
 import modelo.User;
@@ -28,10 +30,11 @@ public class LotDAO {
         tx.commit();
         return lotes;
     }
+
     public List<Lot> getAllUSer(User u) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from Lot Where id_provider="+u.getId());
+        Query q = sesion.createQuery("from Lot Where id_provider=" + u.getId());
         List<Lot> lotes = (List<Lot>) q.list();
         tx.commit();
         return lotes;
@@ -43,14 +46,39 @@ public class LotDAO {
         sesion.save(lote);
         tx.commit();
     }
-    
+
     public void delete(int id) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from Lot WHERE id="+id+"");
+        Query q = sesion.createQuery("from Lot WHERE id=" + id + "");
         Lot l = (Lot) q.uniqueResult();
         sesion.delete(l);
         tx.commit();
+    }
+
+    public Lot update(int id, Category category, String title, String desciption, int numSet, float price, Date expiryDate) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from Lot WHERE id=" + id + "");
+        Lot l = (Lot) q.uniqueResult();
+        l.setCategory(category);
+        l.setDesciption(desciption);
+        l.setExpiryDate(expiryDate);
+        l.setNumSet(numSet);
+        l.setPrice(price);
+        l.setTitle(title);
+        sesion.update(l);
+        tx.commit();
+        return l;
+    }
+
+    public Lot get(int id) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from Lot WHERE id = " + id + "");
+        Lot lote = (Lot) q.uniqueResult();
+        tx.commit();
+        return lote;
     }
 
 }

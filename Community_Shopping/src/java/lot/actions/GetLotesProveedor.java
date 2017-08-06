@@ -17,11 +17,11 @@ import modelo.User;
  *
  * @author fran
  */
-public class GetLotes extends ActionSupport{
+public class GetLotesProveedor extends ActionSupport{
  
     private List<Lot> lotes;
     
-    public GetLotes() {
+    public GetLotesProveedor() {
         
     }
     

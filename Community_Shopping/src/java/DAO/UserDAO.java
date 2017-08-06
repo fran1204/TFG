@@ -1,6 +1,11 @@
 package DAO;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import javax.imageio.ImageIO;
 import modelo.HibernateUtil;
 import modelo.User;
 import org.hibernate.Query;
@@ -11,27 +16,27 @@ import org.hibernate.Session;
  * @author fmrodriguez
  */
 public class UserDAO {
-    
+
     private Session sesion = null;
-    
-    public boolean validarLogin(String email, String password){
+
+    public boolean validarLogin(String email, String password) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from User WHERE email = '"+email+"' AND password='"+password+"'");
-        User usuario = (User)q.uniqueResult();
+        Query q = sesion.createQuery("from User WHERE email = '" + email + "' AND password='" + password + "'");
+        User usuario = (User) q.uniqueResult();
         tx.commit();
-        return usuario!=null;
+        return usuario != null;
     }
-    
-    public User get(String email){
+
+    public User get(String email) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from User WHERE email = '"+email+"'");
-        User usuario = (User)q.uniqueResult();
+        Query q = sesion.createQuery("from User WHERE email = '" + email + "'");
+        User usuario = (User) q.uniqueResult();
         tx.commit();
         return usuario;
     }
-    
+
     public List<User> getAll() {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
@@ -59,9 +64,9 @@ public class UserDAO {
     public User update(String email, String password, String nombre) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from User WHERE email='"+email+"'");
+        Query q = sesion.createQuery("from User WHERE email='" + email + "'");
         User u = (User) q.uniqueResult();
-       // Usuario u = (Usuario) sesion.load(Usuario.class, email);
+        // Usuario u = (Usuario) sesion.load(Usuario.class, email);
         u.setPassword(password);
         u.setName(nombre);
 //        u.setCiudad(new Ciudad(ciudad));
@@ -70,23 +75,46 @@ public class UserDAO {
         tx.commit();
         return u;
     }
-    
-    public void updateFoto(String nombre, String email){
+
+    public void updateFoto(String nombre, String email) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from User WHERE email='"+email+"'");
+        Query q = sesion.createQuery("from User WHERE email='" + email + "'");
         User u = (User) q.uniqueResult();
-       // u.setFoto(nombre);
+        u.setPhoto(nombre);
         sesion.update(u);
         tx.commit();
     }
-    
-    public boolean existeUsuario(String email){
+
+    public boolean existeUsuario(String email) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from User WHERE email = '"+email+"'");
-        User usuario = (User)q.uniqueResult();
+        Query q = sesion.createQuery("from User WHERE email = '" + email + "'");
+        User usuario = (User) q.uniqueResult();
         tx.commit();
-        return usuario!=null;
+        return usuario != null;
+    }
+
+    public void resize(String inputImagePath, String outputImagePath, int scaledWidth, int scaledHeight) throws IOException {
+
+        // reads input image
+        File inputFile = new File(inputImagePath);
+        BufferedImage inputImage = ImageIO.read(inputFile);
+
+        // creates output image
+        BufferedImage outputImage = new BufferedImage(scaledWidth,
+                scaledHeight, inputImage.getType());
+
+        // scales the input image to the output image
+        Graphics2D g2d = outputImage.createGraphics();
+        g2d.drawImage(inputImage, 0, 0, scaledWidth, scaledHeight, null);
+        g2d.dispose();
+
+        // extracts extension of output file
+        String formatName = outputImagePath.substring(outputImagePath
+                .lastIndexOf(".") + 1);
+
+        // writes to output file
+        ImageIO.write(outputImage, formatName, new File(outputImagePath));
     }
 }

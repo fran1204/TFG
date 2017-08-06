@@ -12,8 +12,8 @@
         </action>
         
         <action name="addAnuncio" class="advertising.actions.AddAnuncio">
-            <result name="success">misAnuncios.jsp</result>
-            <result name="error">principal3.jsp</result>
+            <result type="redirectAction">misAnuncios</result>
+            <result name="input">misAnuncios.jsp</result>
         </action>
         
        

@@ -29,9 +29,9 @@
         <%@ include file="nav2.jsp" %>
         <s:form cssClass="form-signin" action="addAnuncio">
             <h2 class="form-signin-heading">Crear Anuncio </h2>
-            <s:file name="photo" multiple="multiple"/>
+            <s:file  name="image" multiple="multiple"/>
             <s:textfield cssClass="form-control" name="url"/>
-            <select name="duracion">
+            <select name="duracion" class="form-control">
                 <option value="1">1 Mes</option>
                 <option value="3">3 Meses</option>
             </select>

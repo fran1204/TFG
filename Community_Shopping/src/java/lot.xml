@@ -14,7 +14,7 @@
             <result name="success">crearLote.jsp</result>
             <result name="error">principal3.jsp</result>
         </action>
-        <action name="misLotes" class="lot.actions.GetLotes">
+        <action name="misLotes" class="lot.actions.GetLotesProveedor">
             <result name="success">misLotes.jsp</result>
             <result name="error">principal3.jsp</result>
         </action>
@@ -22,6 +22,33 @@
             <result name="success">principal3.jsp</result>
             <result name="error">crearLote.jsp</result>
             <result name="input">crearLote.jsp</result>
+        </action>
+         <action name="getLoteUpdate" class="lot.actions.GetLote">
+            <result name="success">updateLote.jsp</result>
+             <result name="input">updateLote.jsp</result>
+            <result name="error">principal3.jsp</result>
+        </action>
+        <action name="eliminarLote" class="lot.actions.DeleteLote">
+            <result type="redirectAction">misLotes</result>
+        </action>
+         <action name="updateLote" class="lot.actions.UpdateLote">
+            <result type="redirectAction">misLotes</result>
+        </action>
+         <action name="updateFotoLote" class="user.actions.UpdateFotoPerfil">
+            <result type="redirectAction">
+                <param name="actionName">getUsuario</param>
+                <param name="perfil_email">${perfil_email}</param>
+            </result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">getUsuario</param>
+                <param name="perfil_email">${perfil_email}</param>
+            </result>
+        </action>
+        <action name="deleteFotoLote" class="user.actions.DeleteFotoPerfil">
+            <result type="redirectAction">
+                <param name="actionName">getUsuario</param>
+                <param name="perfil_email">${perfil_email}</param>
+            </result>
         </action>
     </package>
 </struts>

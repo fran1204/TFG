@@ -39,10 +39,10 @@
                 <param name="perfil_email">${sesion_email}</param>
             </result>
         </action>
-<!--        <action name="deleteUsuario" class="user.actions.DeleteUsuario">
+        <action name="deleteUsuario" class="user.actions.DeleteUser">
             <result name="success">principal1.jsp</result>
-        </action>-->
-<!--        <action name="updateFotoPerfil" class="user.actions.UpdateFotoPerfil">
+        </action>
+        <action name="updateFotoPerfil" class="user.actions.UpdateFotoPerfil">
             <result type="redirectAction">
                 <param name="actionName">getUsuario</param>
                 <param name="perfil_email">${perfil_email}</param>
@@ -57,7 +57,7 @@
                 <param name="actionName">getUsuario</param>
                 <param name="perfil_email">${perfil_email}</param>
             </result>
-        </action>-->
+        </action>
         <action name="existeUsuario" class="user.actions.ExisteUsuario">
             <result type="stream">
                 <param name="contentType">text/plain</param>
