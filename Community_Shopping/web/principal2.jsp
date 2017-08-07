@@ -63,7 +63,7 @@
                         <s:a href="%{compartir}">
                             Compartir!
                         </s:a>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#redes">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#redes<s:property value="id"/>">
                             Compartir!
                         </button>
                     </div>
@@ -76,24 +76,25 @@
                         </s:a>
                     </div>
                 </div>
-            </s:iterator>
-        </div>
-        <!--MODAL PARA COMPARTIR-->
-        <div class="modal fade" id="redes" tabindex="-1" role="dialog" aria-labelledby="RedesSociales" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">Elige la red social para compartir</h4>
-                    </div>
-                    <div class="modal-body">
-                        Texto del modal
+                <!--MODAL PARA COMPARTIR-->
+                <div class="modal fade" id="redes<s:property value="id"/>" tabindex="-1" role="dialog" aria-labelledby="RedesSociales" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">Elige la red social para compartir</h4>
+                            </div>
+                            <div class="modal-body">
+                                Texto del modal
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </s:iterator>
         </div>
+
 
 
     </body>
