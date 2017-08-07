@@ -67,16 +67,9 @@
                             Compartir!
                         </button>
                     </div>
-                    <div>
-                        <s:url var="adherirse" namespace="/" action="adherirse" >
-                            <s:param name="id" value="%{id}"/>
-                        </s:url>
-                        <s:a href="%{adherirse}">
-                            Lo quiero!
-                        </s:a>
-                    </div>
+                   
                 </div>
-                <!--MODAL PARA COMPARTIR-->
+<!--                MODAL PARA COMPARTIR
                 <div class="modal fade" id="redes<s:property value="id"/>" tabindex="-1" role="dialog" aria-labelledby="RedesSociales" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -91,7 +84,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </s:iterator>
         </div>
 

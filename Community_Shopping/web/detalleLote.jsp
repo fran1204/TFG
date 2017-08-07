@@ -47,16 +47,26 @@
                         <s:label value="Precio por unidad"/><s:label cssClass="form-control" name="price" value="%{lote.price}"/>
                         <s:label value="Fecha de expiración"/><s:label cssClass="form-control" name="expiryDate" value="%{lote.expiryDate}"/>
                     </div>
-                    
+                    <div>
+
+
+                    </div>
                     <div class="col-md-5">
                         <h2>Ofertas</h2>
                         <s:iterator value="details">
+                            <s:url var="adherirse" namespace="/" action="AdherirseOferta" >
+                                <s:param name="idDetail" value="%{id}"/>
+                                <s:param name="idLot" value="%{lot.id}"/>
+                            </s:url>
                             <s:if test="%{publish==true}">
                                 <s:label value="Titulo"/><s:label cssClass="form-control" name="titleDetail" value="%{title}"/>
                                 <s:label value="Cantidad"/><s:label cssClass="form-control" name="quantityDetail" value="%{quantity}"/>
                                 <s:label value="Color"/><s:label cssClass="form-control" name="colorDetail" value="%{color}"/>
                                 <s:label value="Tamaño"/><s:label cssClass="form-control" name="sizeDetail" value="%{size}"/>
                                 <s:label value="Capacidad"/><s:label cssClass="form-control" name="capacityDetail" value="%{capacity}"/>
+                                <s:a href="%{adherirse}">
+                                    Lo quiero!
+                                </s:a>
                             </s:if>
                         </s:iterator>
                     </div>

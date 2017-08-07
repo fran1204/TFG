@@ -6,10 +6,6 @@
  
 <struts>
     <package name="lot" namespace="/" extends="struts-default">
-        <action name="verDetalle" class="lot.actions.GetDetail">
-            <result name="success">detail.jsp</result>
-            <result name="error">principal1.jsp</result>
-        </action>
         <action name="crearLote" class="lot.actions.GetCategory">
             <result name="success">crearLote.jsp</result>
             <result name="error">principal3.jsp</result>
@@ -51,6 +47,10 @@
             </result>
         </action>
         <action name="detalleLote" class="lot.actions.GetLoteDetail">
+            <result name="success">detalleLote.jsp</result>
+            <result name="input">detalleLote.jsp</result>
+        </action>
+        <action name="adherirse" class="lot.actions.AdherirseLote">
             <result name="success">detalleLote.jsp</result>
             <result name="input">detalleLote.jsp</result>
         </action>

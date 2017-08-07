@@ -11,7 +11,6 @@ import java.util.Set;
  */
 public class Order  implements java.io.Serializable {
 
-
      private Integer id;
      private Lot lot;
      private User user;
