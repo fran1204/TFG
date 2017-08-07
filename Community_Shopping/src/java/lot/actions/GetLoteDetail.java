@@ -8,6 +8,7 @@ package lot.actions;
 import DAO.CategoryDAO;
 import DAO.LotDAO;
 import DAO.LotDetailDAO;
+import DAO.SessionDAO;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
@@ -23,9 +24,10 @@ public class GetLoteDetail extends ActionSupport{
     private int id;
     private List<LotDetail> details;
     private String category;
+    private String session;
     
      public GetLoteDetail(){
-         
+         this.session = (String)new SessionDAO().getSession().get("email");
      }
      
      public String execute() throws Exception {
@@ -70,6 +72,14 @@ public class GetLoteDetail extends ActionSupport{
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getSession() {
+        return session;
+    }
+
+    public void setSession(String session) {
+        this.session = session;
     }
      
      

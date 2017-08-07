@@ -18,8 +18,12 @@
         <%@ include file="javascript.html" %>
     </head>
     <body>
-        <%@ include file="nav2.jsp" %>
-
+        <s:if test="%{#session.id != null && #session.id != '' }">
+            <%@ include file="nav2.jsp" %>
+        </s:if>
+        <s:else>
+            <%@ include file="nav1.jsp" %>
+        </s:else>
 
         <div class="container-fluid">
             <div class="col-lg-offset-1" >
