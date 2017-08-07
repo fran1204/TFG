@@ -38,6 +38,15 @@ public class LotDetailDAO {
         tx.commit();
         return lotDetail;
     }
+    
+    public List<LotDetail> getAllDetailLot(Integer id) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from LotDetail Where id_lot="+id);
+        List<LotDetail> lotDetail = (List<LotDetail>) q.list();
+        tx.commit();
+        return lotDetail;
+    }
 
     public void add(LotDetail u) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();

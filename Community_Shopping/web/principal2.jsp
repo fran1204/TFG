@@ -19,6 +19,9 @@
 
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="bootstrap/css/dashboard.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <%@ include file="javascript.html" %>
 
     </head>
@@ -60,6 +63,9 @@
                         <s:a href="%{compartir}">
                             Compartir!
                         </s:a>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#redes">
+                            Compartir!
+                        </button>
                     </div>
                     <div>
                         <s:url var="adherirse" namespace="/" action="adherirse" >
@@ -71,6 +77,22 @@
                     </div>
                 </div>
             </s:iterator>
+        </div>
+        <!--MODAL PARA COMPARTIR-->
+        <div class="modal fade" id="redes" tabindex="-1" role="dialog" aria-labelledby="RedesSociales" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Elige la red social para compartir</h4>
+                    </div>
+                    <div class="modal-body">
+                        Texto del modal
+                    </div>
+                </div>
+            </div>
         </div>
 
 

@@ -23,18 +23,18 @@
             <result name="error">crearLote.jsp</result>
             <result name="input">crearLote.jsp</result>
         </action>
-         <action name="getLoteUpdate" class="lot.actions.GetLote">
+        <action name="getLoteUpdate" class="lot.actions.GetLote">
             <result name="success">updateLote.jsp</result>
-             <result name="input">updateLote.jsp</result>
+            <result name="input">updateLote.jsp</result>
             <result name="error">principal3.jsp</result>
         </action>
         <action name="eliminarLote" class="lot.actions.DeleteLote">
             <result type="redirectAction">misLotes</result>
         </action>
-         <action name="updateLote" class="lot.actions.UpdateLote">
+        <action name="updateLote" class="lot.actions.UpdateLote">
             <result type="redirectAction">misLotes</result>
         </action>
-         <action name="updateFotoLote" class="user.actions.UpdateFotoPerfil">
+        <action name="updateFotoLote" class="user.actions.UpdateFotoPerfil">
             <result type="redirectAction">
                 <param name="actionName">getUsuario</param>
                 <param name="perfil_email">${perfil_email}</param>
@@ -49,6 +49,10 @@
                 <param name="actionName">getUsuario</param>
                 <param name="perfil_email">${perfil_email}</param>
             </result>
+        </action>
+        <action name="detalleLote" class="lot.actions.GetLoteDetail">
+            <result name="success">detalleLote.jsp</result>
+            <result name="input">detalleLote.jsp</result>
         </action>
     </package>
 </struts>
