@@ -33,6 +33,7 @@ public class SectorDAO {
         org.hibernate.Transaction tx = sesion.beginTransaction();
         Query q = sesion.createQuery("from Sector WHERE id='"+sector+"'");
         Sector s = (Sector) q.uniqueResult();
+        tx.commit();
         return s;
     }
 }
