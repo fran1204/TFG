@@ -75,5 +75,13 @@ public class OrderDAO {
         tx.commit();
         return order;
     }
+    public Order getOrderByLot(Integer id){
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from Order WHERE id_lot = '"+id+"'");
+        Order order = (Order)q.uniqueResult();
+        tx.commit();
+        return order;
+    }
     
 }

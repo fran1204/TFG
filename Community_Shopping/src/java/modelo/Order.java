@@ -25,10 +25,11 @@ public class Order  implements java.io.Serializable {
     }
 
 	
-    public Order(Lot lot, String stateOrder, Date createdDate) {
+    public Order(Lot lot,User user, String stateOrder, Date createdDate) {
         this.lot = lot;
         this.stateOrder = stateOrder;
         this.createdDate = createdDate;
+        this.user = user;
     }
     public Order(Lot lot, User user, String stateOrder, Date createdDate, Date datePurchase, Date deletionDate, Set interlocutorOrders, Set purchases) {
        this.lot = lot;

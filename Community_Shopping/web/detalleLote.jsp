@@ -53,22 +53,41 @@
                     </div>
                     <div class="col-md-5">
                         <h2>Ofertas</h2>
-                        <s:iterator value="details">
-                            <s:url var="adherirse" namespace="/" action="AdherirseOferta" >
-                                <s:param name="idDetail" value="%{id}"/>
-                                <s:param name="idLot" value="%{lot.id}"/>
-                            </s:url>
-                            <s:if test="%{publish==true}">
-                                <s:label value="Titulo"/><s:label cssClass="form-control" name="titleDetail" value="%{title}"/>
-                                <s:label value="Cantidad"/><s:label cssClass="form-control" name="quantityDetail" value="%{quantity}"/>
-                                <s:label value="Color"/><s:label cssClass="form-control" name="colorDetail" value="%{color}"/>
-                                <s:label value="Tamaño"/><s:label cssClass="form-control" name="sizeDetail" value="%{size}"/>
-                                <s:label value="Capacidad"/><s:label cssClass="form-control" name="capacityDetail" value="%{capacity}"/>
-                                <s:a href="%{adherirse}">
-                                    Lo quiero!
-                                </s:a>
-                            </s:if>
-                        </s:iterator>
+                        <table class="table">
+                            <tr>
+                                <th>Título</th>
+                                <th>Cant. Lote</th>
+                                <th>Color</th>
+                                <th>Tamaño</th>
+                                <th>Capacidad</th>
+                                <th>ME LO PIDO</th>
+                            </tr>
+                            <s:iterator value="details">
+                                <s:url var="adherirse" namespace="/" action="AdherirseOferta" >
+                                    <s:param name="idDetail" value="%{id}"/>
+                                    <s:param name="idLot" value="%{lot.id}"/>
+                                </s:url>
+                                <s:if test="%{publish==true}">
+                                    <tr>
+                                        <td><s:property value="%{title}"/></td>
+                                        <td><s:property  value="%{quantity}"/></td>
+                                        <td><s:property value="%{color}"/></td>
+                                        <td><s:property value="%{size}"/></td>
+                                        <td><s:property value="%{capacity}"/></td>
+                                        <s:if test="%{#session.id != null && #session.id != '' }">
+                                            <td><s:a href="%{adherirse}">
+                                                    Lo quiero!
+                                                </s:a></td>
+                                            </s:if>
+                                            <s:else>
+                                            <td><s:a href="login.jsp">
+                                                    Lo quiero!
+                                                </s:a></td>
+                                            </s:else>
+                                    </tr>
+                                </s:if>
+                            </s:iterator>
+                        </table>
                     </div>
                 </div>
             </div>
