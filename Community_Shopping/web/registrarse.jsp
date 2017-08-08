@@ -24,10 +24,11 @@ PÁGINA ENCARGADA DE REGISTRAR UN USUARIO
         <link href="bootstrap/css/signin.css" rel="stylesheet">
         <link href="bootstrap/css/dashboard.css" rel="stylesheet">
         <%@ include file="javascript.html" %>
-        
+
     </head>
 
     <body>
+        <%@ include file="nav1.jsp" %>
         <s:form cssClass="form-signin" action="addUsuario">
             <h2 class="form-signin-heading">Regístrate </h2>
             <%--<s:actionerror></s:actionerror>--%>
@@ -39,22 +40,22 @@ PÁGINA ENCARGADA DE REGISTRAR UN USUARIO
             <s:textfield cssClass="form-control" name="company_name"/>
             <s:select name="sector" cssClass="form-control" list="sectores" listKey="id" listValue="sector"/>
             <s:textfield cssClass="form-control" name="bank"/>
-             <s:password cssClass="form-control" name="password"/>
-            
+            <s:password cssClass="form-control" name="password"/>
+
 
             <s:submit cssClass="btn btn-lg btn-primary btn-bloc" value="registrarse"/>
         </s:form>
 
-            
-<!-- ==========================================JAVASCRIPT======================================== -->              
+
+        <!-- ==========================================JAVASCRIPT======================================== -->              
         <script>
-            $("#addUsuario_email").attr("placeholder","Email");
-            $("#addUsuario_email").attr("autofocus","");
-            $("#addUsuario_name").attr("placeholder","Nombre");
-            $("#addUsuario_company_name").attr("placeholder","Nombre empresa");
-            $("#addUsuario_password").attr("placeholder","Password");
-            $("#addUsuario_sector").attr("placeholder","Elige el sector de tu empresa");
-            $("#addUsuario_bank").attr("placeholder","Cuenta bancaria");
+            $("#addUsuario_email").attr("placeholder", "Email");
+            $("#addUsuario_email").attr("autofocus", "");
+            $("#addUsuario_name").attr("placeholder", "Nombre");
+            $("#addUsuario_company_name").attr("placeholder", "Nombre empresa");
+            $("#addUsuario_password").attr("placeholder", "Password");
+            $("#addUsuario_sector").attr("placeholder", "Elige el sector de tu empresa");
+            $("#addUsuario_bank").attr("placeholder", "Cuenta bancaria");
         </script>
 
     </body>
