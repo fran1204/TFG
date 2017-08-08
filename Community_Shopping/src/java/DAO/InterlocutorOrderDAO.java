@@ -6,8 +6,10 @@
 package DAO;
 
 import java.util.List;
+import static jdk.nashorn.internal.runtime.Debug.id;
 import modelo.HibernateUtil;
 import modelo.InterlocutorOrder;
+import modelo.User;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -16,17 +18,18 @@ import org.hibernate.Session;
  * @author fmrodriguez
  */
 public class InterlocutorOrderDAO {
+
     private Session sesion = null;
-    
-    public InterlocutorOrder get(Integer id){
+
+    public InterlocutorOrder get(Integer id) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from InterlocutorOrder WHERE id_interlocutor = '"+id+"'");
-        InterlocutorOrder interlocutorOrder = (InterlocutorOrder)q.uniqueResult();
+        Query q = sesion.createQuery("from InterlocutorOrder WHERE id = '" + id + "'");
+        InterlocutorOrder interlocutorOrder = (InterlocutorOrder) q.uniqueResult();
         tx.commit();
         return interlocutorOrder;
     }
-    
+
     public List<InterlocutorOrder> getAll() {//Filtro para mostrar agrupado
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
@@ -49,6 +52,15 @@ public class InterlocutorOrderDAO {
         InterlocutorOrder u = (InterlocutorOrder) sesion.load(InterlocutorOrder.class, id);
         sesion.delete(u);
         tx.commit();
+    }
+
+    public List<InterlocutorOrder> getLotDetailUser(User u) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from InterlocutorOrder WHERE id_interlocutor = '" + u.getId() + "'");
+        List<InterlocutorOrder> interlocutorOrder = (List<InterlocutorOrder>) q.list();
+        tx.commit();
+        return interlocutorOrder;
     }
 
 }

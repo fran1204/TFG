@@ -15,5 +15,15 @@
          <action name="AdherirseOferta" class="order.actions.Adherirse">
              <result name="success">principal2.jsp</result>
          </action>
+         <action name="misPedidos" class="order.actions.GetOrder">
+             <result name="success">misPedidos.jsp</result>
+             <result name="input">misPedidos.jsp</result>
+         </action>
+          <action name="verPedido" class="order.actions.GetDetailOrder">
+             <result name="success">detailOrder.jsp</result>
+         </action>
+          <action name="eliminarPedido" class="order.actions.DeleteOrderUser">
+            <result type="redirectAction">misPedidos</result>
+        </action>
     </package>
 </struts>
