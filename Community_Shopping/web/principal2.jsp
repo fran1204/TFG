@@ -13,7 +13,6 @@
 
         <title>Principal</title>
         <!-- Bootstrap core CSS -->
-        <link href="bootstrap/css/navbar.css" rel="stylesheet">
         <link href="bootstrap/css/style.css" rel="stylesheet">
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 

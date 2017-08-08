@@ -23,7 +23,7 @@ PÁGINA ENCARGADA DEL LOGIN
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="bootstrap/css/signin.css" rel="stylesheet">
         <link href="bootstrap/css/dashboard.css" rel="stylesheet">
-        
+
 
     </head>
 
@@ -46,19 +46,20 @@ PÁGINA ENCARGADA DEL LOGIN
 
                         <s:submit cssClass="btn btn-lg btn-primary btn-bloc" value="login"/>
                     </s:form>
+                    <s:a action="registrarse">¿No estás registrado?</s:a>
                     <br/><br/><br/><br/><center><p style="display:none"><img src='img/loading.gif' width='75' height='75'/></p></center>
                 </div>
                 <div class="col-md-4">
                 </div>
             </div>
         </div>
-                <!-- ==========================================JAVASCRIPT======================================== -->            
+        <!-- ==========================================JAVASCRIPT======================================== -->            
         <script>
             $(document).ready(function () {
                 $("#log_email").attr("placeholder", "email");
-                $("#log_email").attr("autofocus","");
+                $("#log_email").attr("autofocus", "");
                 $("#log_password").attr("placeholder", "password");
-                $("#log").submit(function() {
+                $("#log").submit(function () {
                     $(this).hide();
                     $("p").show();
                     return;

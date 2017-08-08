@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <s:a cssClass="navbar-brand" action="validarSesion">E-Sport</s:a>
+            <s:a cssClass="navbar-brand" action="validarSesion">Community Shopping</s:a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
