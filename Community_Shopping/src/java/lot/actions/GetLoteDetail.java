@@ -6,14 +6,18 @@
 package lot.actions;
 
 import DAO.CategoryDAO;
+import DAO.InterlocutorOrderDAO;
 import DAO.LotDAO;
 import DAO.LotDetailDAO;
 import DAO.SessionDAO;
+import DAO.UserDAO;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
+import modelo.InterlocutorOrder;
 import modelo.Lot;
 import modelo.LotDetail;
+import modelo.User;
 
 /**
  *
@@ -25,6 +29,7 @@ public class GetLoteDetail extends ActionSupport{
     private List<LotDetail> details;
     private String category;
     private String session;
+    private List<InterlocutorOrder> io;
     
      public GetLoteDetail(){
          this.session = (String)new SessionDAO().getSession().get("email");
@@ -32,11 +37,16 @@ public class GetLoteDetail extends ActionSupport{
      
      public String execute() throws Exception {
         LotDAO ldao = new LotDAO();
+        UserDAO dao = new UserDAO();
+        InterlocutorOrderDAO iodao = new InterlocutorOrderDAO();
         CategoryDAO cdao = new CategoryDAO();
         lote = ldao.get(id);
         category = cdao.get(lote.getCategory().getId()).getType();
         LotDetailDAO ddao = new LotDetailDAO();
         details = ddao.getAllDetailLot(id);
+        User u = dao.get((String) new SessionDAO().getSession().get("email"));
+        io = iodao.getLotDetailUser(u);
+        
         return SUCCESS;
     }
 
@@ -80,6 +90,14 @@ public class GetLoteDetail extends ActionSupport{
 
     public void setSession(String session) {
         this.session = session;
+    }
+
+    public List<InterlocutorOrder> getIo() {
+        return io;
+    }
+
+    public void setIo(List<InterlocutorOrder> io) {
+        this.io = io;
     }
      
      

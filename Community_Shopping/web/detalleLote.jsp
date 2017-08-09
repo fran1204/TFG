@@ -51,7 +51,7 @@
 
 
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <h2>Ofertas</h2>
                         <table class="table">
                             <tr>
@@ -74,16 +74,31 @@
                                         <td><s:property value="%{color}"/></td>
                                         <td><s:property value="%{size}"/></td>
                                         <td><s:property value="%{capacity}"/></td>
-                                        <s:if test="%{#session.id != null && #session.id != '' }">
-                                            <td><s:a href="%{adherirse}">
-                                                    Lo quiero!
-                                                </s:a></td>
+                                        <s:set var="breakloop" value="%{false}"/>
+                                        <s:set var="idetail" value="%{id}"/>
+                                        <s:iterator value="io">
+                                            <s:if test="%{#idetail == lotDetail.id}">
+                                                <s:url var="verPedido" namespace="/" action="verPedido" >
+                                                    <s:param name="id" value="%{id}"/>
+                                                </s:url>
+                                                <td><s:a href="%{verPedido}">
+                                                        Pedido!
+                                                    </s:a></td>
+                                                    <s:set var="breakloop" value="%{true}"/>
+                                                </s:if>
+                                            </s:iterator>
+                                            <s:if test="!#breakloop">
+                                                <s:if test="%{#session.id != null && #session.id != ''}">
+                                                <td><s:a href="%{adherirse}">
+                                                        Lo quiero!
+                                                    </s:a></td>
+                                                </s:if>
+                                                <s:else>
+                                                <td><s:a href="login.jsp">
+                                                        Lo quiero!
+                                                    </s:a></td>
+                                                </s:else>
                                             </s:if>
-                                            <s:else>
-                                            <td><s:a href="login.jsp">
-                                                    Lo quiero!
-                                                </s:a></td>
-                                            </s:else>
                                     </tr>
                                 </s:if>
                             </s:iterator>
