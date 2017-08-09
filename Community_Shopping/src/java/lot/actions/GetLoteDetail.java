@@ -23,19 +23,20 @@ import modelo.User;
  *
  * @author fmrodriguez
  */
-public class GetLoteDetail extends ActionSupport{
+public class GetLoteDetail extends ActionSupport {
+
     private Lot lote;
     private int id;
     private List<LotDetail> details;
     private String category;
     private String session;
     private List<InterlocutorOrder> io;
-    
-     public GetLoteDetail(){
-         this.session = (String)new SessionDAO().getSession().get("email");
-     }
-     
-     public String execute() throws Exception {
+
+    public GetLoteDetail() {
+        this.session = (String) new SessionDAO().getSession().get("email");
+    }
+
+    public String execute() throws Exception {
         LotDAO ldao = new LotDAO();
         UserDAO dao = new UserDAO();
         InterlocutorOrderDAO iodao = new InterlocutorOrderDAO();
@@ -45,8 +46,10 @@ public class GetLoteDetail extends ActionSupport{
         LotDetailDAO ddao = new LotDetailDAO();
         details = ddao.getAllDetailLot(id);
         User u = dao.get((String) new SessionDAO().getSession().get("email"));
-        io = iodao.getLotDetailUser(u);
-        
+        if (u != null) {
+            io = iodao.getLotDetailUser(u);
+        }
+
         return SUCCESS;
     }
 
@@ -74,8 +77,6 @@ public class GetLoteDetail extends ActionSupport{
         this.details = details;
     }
 
-   
-
     public String getCategory() {
         return category;
     }
@@ -99,6 +100,5 @@ public class GetLoteDetail extends ActionSupport{
     public void setIo(List<InterlocutorOrder> io) {
         this.io = io;
     }
-     
-     
+
 }
