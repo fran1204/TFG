@@ -13,12 +13,17 @@
         <title>JSP Page</title>
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="bootstrap/css/dashboard.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <%@ include file="javascript.html" %>
     </head>
     <body>
         <%@ include file="nav2.jsp" %>
         <h1>Mis Pedidos</h1>
-
+        <s:if test="%{message!='' && message !=null}">
+            <div class="alert alert-success fade in">
+                <s:property value="%{message}"/>
+            </div>
+        </s:if>
         <table class="table">
             <tbody>
                 <s:iterator value="orderDetail"> 
@@ -36,5 +41,8 @@
                 </s:iterator>
             </tbody>
         </table>
+        <script>
+            $('.alert').fadeOut(3000, "linear");
+        </script>
     </body>
 </html>

@@ -20,6 +20,7 @@ import modelo.User;
  */
 public class GetOrder extends ActionSupport {
     private List<InterlocutorOrder> orderDetail;
+    private String message;
     
     public GetOrder() {
 
@@ -40,6 +41,14 @@ public class GetOrder extends ActionSupport {
 
     public void setOrderDetail(List<InterlocutorOrder> orderDetail) {
         this.orderDetail = orderDetail;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
     
 }

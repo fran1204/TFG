@@ -36,6 +36,7 @@ public class Adherirse extends ActionSupport {
     private InterlocutorOrder iorder;
     private int cant;
     private List<Lot> lotes;
+    private String message;
             
     public Adherirse(){
         
@@ -59,6 +60,7 @@ public class Adherirse extends ActionSupport {
             //LotDetail lotDetail, Order order, User user, float paidTotal, int amount, Date createdDate
             iorder = new InterlocutorOrder(ld,order,u,0,cant,ahora);
             iodao.add(iorder);
+            message="Enhorabuena, te has inscrito en el pedido!!!!";
             return SUCCESS;
         }else {
             //Lot lot,User user, String stateOrder, Date createdDate
@@ -66,6 +68,7 @@ public class Adherirse extends ActionSupport {
             odao.add(order);
             iorder = new InterlocutorOrder (ld,order,u,0,cant,ahora);
             iodao.add(iorder);            
+           message="Enhorabuena, eres el CLIENTE LIDER del pedido!!";
             return SUCCESS;
         }
     }
@@ -141,7 +144,13 @@ public class Adherirse extends ActionSupport {
     public void setLotes(List<Lot> lotes) {
         this.lotes = lotes;
     }
-    
-    
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
     
 }
