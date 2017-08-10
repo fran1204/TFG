@@ -8,6 +8,12 @@
     <include file="advertising.xml"/>
     <include file="navegacion.xml"/>
     <include file="order.xml"/>
+    <constant name="struts.multipart.maxSize" value="100000000000" /> 
+    <constant name="struts.mapper.action.prefix.enabled" value="true" />
+    <constant name="struts.custom.i18n.resources" value="global" />
+    <constant name="struts.ui.theme" value="simple"/>
+    <constant name="struts.multipart.saveDir" value="img" />
+    
     
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">

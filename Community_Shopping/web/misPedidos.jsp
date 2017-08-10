@@ -68,10 +68,10 @@
                         <th></th>
                     </tr>
                     <s:iterator value="orderDetail"> 
-                        <s:url var="ver" namespace="/" action="verPedido" >
+                        <s:url var="ver" namespace="/" action="verPedidoLider" >
                             <s:param name="id" value="%{id}"/>
                         </s:url>
-                        <s:url var="borrar" namespace="/" action="eliminarPedido" >
+                        <s:url var="borrar" namespace="/" action="eliminarPedidoLider" >
                             <s:param name="id" value="%{id}"/>
                         </s:url>
                         <tr>

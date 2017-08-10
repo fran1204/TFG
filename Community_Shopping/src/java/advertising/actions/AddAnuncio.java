@@ -16,7 +16,6 @@ import java.util.Date;
 import java.util.List;
 import modelo.Advertising;
 import modelo.User;
-import org.apache.struts2.ServletActionContext;
 
 /**
  *
