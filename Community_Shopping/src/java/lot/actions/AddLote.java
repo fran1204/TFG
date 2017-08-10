@@ -10,10 +10,9 @@ import DAO.LotDAO;
 import DAO.SessionDAO;
 import DAO.UserDAO;
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.validator.annotations.DateRangeFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.IntRangeFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
-import modelo.Category;
+import java.io.File;
 import modelo.User;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,7 +29,9 @@ public class AddLote extends ActionSupport {
     private String desciption;
     private int numSet;
     private float price;
-    private String photo;
+    private File photoLote;
+    private String userImageContentType;
+    private String userImageFileName;
     private String expiryDate;
     private Date createDate;
     private Lot lote;
@@ -55,9 +56,9 @@ public class AddLote extends ActionSupport {
             return ERROR;
         } else {
             User u = dao.get((String) new SessionDAO().getSession().get("email"));
-            lote = new Lot(cdao.get(category), u, title, desciption, numSet, price, photo, expiry, ahora);
+            lote = new Lot(cdao.get(category), u, title, desciption, numSet, price, userImageFileName, expiry, ahora);
             ldao.add(lote);
-            
+
             return SUCCESS;
         }
 
@@ -84,7 +85,6 @@ public class AddLote extends ActionSupport {
         return desciption;
     }
 
-    @RequiredStringValidator(message = "Se requiere una descripción.")
     public void setDesciption(String desciption) {
         this.desciption = desciption;
     }
@@ -107,17 +107,32 @@ public class AddLote extends ActionSupport {
         this.price = price;
     }
 
-    public String getPhoto() {
-        return photo;
-    }
-
-    @RequiredStringValidator(message = "Se requiere una foto.")
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
     public String getExpiryDate() {
         return expiryDate;
+    }
+
+    public File getPhotoLote() {
+        return photoLote;
+    }
+
+    public void setPhotoLote(File photoLote) {
+        this.photoLote = photoLote;
+    }
+
+    public String getUserImageContentType() {
+        return userImageContentType;
+    }
+
+    public void setUserImageContentType(String userImageContentType) {
+        this.userImageContentType = userImageContentType;
+    }
+
+    public String getUserImageFileName() {
+        return userImageFileName;
+    }
+
+    public void setUserImageFileName(String userImageFileName) {
+        this.userImageFileName = userImageFileName;
     }
 
     public void setExpiryDate(String expiryDate) {

@@ -29,13 +29,13 @@
 
     <body>
         <%@ include file="nav2.jsp" %>
-        <s:form cssClass="form-signin" action="addLote">
+        <s:form cssClass="form-signin" method="POST" enctype="multipart/form-data" action="addLote" >
             <h2 class="form-signin-heading">Crear Lote </h2>
             <span style="color:red"><s:property value="fechaErronea"/></span>
             <s:fielderror/>
             <s:textfield cssClass="form-control" name="title"/>
             <s:textfield cssClass="form-control" name="desciption"/>
-            <s:file name="photo" multiple="multiple"/>
+            <s:file name="photoLote"/>
             <s:textfield cssClass="form-control" name="numSet"/>
             <s:textfield cssClass="form-control" name="price"/>
             <s:select name="category" cssClass="form-control" list="category" listKey="id" listValue="type"/>
