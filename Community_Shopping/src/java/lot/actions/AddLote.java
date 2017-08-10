@@ -16,6 +16,7 @@ import java.io.File;
 import modelo.User;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.servlet.ServletContext;
 import modelo.Lot;
 
 /**
@@ -51,6 +52,11 @@ public class AddLote extends ActionSupport {
         SimpleDateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
         formateador.format(ahora);
         expiry = formateador.parse(expiryDate);
+       
+        
+        System.out.println(photoLote);
+        System.out.println(userImageContentType);
+        System.out.println(userImageFileName);
         if (expiry.before(ahora)) {
             fechaErronea = "La fecha no puede ser menor que el día actual";
             return ERROR;

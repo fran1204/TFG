@@ -16,11 +16,9 @@
         </action>
         <action name="addLote" class="lot.actions.AddLote">
             <interceptor-ref name="fileUpload">
-                <param name="allowedTypes">image/jpeg</param>
-                <param name="allowedTypes">image/png</param>
-                <param name="maximumSize">2000000</param>
-                <param name="allowedExtensions">jpeg</param>
-                <param name="allowedExtensions">png</param>
+                <param name="allowedTypes">image/jpeg,image/png</param>
+                <param name="maximumSize">2097152</param>
+                <param name="allowedExtensions">jpeg,png</param>
             </interceptor-ref>
             <interceptor-ref name="defaultStack" />
             <result name="success">principal3.jsp</result>
