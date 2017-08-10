@@ -29,7 +29,7 @@ public class GetLotesProveedor extends ActionSupport{
         LotDAO ldao = new LotDAO();
         UserDAO dao = new UserDAO();
         User u = dao.get((String) new SessionDAO().getSession().get("email"));
-        lotes = ldao.getAllUSer(u);
+        lotes = ldao.getLotProviver(u);
         return SUCCESS;
     }
 

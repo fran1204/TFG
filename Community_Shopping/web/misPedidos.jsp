@@ -26,6 +26,14 @@
         </s:if>
         <table class="table">
             <tbody>
+                <tr>
+                    <th>Lote</th>
+                    <th>Descripción</th>
+                    <th>Características</th>
+                    <th>Estado</th>
+                    <th></th>
+                    <th></th>
+                </tr>
                 <s:set name="clienteLider" value="false"/>
                 <s:iterator value="orderDetail"> 
                     <s:url var="ver" namespace="/" action="verPedido" >
@@ -35,7 +43,10 @@
                         <s:param name="id" value="%{id}"/>
                     </s:url>
                     <tr>
-                        <th><s:property value='%{order.lot.title}'/></th>
+                        <td><s:property value='%{order.lot.title}'/></td>
+                        <td><s:property value="%{order.lot.desciption}" /></td>
+                        <td><s:property value="%{lotDetail.color}" />, <s:property value="%{lotDetail.size}" /></td>
+                        <td><s:property value='%{order.stateOrder}'/></td>
                         <td><s:a href="%{ver}">Ver</s:a></td>                
                         <td><s:a href="%{borrar}">Eliminar</s:a></td>        
                         </tr>
@@ -49,6 +60,13 @@
             <h1>Pedidos Cliente Lider</h1>
             <table class="table">
                 <tbody>
+                    <tr>
+                        <th>Identificador</th>
+                        <th>Lote</th>
+                        <th>Estado</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
                     <s:iterator value="orderDetail"> 
                         <s:url var="ver" namespace="/" action="verPedido" >
                             <s:param name="id" value="%{id}"/>
@@ -57,7 +75,9 @@
                             <s:param name="id" value="%{id}"/>
                         </s:url>
                         <tr>
-                            <th><s:property value='%{order.lot.title}'/></th>
+                            <td>0<s:property value='%{id}'/></td>
+                            <td><s:property value='%{order.lot.title}'/></td>
+                            <td><s:property value='%{order.stateOrder}'/></td>
                             <td><s:a href="%{ver}">Ver</s:a></td>                
                             <td><s:a href="%{borrar}">Eliminar</s:a></td>        
                             </tr>

@@ -31,15 +31,6 @@ public class LotDAO {
         return lotes;
     }
 
-    public List<Lot> getAllUSer(User u) {
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
-        org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from Lot Where expiry_date > now() and id_provider=" + u.getId()+ " order by expiry_date ASC");
-        List<Lot> lotes = (List<Lot>) q.list();
-        tx.commit();
-        return lotes;
-    }
-
     public void add(Lot lote) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
@@ -79,6 +70,15 @@ public class LotDAO {
         Lot lote = (Lot) q.uniqueResult();
         tx.commit();
         return lote;
+    }
+
+    public List<Lot> getLotProviver(User u) {
+         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from Lot Where id_provider=" + u.getId()+ " order by create_date ASC");
+        List<Lot> lotes = (List<Lot>) q.list();
+        tx.commit();
+        return lotes;
     }
 
 }
