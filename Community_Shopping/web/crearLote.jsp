@@ -20,7 +20,10 @@
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-       
+        <link href="jquery-calendar/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+        <script src="jquery-calendar/jquery-ui.min.js" type="text/javascript"></script>
+
+
         <%@ include file="javascript.html" %>
 
     </head>
@@ -43,14 +46,18 @@
 
         <!-- ==========================================JAVASCRIPT======================================== -->              
         <script>
-            $("#addLote_title").attr("placeholder", "Titulo");
-            $("#addLote_title").attr("autofocus", "");
-            $("#addLote_desciption").attr("placeholder", "Descripción");
-            $("#addLote_numSet").attr("placeholder", "Cantidad del lote");
-            $("#addLote_price").attr("placeholder", "Precio unidad");
-            $("#addLote_category").attr("placeholder", "Categoria del producto");
-            $("#addLote_expiryDate").attr("placeholder", "Fecha final de venta (aaaa-mm-dd)");
-
+            $(document).ready(function () {
+                $("#addLote_title").attr("placeholder", "Titulo");
+                $("#addLote_title").attr("autofocus", "");
+                $("#addLote_desciption").attr("placeholder", "Descripción");
+                $("#addLote_numSet").attr("placeholder", "Cantidad del lote");
+                $("#addLote_price").attr("placeholder", "Precio unidad");
+                $("#addLote_category").attr("placeholder", "Categoria del producto");
+                $("#addLote_expiryDate").attr("placeholder", "Fecha final de venta (aaaa-mm-dd)");
+                $("#addLote_expiryDate").datepicker({
+                    dateFormat: 'yy-mm-dd'
+                });
+            }
 
         </script>
 

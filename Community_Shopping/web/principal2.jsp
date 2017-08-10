@@ -44,6 +44,7 @@
                         <s:url var="detalle" namespace="/" action="detalleLote" >
                             <s:param name="id" value="%{id}"/>
                         </s:url>
+                        <div class="fecha"><s:date name="expiryDate" nice="true" /></div>
                         <s:a href="%{detalle}">
                             <img class="thumb" src="img/<s:property value='photo'/>" alt="" title="">
 
