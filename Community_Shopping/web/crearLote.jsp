@@ -20,11 +20,10 @@
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-        <link href="jquery-calendar/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
-        <script src="jquery-calendar/jquery-ui.min.js" type="text/javascript"></script>
-
 
         <%@ include file="javascript.html" %>
+        <link href="jquery-calendar/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+        <script src="jquery-calendar/jquery-ui.min.js" type="text/javascript"></script>
 
     </head>
 
@@ -57,7 +56,7 @@
                 $("#addLote_expiryDate").datepicker({
                     dateFormat: 'yy-mm-dd'
                 });
-            }
+            });
 
         </script>
 
