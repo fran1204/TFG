@@ -21,6 +21,7 @@ import modelo.User;
 public class GetOrder extends ActionSupport {
     private List<InterlocutorOrder> orderDetail;
     private String message;
+    private User session;
     
     public GetOrder() {
 
@@ -30,7 +31,8 @@ public class GetOrder extends ActionSupport {
         InterlocutorOrderDAO iodao = new InterlocutorOrderDAO();
         UserDAO dao = new UserDAO();
         User u = dao.get((String) new SessionDAO().getSession().get("email"));
-        orderDetail = iodao.getLotDetailUser(u);    
+        orderDetail = iodao.getLotDetailUser(u);
+        session = u;
         
         return SUCCESS;
     }
@@ -50,5 +52,14 @@ public class GetOrder extends ActionSupport {
     public void setMessage(String message) {
         this.message = message;
     }
-    
+
+    public User getSession() {
+        return session;
+    }
+
+    public void setSession(User session) {
+        this.session = session;
+    }
+
+  
 }

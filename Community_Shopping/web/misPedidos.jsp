@@ -26,6 +26,7 @@
         </s:if>
         <table class="table">
             <tbody>
+                <s:set name="clienteLider" value="false"/>
                 <s:iterator value="orderDetail"> 
                     <s:url var="ver" namespace="/" action="verPedido" >
                         <s:param name="id" value="%{id}"/>
@@ -38,9 +39,33 @@
                         <td><s:a href="%{ver}">Ver</s:a></td>                
                         <td><s:a href="%{borrar}">Eliminar</s:a></td>        
                         </tr>
+                    <s:if test="order.user.email == session.email">
+                        <s:set name="clienteLider" value="true"/>
+                    </s:if>
                 </s:iterator>
             </tbody>
         </table>
+        <s:if test="%{#clienteLider == true}">
+            <h1>Pedidos Cliente Lider</h1>
+            <table class="table">
+                <tbody>
+                    <s:iterator value="orderDetail"> 
+                        <s:url var="ver" namespace="/" action="verPedido" >
+                            <s:param name="id" value="%{id}"/>
+                        </s:url>
+                        <s:url var="borrar" namespace="/" action="eliminarPedido" >
+                            <s:param name="id" value="%{id}"/>
+                        </s:url>
+                        <tr>
+                            <th><s:property value='%{order.lot.title}'/></th>
+                            <td><s:a href="%{ver}">Ver</s:a></td>                
+                            <td><s:a href="%{borrar}">Eliminar</s:a></td>        
+                            </tr>
+                    </s:iterator>
+                </tbody>
+            </table>
+        </s:if>
+        <!-- Script -->
         <script>
             $('.alert').fadeOut(3000, "linear");
         </script>
