@@ -73,12 +73,21 @@ public class LotDAO {
     }
 
     public List<Lot> getLotProviver(User u) {
-         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from Lot Where id_provider=" + u.getId()+ " order by create_date ASC");
+        Query q = sesion.createQuery("from Lot Where id_provider=" + u.getId() + " order by create_date ASC");
         List<Lot> lotes = (List<Lot>) q.list();
         tx.commit();
         return lotes;
+    }
+
+    public float getPrecioLot(int idLot) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("select price from Lot WHERE id = " + idLot);
+        float price = (float) q.uniqueResult();
+        tx.commit();
+        return price;
     }
 
 }

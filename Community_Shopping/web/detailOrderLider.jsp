@@ -38,6 +38,7 @@
                     <th></th>
                     <th></th>
                 </tr>
+                <s:hidden value="%{price}" cssClass="price" />
                 <s:iterator value="io"> 
                     <s:url var="actualizar" namespace="/" action="updateOrderUser" >
                         <s:param name="id" value="%{id}"/>
@@ -45,21 +46,15 @@
                     <s:url var="email" namespace="/" action="sendEmail" >
                         <s:param name="id" value="%{id}"/>
                     </s:url>
-                    <s:hidden name="price" value="%{lot.price}" />
+                    
                     <s:form cssClass="form-signin" action="updateOrderUser">
                         <tr>
                             <th><s:property value='%{user.name}'/></th>
-                            <td><s:textfield name="amount" value="%{amount}" /></td>
-                            <td><s:textfield name="paidTotal" value="%{paidTotal}" /></td>
+                            <td><s:textfield name="amount" value="%{amount}" cssClass="totalpagado"/></td>
+                            <td><s:textfield name="paidTotal" value="%{paidTotal}"/></td>
                             <td><s:textfield name="datePurchase" value="%{datePurchase}" cssClass="calendar" /></td>
                             <td><s:property value="amount" /></td>
-                            <td><%
-                                //int num1 = Integer.parseInt(request.getParameter("amount"));
-                                //int num2 = Integer.parseInt(request.getParameter("price"));
-                               // int suma = num1 * num2;
-                                out.print("La suma es : " );
-
-                                %></td>
+                            <td><p>hola</p></td>
                             <td><s:a href="%{actualizar}">Actualizar</s:a></td>                
                             <td><s:a href="%{email}">Recordatorio de pago</s:a></td>        
                             </tr>
@@ -74,6 +69,16 @@
             $(document).ready(function () {
                 $(".calendar").datepicker({
                     dateFormat: 'yy-mm-dd'
+                });
+                
+                $(".totalpagado").keyup(function(){
+                    var padre=$(this).parent();
+                    //alert($(".price").val());
+                    alert(padre.val());
+                    for(var i=0; i<2;i++){
+                       // alert($(this).prev().val());
+                    }
+                    
                 });
 
             });
