@@ -63,4 +63,13 @@ public class InterlocutorOrderDAO {
         return interlocutorOrder;
     }
 
+    public List<InterlocutorOrder> getOrderDetailClienteLider(int id) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from InterlocutorOrder WHERE id_lotDetail = '" + id + "'");
+        List<InterlocutorOrder> interlocutorOrder = (List<InterlocutorOrder>) q.list();
+        tx.commit();
+        return interlocutorOrder;
+    }
+
 }

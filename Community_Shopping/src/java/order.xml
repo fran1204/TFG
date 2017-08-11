@@ -28,5 +28,8 @@
         <action name="eliminarPedidoLider" class="order.actions.DeleteOrderLider">
             <result type="redirectAction">misPedidos</result>
         </action>
+        <action name="updateOrderUser" class="order.actions.DeleteOrderLider">
+            <result type="redirectAction">misPedidos</result>
+        </action>       
     </package>
 </struts>
