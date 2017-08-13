@@ -27,11 +27,11 @@
 
     <body>
         <%@ include file="nav2.jsp" %>
-        <s:form cssClass="form-signin" action="addAnuncio">
+        <s:form cssClass="form-signin" action="addAnuncio" method="POST" enctype="multipart/form-data">
             <h2 class="form-signin-heading">Crear Anuncio </h2>
-            <s:file  name="image" multiple="multiple"/>
+            <s:file  name="fileUpload"/>
             <s:textfield cssClass="form-control" name="url"/>
-            <select name="duracion" class="form-control">
+            <select name="duration" class="form-control">
                 <option value="1">1 Mes</option>
                 <option value="3">3 Meses</option>
             </select>

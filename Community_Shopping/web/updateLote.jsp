@@ -14,8 +14,16 @@
         <title>Perfil</title>
 
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="bootstrap/css/signin.css" rel="stylesheet">
         <link href="bootstrap/css/dashboard.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+
         <%@ include file="javascript.html" %>
+        <link href="jquery-calendar/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+        <script src="jquery-calendar/jquery-ui.min.js" type="text/javascript"></script>
     </head>
     <body>
         <%@ include file="nav2.jsp" %>
@@ -34,7 +42,7 @@
                     <div class="col-md-3">
                         <img src="img/<s:property value="%{lote.photo}"/>" class="img-thumbnail" alt="foto perfil"/>
                         <center>
-                            <s:form method="POST" enctype="multipart/form-data" action="updateFotoLote"><s:hidden name="nombre_foto" value="%{lote.photo}"/><label class="btn btn-default btn-file"><span class="glyphicon glyphicon-pencil"/><s:file name="fileUpload" cssStyle="display:none" onchange="this.form.submit();"/></label></s:form>
+                            <s:form method="POST" enctype="multipart/form-data" action="updateFotoLote"><s:hidden name="nombre_foto" value="%{lote.photo}"/><s:hidden name="idLote" value="%{lote.id}"/><label class="btn btn-default btn-file"><span class="glyphicon glyphicon-pencil"/><s:file name="fileUpload" cssStyle="display:none" onchange="this.form.submit();"/></label></s:form>
                             <s:form method="POST" action="deleteFotoLote"><button class="btn btn-default"><s:hidden name="nombre_foto" value="%{lote.photo}"/><span class="glyphicon glyphicon-trash"/></button></s:form>
                             </center>
                         </div>
@@ -52,14 +60,52 @@
                             <s:hidden name="loteId" value="%{lote.id}"/>
                             <s:submit cssClass="btn btn-primary" value="Actualizar" />
                         </s:form>
-                        <s:form>
-                            <s:hidden name="loteId" value="%{lote.id}"/>
-                            <s:submit cssClass="btn btn-primary" cssStyle="background-color: rgba(220, 38, 7, 0.94);border-color: rgba(220, 38, 7, 0.94);" value="Eliminar" action="eliminarLote"/>
-                        </s:form>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <h2>Ofertas</h2>
+                        <table class="table">
+                            <tr>
+                                <th>Título</th>
+                                <th>Cant. Lote</th>
+                                <th>Color</th>
+                                <th>Tamaño</th>
+                                <th>Capacidad</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <s:iterator value="details">
+                                <s:url var="eliminarOferta" namespace="/" action="eliminarOferta" >
+                                    <s:param name="idDetail" value="%{id}"/>
+                                    <s:param name="idLot" value="%{lot.id}"/>
+                                </s:url>
+                                <s:form action="updateDetail">
+                                    <s:hidden name="id" value="%{id}" />
+                                    <tr>
+                                        <td><s:textfield name="title" value="%{title}"/></td>
+                                        <td><s:textfield name="quantity" value="%{quantity}"/></td>
+                                        <td><s:textfield name="color" value="%{color}"/></td>
+                                        <td><s:textfield name="size" value="%{size}"/></td>
+                                        <td><s:textfield name="capacity" value="%{capacity}"/></td>
+                                        <td><s:submit cssClass="btn btn-primary btn-bloc" value="Actualizar"/></td>        
+                                        <td><s:a cssClass="btn btn-primary" cssStyle="background-color: rgba(220, 38, 7, 0.94);border-color: rgba(220, 38, 7, 0.94);" href="%{eliminarOferta}">Eliminar</s:a></td>        
+                                    </tr>
+                                </s:form>
+                            </s:iterator>
+                        </table>
                     </div>
                 </div>
-
             </div>
         </div>
+        <!-- ==========================================JAVASCRIPT======================================== -->              
+        <script>
+            $(document).ready(function () {
+                $("#updateLote_expiryDate").datepicker({
+                    dateFormat: 'yy-mm-dd'
+                });
+            });
+
+        </script>
     </body>
 </html>

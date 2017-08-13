@@ -11,7 +11,7 @@
         <meta name="author" content="">
         <link rel="icon" href="img/favicon.ico">
 
-        <title>Crear Lote</title>
+        <title>Crear Oferta</title>
 
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="bootstrap/css/signin.css" rel="stylesheet">
@@ -29,37 +29,37 @@
 
     <body>
         <%@ include file="nav2.jsp" %>
-        <s:form cssClass="form-signin" method="POST" enctype="multipart/form-data" action="addLote" >
-            <h2 class="form-signin-heading">Crear Lote </h2>
+        <h2 class="form-signin-heading">Crear Oferta para el Lote <s:property value="title" /></h2>
+        <s:form cssClass="form-signin" method="POST" enctype="multipart/form-data" action="addDetail" >
+
             <span style="color:red"><s:property value="fechaErronea"/></span>
             <s:fielderror/>
-            <s:textfield cssClass="form-control" name="title"/>
-            <s:textfield cssClass="form-control" name="desciption"/>
-            <s:file name="fileUpload"/>
-            <s:textfield cssClass="form-control" name="numSet"/>
-            <s:textfield cssClass="form-control" name="price"/>
-            <s:select name="category" cssClass="form-control" list="category" listKey="id" listValue="type"/>
-            <s:textfield cssClass="form-control" name="expiryDate" size="10" />
+            <s:if test="%{lote.id!=null && lote.id!=''}">
+                <s:hidden cssClass="form-control" name="idLote" value="%{lote.id}"/>
+            </s:if>
+            <s:elseif test="%{#parameters.idLote!=null && #parameters.idLote!=''}">
+                <s:hidden cssClass="form-control" name="idLote" value="%{#parameters.idLote}"/>
+            </s:elseif>
+            <s:textfield cssClass="form-control" name="titleDetail"/>
+            <s:textfield cssClass="form-control" name="quantity"/>
+            <s:textfield cssClass="form-control" name="color"/>
+            <s:textfield cssClass="form-control" name="size"/>
+            <s:textfield cssClass="form-control" name="capacity" size="10" />
             <s:submit cssClass="btn btn-lg btn-primary btn-bloc" value="Crear"/>
         </s:form>
 
         <!-- ==========================================JAVASCRIPT======================================== -->              
         <script>
             $(document).ready(function () {
-                $("#addLote_title").attr("placeholder", "Titulo");
-                $("#addLote_title").attr("autofocus", "");
-                $("#addLote_desciption").attr("placeholder", "Descripción");
-                $("#addLote_numSet").attr("placeholder", "Cantidad del lote");
-                $("#addLote_price").attr("placeholder", "Precio unidad");
-                $("#addLote_category").attr("placeholder", "Categoria del producto");
-                $("#addLote_expiryDate").attr("placeholder", "Fecha final de venta (aaaa-mm-dd)");
-                $("#addLote_expiryDate").datepicker({
-                    dateFormat: 'yy-mm-dd'
-                });
+                $("#addDetail_titleDetail").attr("placeholder", "Titulo");
+                $("#addDetail_titleDetail").attr("autofocus", "");
+                $("#addDetail_quantity").attr("placeholder", "Cantidad de la oferta");
+                $("#addDetail_color").attr("placeholder", "Color");
+                $("#addDetail_size").attr("placeholder", "Talla");
+                $("#addDetail_capacity").attr("placeholder", "Capacidad");
             });
 
         </script>
 
     </body>
 </html>
-

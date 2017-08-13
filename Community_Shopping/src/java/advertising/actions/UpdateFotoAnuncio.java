@@ -3,60 +3,54 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package user.actions;
+package advertising.actions;
 
-import DAO.SessionDAO;
-import DAO.UserDAO;
-import static com.opensymphony.xwork2.Action.INPUT;
+import DAO.AdvertisingDAO;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
-import modelo.User;
+import modelo.Advertising;
 import org.apache.struts2.ServletActionContext;
 
 /**
  *
- * @author fran
+ * @author fmrodriguez
  */
-public class UpdateFotoPerfil extends ActionSupport {
+public class UpdateFotoAnuncio extends ActionSupport {
 
-    private String perfil_email;
+    private int idAnuncio;
     private String nombre_foto;
     private File fileUpload;
     private String fileUploadContentType;
     private String fileUploadFileName;
 
-    public UpdateFotoPerfil() {
+    public UpdateFotoAnuncio() {
 
     }
 
     public String execute() throws Exception {
+        AdvertisingDAO adao = new AdvertisingDAO();
         if (fileUpload != null && (fileUploadContentType.equals("image/png") || fileUploadContentType.equals("image/jpg") || fileUploadContentType.equals("image/jpeg"))) {
-            UserDAO dao = new UserDAO();
             String extension = (fileUploadFileName.split("\\."))[1];
             fileUploadFileName = System.currentTimeMillis() + "." + extension;
             String url = ServletActionContext.getRequest().getSession().getServletContext().getRealPath("/");
             url = url.split("build")[0] + "web/";
-            dao.resize(fileUpload.getAbsolutePath(), url + "img/perfil/" + fileUploadFileName, 480, 480);
-            dao.updateFoto(fileUploadFileName,perfil_email);
-            if (!nombre_foto.equals("defecto.jpeg")) {
-                File fotoAntigua = new File(url + "img/perfil/" + nombre_foto);
-                fotoAntigua.delete();
-            }
-
+            adao.resize(fileUpload.getAbsolutePath(), url + "img/" + fileUploadFileName, 480, 480);
+            adao.updateFoto(fileUploadFileName, idAnuncio);
+            File fotoAntigua = new File(url + "img/" + nombre_foto);
+            fotoAntigua.delete();
             return SUCCESS;
         } else {
-            perfil_email = (String) new SessionDAO().getSession().get("email");
-            return INPUT;
+            return ERROR;
         }
     }
 
-    public String getPerfil_email() {
-        return perfil_email;
+    public int getIdAnuncio() {
+        return idAnuncio;
     }
 
-    public void setPerfil_email(String perfil_email) {
-        this.perfil_email = perfil_email;
+    public void setIdAnuncio(int idAnuncio) {
+        this.idAnuncio = idAnuncio;
     }
 
     public String getNombre_foto() {

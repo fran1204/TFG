@@ -3,60 +3,72 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package user.actions;
+package lot.actions;
 
+import DAO.CategoryDAO;
+import DAO.LotDAO;
+import DAO.LotDetailDAO;
 import DAO.SessionDAO;
-import DAO.UserDAO;
 import static com.opensymphony.xwork2.Action.INPUT;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
-import modelo.User;
+import java.util.List;
+import modelo.Category;
+import modelo.Lot;
+import modelo.LotDetail;
 import org.apache.struts2.ServletActionContext;
 
 /**
  *
- * @author fran
+ * @author fmrodriguez
  */
-public class UpdateFotoPerfil extends ActionSupport {
+public class UpdateFotoLote extends ActionSupport {
 
-    private String perfil_email;
+    private int idLote;
     private String nombre_foto;
     private File fileUpload;
     private String fileUploadContentType;
     private String fileUploadFileName;
+    private Lot lote;
+    private List<Category> category;
+    private List<LotDetail> details;
 
-    public UpdateFotoPerfil() {
+    public UpdateFotoLote() {
 
     }
 
     public String execute() throws Exception {
+        LotDAO ldao = new LotDAO();
         if (fileUpload != null && (fileUploadContentType.equals("image/png") || fileUploadContentType.equals("image/jpg") || fileUploadContentType.equals("image/jpeg"))) {
-            UserDAO dao = new UserDAO();
             String extension = (fileUploadFileName.split("\\."))[1];
             fileUploadFileName = System.currentTimeMillis() + "." + extension;
             String url = ServletActionContext.getRequest().getSession().getServletContext().getRealPath("/");
             url = url.split("build")[0] + "web/";
-            dao.resize(fileUpload.getAbsolutePath(), url + "img/perfil/" + fileUploadFileName, 480, 480);
-            dao.updateFoto(fileUploadFileName,perfil_email);
+            ldao.resize(fileUpload.getAbsolutePath(), url + "img/" + fileUploadFileName, 480, 480);
+            ldao.updateFoto(fileUploadFileName, idLote);
             if (!nombre_foto.equals("defecto.jpeg")) {
                 File fotoAntigua = new File(url + "img/perfil/" + nombre_foto);
                 fotoAntigua.delete();
             }
-
+            LotDetailDAO lddao = new LotDetailDAO();
+            CategoryDAO dao = new CategoryDAO();
+            category = dao.getAll();
+            lote = ldao.get(idLote);
+            details = lddao.getAllDetailLot(lote.getId());
             return SUCCESS;
         } else {
-            perfil_email = (String) new SessionDAO().getSession().get("email");
+
             return INPUT;
         }
     }
 
-    public String getPerfil_email() {
-        return perfil_email;
+    public int getIdLote() {
+        return idLote;
     }
 
-    public void setPerfil_email(String perfil_email) {
-        this.perfil_email = perfil_email;
+    public void setIdLote(int idLote) {
+        this.idLote = idLote;
     }
 
     public String getNombre_foto() {
@@ -89,6 +101,30 @@ public class UpdateFotoPerfil extends ActionSupport {
 
     public void setFileUploadFileName(String fileUploadFileName) {
         this.fileUploadFileName = fileUploadFileName;
+    }
+
+    public Lot getLote() {
+        return lote;
+    }
+
+    public void setLote(Lot lote) {
+        this.lote = lote;
+    }
+
+    public List<Category> getCategory() {
+        return category;
+    }
+
+    public void setCategory(List<Category> category) {
+        this.category = category;
+    }
+
+    public List<LotDetail> getDetails() {
+        return details;
+    }
+
+    public void setDetails(List<LotDetail> details) {
+        this.details = details;
     }
 
 }

@@ -10,28 +10,25 @@ import DAO.SessionDAO;
 import DAO.UserDAO;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
-import java.util.List;
 import modelo.Advertising;
 import modelo.User;
 
 /**
  *
- * @author fran
+ * @author fmrodriguez
  */
-public class UpdateAnuncio extends ActionSupport {
+public class GetAnuncio extends ActionSupport {
 
     private Advertising ad;
-    private String url;
-    private int anuncioId;
+    private int id;
 
-    public UpdateAnuncio() {
+    public GetAnuncio() {
 
     }
 
     public String execute() throws Exception {
         AdvertisingDAO adao = new AdvertisingDAO();
-        adao.update(anuncioId,url);
-        ad = adao.get(anuncioId);
+        ad = adao.get(id);
         return SUCCESS;
     }
 
@@ -43,20 +40,12 @@ public class UpdateAnuncio extends ActionSupport {
         this.ad = ad;
     }
 
-    public String getUrl() {
-        return url;
+    public int getId() {
+        return id;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public int getAnuncioId() {
-        return anuncioId;
-    }
-
-    public void setAnuncioId(int anuncioId) {
-        this.anuncioId = anuncioId;
+    public void setId(int id) {
+        this.id = id;
     }
     
 }

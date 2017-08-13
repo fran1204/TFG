@@ -53,10 +53,10 @@ public class UserDAO {
         tx.commit();
     }
 
-    public void delete(String email) {
+    public void delete(int id) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        User u = (User) sesion.load(User.class, email);
+        User u = (User) sesion.load(User.class, id);
         sesion.delete(u);
         tx.commit();
     }

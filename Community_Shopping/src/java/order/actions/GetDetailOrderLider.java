@@ -20,6 +20,7 @@ public class GetDetailOrderLider extends ActionSupport {
     private int id;
     private List<InterlocutorOrder> io;
     private float price;
+    private int cantidadOferta;
 
     public GetDetailOrderLider() {
 
@@ -31,6 +32,7 @@ public class GetDetailOrderLider extends ActionSupport {
         io = iodao.getOrderDetailClienteLider(id);
         int idLot = io.get(0).getLotDetail().getLot().getId();
         price = ldao.getPrecioLot(idLot);
+        cantidadOferta= io.get(0).getLotDetail().getLot().getNumSet();
         return SUCCESS;
     }
 

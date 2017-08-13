@@ -19,17 +19,18 @@ import org.hibernate.Session;
  * @author fmrodriguez
  */
 public class LotDetailDAO {
+
     private Session sesion = null;
-    
-    public LotDetail get(Integer id){
+
+    public LotDetail get(Integer id) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from LotDetail WHERE id = '"+id+"'");
-        LotDetail lotDetail = (LotDetail)q.uniqueResult();
+        Query q = sesion.createQuery("from LotDetail WHERE id = '" + id + "'");
+        LotDetail lotDetail = (LotDetail) q.uniqueResult();
         tx.commit();
         return lotDetail;
     }
-    
+
     public List<LotDetail> getAll() {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
@@ -38,11 +39,11 @@ public class LotDetailDAO {
         tx.commit();
         return lotDetail;
     }
-    
+
     public List<LotDetail> getAllDetailLot(Integer id) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from LotDetail Where id_lot="+id);
+        Query q = sesion.createQuery("from LotDetail Where id_lot=" + id);
         List<LotDetail> lotDetail = (List<LotDetail>) q.list();
         tx.commit();
         return lotDetail;
@@ -63,21 +64,18 @@ public class LotDetailDAO {
         tx.commit();
     }
 
-    public LotDetail update(Integer id, Lot lot,String title,
-             Boolean publish, Integer quantity,String size, String color, 
-             Integer capacity) {
+    public LotDetail update(Integer id, String title,
+            Integer quantity, String size, String color, Integer capacity) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from LotDetail WHERE id='"+id+"'");
+        Query q = sesion.createQuery("from LotDetail WHERE id='" + id + "'");
         LotDetail u = (LotDetail) q.uniqueResult();
-       // Usuario u = (Usuario) sesion.load(Usuario.class, email);
-       u.setLot(lot);
-       u.setTitle(title);
-       u.setPublish(publish);
-       u.setQuantity(quantity);
-       u.setSize(size);
-       u.setColor(color);
-       u.setCapacity(capacity);
+        // Usuario u = (Usuario) sesion.load(Usuario.class, email);
+        u.setTitle(title);
+        u.setQuantity(quantity);
+        u.setSize(size);
+        u.setColor(color);
+        u.setCapacity(capacity);
         sesion.update(u);
         tx.commit();
         return u;

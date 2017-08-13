@@ -11,11 +11,13 @@ import DAO.UserDAO;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.StringLengthFieldValidator;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import modelo.Sector;
 import modelo.User;
+import org.apache.struts2.ServletActionContext;
 
 /**
  *
@@ -32,6 +34,9 @@ public class AddUser extends ActionSupport {
     private Integer bank;
     private String password;
     private User u;
+    private File fileUpload;
+    private String fileUploadContentType;
+    private String fileUploadFileName;
 
     private String existeUsuario;
 
@@ -42,7 +47,7 @@ public class AddUser extends ActionSupport {
         UserDAO dao = new UserDAO();
         SessionDAO sdao = new SessionDAO();
         SectorDAO sectordao = new SectorDAO();
-      
+
         if (dao.existeUsuario(email)) {
             existeUsuario = "El usuario ya existe.";
             return ERROR;
@@ -50,13 +55,21 @@ public class AddUser extends ActionSupport {
             Date ahora = new Date();
             SimpleDateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
             formateador.format(ahora);
-            System.out.println(name + " " + email + " " + password + " " + bank + " " + sector + " " + company_name + " " + ahora);
-            if(provider){
-                u = new User(sectordao.getSectorById(sector),name, email, password, bank,company_name, provider, ahora);
-            }else {
+            if (provider) {
+                u = new User(sectordao.getSectorById(sector), name, email, password, bank, company_name, provider, ahora);
+            } else {
                 u = new User(name, email, password, provider, ahora);
             }
-            u.setPhoto("defecto.jpeg");
+            if (fileUpload != null && (fileUploadContentType.equals("image/png") || fileUploadContentType.equals("image/jpg") || fileUploadContentType.equals("image/jpeg"))) {
+                String extension = (fileUploadFileName.split("\\."))[1];
+                fileUploadFileName = System.currentTimeMillis() + "." + extension;
+                String url = ServletActionContext.getRequest().getSession().getServletContext().getRealPath("/");
+                url = url.split("build")[0] + "web/";
+                dao.resize(fileUpload.getAbsolutePath(), url + "img/perfil/" + fileUploadFileName, 480, 480);
+                u.setPhoto(fileUploadFileName);
+            } else {
+                u.setPhoto("defecto.jpeg");
+            }
             dao.add(u);
             sdao.getSession().put("email", email);
             return SUCCESS;
@@ -144,13 +157,45 @@ public class AddUser extends ActionSupport {
     public void setProvider(Boolean provider) {
         this.provider = provider;
     }
-    
+
     public String isExisteUsuario() {
         return existeUsuario;
     }
 
     public void setExisteUsuario(String existeUsuario) {
         this.existeUsuario = existeUsuario;
+    }
+
+    public User getU() {
+        return u;
+    }
+
+    public void setU(User u) {
+        this.u = u;
+    }
+
+    public File getFileUpload() {
+        return fileUpload;
+    }
+
+    public void setFileUpload(File fileUpload) {
+        this.fileUpload = fileUpload;
+    }
+
+    public String getFileUploadContentType() {
+        return fileUploadContentType;
+    }
+
+    public void setFileUploadContentType(String fileUploadContentType) {
+        this.fileUploadContentType = fileUploadContentType;
+    }
+
+    public String getFileUploadFileName() {
+        return fileUploadFileName;
+    }
+
+    public void setFileUploadFileName(String fileUploadFileName) {
+        this.fileUploadFileName = fileUploadFileName;
     }
 
 }

@@ -28,7 +28,6 @@ public class UpdateLote extends ActionSupport {
     private String desciption;
     private int numSet;
     private float price;
-    private String photo;
     private String expiryDate;
     private String fechaErronea;
     private int loteId;
@@ -94,14 +93,6 @@ public class UpdateLote extends ActionSupport {
 
     public void setPrice(float price) {
         this.price = price;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
     }
 
     public String getExpiryDate() {

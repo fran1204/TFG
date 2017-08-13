@@ -28,10 +28,14 @@
                     <s:url var="borrar" namespace="/" action="eliminarLote" >
                         <s:param name="id" value="%{id}"/>
                     </s:url>
+                    <s:url var="crearDetail" value="crearDetailLote.jsp" >
+                        <s:param name="idLote" value="%{id}"/>
+                    </s:url>
                     <tr>
                         <th><s:property value='title'/></th>
                         <td><s:a href="%{actualizar}">Actualizar</s:a></td>                
                         <td><s:a href="%{borrar}">Eliminar</s:a></td>        
+                        <td><s:a href="%{crearDetail}">Añadir Oferta</s:a></td>        
                         </tr>
                 </s:iterator>
             </tbody>

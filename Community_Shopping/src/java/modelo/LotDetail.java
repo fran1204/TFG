@@ -29,11 +29,14 @@ public class LotDetail  implements java.io.Serializable {
     }
 
 	
-    public LotDetail(Lot lot, String title, boolean publish, int quantity, Date createdDate) {
+    public LotDetail(Lot lot, String title, boolean publish, int quantity, String color,String size, Integer capacity,Date createdDate) {
         this.lot = lot;
         this.title = title;
         this.publish = publish;
         this.quantity = quantity;
+        this.color=color;
+        this.size = size;
+        this.capacity=capacity;
         this.createdDate = createdDate;
     }
     public LotDetail(Lot lot, String title, boolean publish, int quantity, String color, String size, Integer capacity, Date createdDate, Date deletionDate, Set interlocutorOrders, Set galleries) {

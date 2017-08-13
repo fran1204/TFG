@@ -1,0 +1,25 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Author: fmrodriguez -->
+ 
+<struts>
+    <package name="lotDetail" namespace="/" extends="struts-default">
+        <action name="addDetail" class="lotDetail.actions.AddDetail">
+            <result name="success">misLotes.jsp</result>
+            <result name="error">crearDetailLote.jsp</result>
+            <result name="input">crearDetailLote.jsp</result>
+        </action>
+        <action name="updateDetail" class="lotDetail.actions.UpdateDetail">
+            <result name="success">updateLote.jsp</result>
+            <result name="input">updateLote.jsp</result>
+            <result name="error">updateLote.jsp</result>
+        </action>
+        <action name="eliminarOferta" class="lotDetail.actions.DeleteDetail">
+            <result name="success">updateLote.jsp</result>
+            <result name="input">updateLote.jsp</result>
+            <result name="error">updateLote.jsp</result>
+        </action>
+    </package>
+</struts>

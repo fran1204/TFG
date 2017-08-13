@@ -15,7 +15,29 @@
             <result type="redirectAction">misAnuncios</result>
             <result name="input">misAnuncios.jsp</result>
         </action>
-        
-       
+        <action name="actualizarAnuncio" class="advertising.actions.GetAnuncio">
+            <result name="success">updateAnuncio.jsp</result>
+            <result name="input">updateAnuncio.jsp</result>
+        </action>
+        <action name="updateAnuncio" class="advertising.actions.UpdateAnuncio">
+            <result name="success">updateAnuncio.jsp</result>
+            <result name="input">updateAnuncio.jsp</result>
+        </action>
+        <action name="updateFotoAnuncio" class="advertising.actions.UpdateFotoAnuncio">
+            <result name="success" type="redirectAction">
+                <param name="actionName">actualizarAnuncio</param>
+                <param name="id">${idAnuncio}</param>
+            </result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">actualizarAnuncio</param>
+                <param name="id">${idAnuncio}</param>
+            </result>
+        </action>
+        <action name="deleteFotoAnuncio" class="advertising.actions.DeleteFotoAnuncio">
+            <result type="redirectAction">
+                <param name="actionName">actualizarAnuncio</param>
+                <param name="id">${idAnuncio}</param>
+            </result>
+        </action>
     </package>
 </struts>

@@ -39,6 +39,7 @@
                     <th></th>
                 </tr>
                 <s:hidden value="%{price}" cssClass="price" />
+                <s:hidden value="%{cantidadOferta}" cssClass="cantidadSet" />
                 <s:iterator value="io"> 
                     <s:url var="actualizar" namespace="/" action="updateOrderUser" >
                         <s:param name="id" value="%{id}"/>
@@ -54,7 +55,7 @@
                             <td><s:textfield name="paidTotal" value="%{paidTotal}"/></td>
                             <td><s:textfield name="datePurchase" value="%{datePurchase}" cssClass="calendar" /></td>
                             <td><s:property value="amount" /></td>
-                            <td><p>hola</p></td>
+                            <td>hola</td>
                             <td><s:a href="%{actualizar}">Actualizar</s:a></td>                
                             <td><s:a href="%{email}">Recordatorio de pago</s:a></td>        
                             </tr>
@@ -73,11 +74,15 @@
                 
                 $(".totalpagado").keyup(function(){
                     var padre=$(this).parent();
-                    //alert($(".price").val());
-                    alert(padre.val());
-                    for(var i=0; i<2;i++){
-                       // alert($(this).prev().val());
+                    var cantidad = parseFloat($(this).val());
+                    var price = parseFloat($(".price").val());
+                    
+                    for(var i=0; i<4;i++){
+                       padre = padre.next();
                     }
+                    padre.html("");
+                    padre.html(price*cantidad);
+                   
                     
                 });
 

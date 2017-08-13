@@ -172,9 +172,6 @@ public class User  implements java.io.Serializable {
         this.advertisings = advertisings;
     }
 
-
-
-
 }
 
 

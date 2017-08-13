@@ -32,8 +32,7 @@
                     <div class="thumbnail">
                         <img src="img/<s:property value='image'/>" alt="" title="">
                         <div class="caption">
-                            <h3>Título de la imagen</h3>
-                            <p>...</p>
+                            <p>URl: <s:property value='url'/></p>
                             <p>
                                 <s:a href="%{actualizar}" cssClass="btn btn-primary" role="button">Actualizar</s:a>
                                 <s:a href="%{borrar}" cssClass="btn btn-default" role="button">Eliminar</s:a>

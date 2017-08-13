@@ -9,6 +9,8 @@ import DAO.CategoryDAO;
 import DAO.LotDAO;
 import DAO.SessionDAO;
 import DAO.UserDAO;
+import static com.opensymphony.xwork2.Action.INPUT;
+import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.validator.annotations.IntRangeFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
@@ -17,6 +19,7 @@ import modelo.User;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import modelo.Lot;
+import org.apache.struts2.ServletActionContext;
 
 /**
  *
@@ -29,9 +32,9 @@ public class AddLote extends ActionSupport {
     private String desciption;
     private int numSet;
     private float price;
-    private File photoLote;
-    private String userImageContentType;
-    private String userImageFileName;
+    private File fileUpload;
+    private String fileUploadContentType;
+    private String fileUploadFileName;
     private String expiryDate;
     private Date createDate;
     private Lot lote;
@@ -51,18 +54,25 @@ public class AddLote extends ActionSupport {
         SimpleDateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
         formateador.format(ahora);
         expiry = formateador.parse(expiryDate);
-        
-        System.out.println(userImageContentType);
-        System.out.println(userImageFileName);
         if (expiry.before(ahora)) {
             fechaErronea = "La fecha no puede ser menor que el día actual";
             return ERROR;
         } else {
             User u = dao.get((String) new SessionDAO().getSession().get("email"));
-            lote = new Lot(cdao.get(category), u, title, desciption, numSet, price, userImageFileName, expiry, ahora);
-            ldao.add(lote);
+            if (fileUpload != null && (fileUploadContentType.equals("image/png") || fileUploadContentType.equals("image/jpg") || fileUploadContentType.equals("image/jpeg"))) {
+                String extension = (fileUploadFileName.split("\\."))[1];
+                fileUploadFileName = System.currentTimeMillis() + "." + extension;
+                String url = ServletActionContext.getRequest().getSession().getServletContext().getRealPath("/");
+                url = url.split("build")[0]+"web/";
+                ldao.resize(fileUpload.getAbsolutePath(), url + "img/" + fileUploadFileName, 480, 480);
+                lote = new Lot(cdao.get(category), u, title, desciption, numSet, price, fileUploadFileName, expiry, ahora);
+                ldao.add(lote);
+                return SUCCESS;
+            } else {
+                fechaErronea = "La imagen tiene el formato erroneo";
+                return ERROR;
+            }
 
-            return SUCCESS;
         }
 
     }
@@ -114,28 +124,28 @@ public class AddLote extends ActionSupport {
         return expiryDate;
     }
 
-    public File getPhotoLote() {
-        return photoLote;
+    public File getFileUpload() {
+        return fileUpload;
     }
 
-    public void setPhotoLote(File photoLote) {
-        this.photoLote = photoLote;
+    public void setFileUpload(File fileUpload) {
+        this.fileUpload = fileUpload;
     }
 
-    public String getUserImageContentType() {
-        return userImageContentType;
+    public String getFileUploadContentType() {
+        return fileUploadContentType;
     }
 
-    public void setUserImageContentType(String userImageContentType) {
-        this.userImageContentType = userImageContentType;
+    public void setFileUploadContentType(String fileUploadContentType) {
+        this.fileUploadContentType = fileUploadContentType;
     }
 
-    public String getUserImageFileName() {
-        return userImageFileName;
+    public String getFileUploadFileName() {
+        return fileUploadFileName;
     }
 
-    public void setUserImageFileName(String userImageFileName) {
-        this.userImageFileName = userImageFileName;
+    public void setFileUploadFileName(String fileUploadFileName) {
+        this.fileUploadFileName = fileUploadFileName;
     }
 
     public void setExpiryDate(String expiryDate) {

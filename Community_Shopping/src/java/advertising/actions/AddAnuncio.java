@@ -8,6 +8,7 @@ package advertising.actions;
 import DAO.AdvertisingDAO;
 import DAO.SessionDAO;
 import DAO.UserDAO;
+import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
@@ -15,7 +16,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import modelo.Advertising;
+import modelo.Lot;
 import modelo.User;
+import org.apache.struts2.ServletActionContext;
 
 /**
  *
@@ -24,12 +27,13 @@ import modelo.User;
 public class AddAnuncio extends ActionSupport {
 
     private List<Advertising> anuncios;
-    private File image;
+    private File fileUpload;
     private String fileUploadContentType;
     private String fileUploadFileName;
     private String url;
     private int duration;
     private Advertising a;
+    private String ErrorImg;
 
     public AddAnuncio() {
 
@@ -43,11 +47,22 @@ public class AddAnuncio extends ActionSupport {
         Date ahora = new Date();
         SimpleDateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
         formateador.format(ahora);
-        String extension = (fileUploadFileName.split("\\."))[1];
-        fileUploadFileName = System.currentTimeMillis() + "." + extension;
-        a = new Advertising(u, fileUploadFileName, url, ahora, duration);
-        adao.add(a);
-        return SUCCESS;
+        if (fileUpload != null && (fileUploadContentType.equals("image/png") || fileUploadContentType.equals("image/jpg") || fileUploadContentType.equals("image/jpeg"))) {
+            String extension = (fileUploadFileName.split("\\."))[1];
+            fileUploadFileName = System.currentTimeMillis() + "." + extension;
+            String urlDir = ServletActionContext.getRequest().getSession().getServletContext().getRealPath("/");
+            urlDir = urlDir.split("build")[0] + "web/";
+            
+            adao.resize(fileUpload.getAbsolutePath(), urlDir + "img/" + fileUploadFileName, 480, 480);
+
+            a = new Advertising(u, fileUploadFileName, url, ahora, duration);
+            adao.add(a);
+            return SUCCESS;
+        } else {
+            ErrorImg = "La imagen tiene el formato erroneo";
+            return ERROR;
+        }
+
     }
 
     public List<Advertising> getAnuncios() {
@@ -58,15 +73,13 @@ public class AddAnuncio extends ActionSupport {
         this.anuncios = anuncios;
     }
 
-    public File getImage() {
-        return image;
+    public File getFileUpload() {
+        return fileUpload;
     }
 
-    public void setImage(File image) {
-        this.image = image;
+    public void setFileUpload(File fileUpload) {
+        this.fileUpload = fileUpload;
     }
-
-  
 
     public String getFileUploadContentType() {
         return fileUploadContentType;
@@ -106,6 +119,14 @@ public class AddAnuncio extends ActionSupport {
 
     public void setA(Advertising a) {
         this.a = a;
+    }
+
+    public String getErrorImg() {
+        return ErrorImg;
+    }
+
+    public void setErrorImg(String ErrorImg) {
+        this.ErrorImg = ErrorImg;
     }
 
 }

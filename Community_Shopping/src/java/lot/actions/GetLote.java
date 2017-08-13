@@ -7,11 +7,13 @@ package lot.actions;
 
 import DAO.CategoryDAO;
 import DAO.LotDAO;
+import DAO.LotDetailDAO;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
 import modelo.Category;
 import modelo.Lot;
+import modelo.LotDetail;
 
 /**
  *
@@ -22,6 +24,7 @@ public class GetLote extends ActionSupport {
     private Lot lote;
     private int id;
     private List<Category> category;
+    private List<LotDetail> details;
 
     public GetLote() {
 
@@ -29,9 +32,12 @@ public class GetLote extends ActionSupport {
 
     public String execute() throws Exception {
         LotDAO ldao = new LotDAO();
+        LotDetailDAO lddao = new LotDetailDAO();
+        
         CategoryDAO dao = new CategoryDAO();
         category = dao.getAll();
         lote = ldao.get(id);
+        details = lddao.getAllDetailLot(id);
         return SUCCESS;
     }
 
@@ -57,6 +63,14 @@ public class GetLote extends ActionSupport {
 
     public void setCategory(List<Category> category) {
         this.category = category;
+    }
+
+    public List<LotDetail> getDetails() {
+        return details;
+    }
+
+    public void setDetails(List<LotDetail> details) {
+        this.details = details;
     }
 
 }

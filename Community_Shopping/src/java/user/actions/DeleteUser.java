@@ -5,6 +5,7 @@
  */
 package user.actions;
 
+import DAO.SessionDAO;
 import DAO.UserDAO;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -14,7 +15,7 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 public class DeleteUser extends ActionSupport {
 
-    private String email;
+    private String perfil_email;
 
     public DeleteUser() {
 
@@ -22,16 +23,19 @@ public class DeleteUser extends ActionSupport {
 
     public String execute() throws Exception {
         UserDAO dao = new UserDAO();
-        dao.delete(email);
+        int id =dao.get(perfil_email).getId();
+        dao.delete(id);
+        SessionDAO sdao = new SessionDAO();
+        sdao.destroySession();
         return SUCCESS;
     }
 
-    public String getEmail() {
-        return email;
+    public String getPerfil_email() {
+        return perfil_email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPerfil_email(String perfil_email) {
+        this.perfil_email = perfil_email;
     }
 
 }

@@ -29,7 +29,7 @@ PÁGINA ENCARGADA DE REGISTRAR UN USUARIO
 
     <body>
         <%@ include file="nav1.jsp" %>
-        <s:form cssClass="form-signin" action="addUsuario">
+        <s:form cssClass="form-signin" action="addUsuario" method="POST" enctype="multipart/form-data">
             <h2 class="form-signin-heading">Regístrate </h2>
             <%--<s:actionerror></s:actionerror>--%>
             <span style="color:red"><s:property value="existeUsuario"/></span>
@@ -37,6 +37,7 @@ PÁGINA ENCARGADA DE REGISTRAR UN USUARIO
             <s:checkbox name="provider" fieldValue="true" label="¿Eres proveedor?"/>
             <s:textfield cssClass="form-control" name="email"/>
             <s:textfield cssClass="form-control" name="name"/>
+            <s:file name="fileUpload"/>
             <s:textfield cssClass="form-control" name="company_name"/>
             <s:select name="sector" cssClass="form-control" list="sectores" listKey="id" listValue="sector"/>
             <s:textfield cssClass="form-control" name="bank"/>
