@@ -54,8 +54,8 @@
                             <td><s:textfield name="amount" value="%{amount}" cssClass="totalpagado"/></td>
                             <td><s:textfield name="paidTotal" value="%{paidTotal}"/></td>
                             <td><s:textfield name="datePurchase" value="%{datePurchase}" cssClass="calendar" /></td>
-                            <td><s:property value="amount" /></td>
-                            <td>hola</td>
+                            <td>
+                            </td>
                             <td><s:a href="%{actualizar}">Actualizar</s:a></td>                
                             <td><s:a href="%{email}">Recordatorio de pago</s:a></td>        
                             </tr>
@@ -68,6 +68,7 @@
         <!-- ==========================================JAVASCRIPT======================================== -->              
         <script>
             $(document).ready(function () {
+                
                 $(".calendar").datepicker({
                     dateFormat: 'yy-mm-dd'
                 });
@@ -77,7 +78,7 @@
                     var cantidad = parseFloat($(this).val());
                     var price = parseFloat($(".price").val());
                     
-                    for(var i=0; i<4;i++){
+                    for(var i=0; i<3;i++){
                        padre = padre.next();
                     }
                     padre.html("");
