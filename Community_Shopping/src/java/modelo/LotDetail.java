@@ -37,6 +37,9 @@ public class LotDetail  implements java.io.Serializable {
         this.quantity = quantity;
         this.createdDate = createdDate;
         this.quantityAvailable = quantity;
+        this.color = color;
+        this.size = size;
+        this.capacity = capacity;
     }
     public LotDetail(Lot lot, String title, boolean publish, int quantity, String color, String size, Integer capacity, Integer quantityAvailable, Date createdDate, Date deletionDate, Set interlocutorOrders, Set galleries) {
        this.lot = lot;

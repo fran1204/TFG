@@ -7,7 +7,7 @@
 <struts>
     <package name="lotDetail" namespace="/" extends="struts-default">
         <action name="addDetail" class="lotDetail.actions.AddDetail">
-            <result name="success">misLotes.jsp</result>
+            <result type="redirectAction">misLotes</result>
             <result name="error">crearDetailLote.jsp</result>
             <result name="input">crearDetailLote.jsp</result>
         </action>
