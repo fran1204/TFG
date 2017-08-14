@@ -44,7 +44,7 @@
                     </s:url>
                     <tr>
                         <td><s:property value='%{order.lot.title}'/></td>
-                        <td><s:property value="%{order.lot.desciption}" /></td>
+                        <td><s:property value="%{order.lot.description}" /></td>
                         <td><s:property value="%{lotDetail.color}" />, <s:property value="%{lotDetail.size}" /></td>
                         <td><s:property value='%{order.stateOrder}'/></td>
                         <td><s:a href="%{ver}">Ver</s:a></td>                

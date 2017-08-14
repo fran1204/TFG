@@ -29,7 +29,7 @@ public class AddLote extends ActionSupport {
 
     private int category;
     private String title;
-    private String desciption;
+    private String description;
     private int numSet;
     private float price;
     private File fileUpload;
@@ -65,7 +65,8 @@ public class AddLote extends ActionSupport {
                 String url = ServletActionContext.getRequest().getSession().getServletContext().getRealPath("/");
                 url = url.split("build")[0]+"web/";
                 ldao.resize(fileUpload.getAbsolutePath(), url + "img/" + fileUploadFileName, 480, 480);
-                lote = new Lot(cdao.get(category), u, title, desciption, numSet, price, fileUploadFileName, expiry, ahora);
+                //Category category, User user, String title, String description, int numSet, float price, String photo,Date expiryDate, Date createDate
+                lote = new Lot(cdao.get(category), u, title, description, numSet, price, fileUploadFileName, expiry, ahora);
                 ldao.add(lote);
                 return SUCCESS;
             } else {
@@ -94,12 +95,12 @@ public class AddLote extends ActionSupport {
         this.title = title;
     }
 
-    public String getDesciption() {
-        return desciption;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesciption(String desciption) {
-        this.desciption = desciption;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getNumSet() {

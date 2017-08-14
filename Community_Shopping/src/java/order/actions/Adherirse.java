@@ -27,7 +27,8 @@ import modelo.User;
  * @author fmrodriguez
  */
 public class Adherirse extends ActionSupport {
-    private int idDetail; 
+
+    private int idDetail;
     private int idLot;
     private User u;
     private Lot l;
@@ -37,11 +38,11 @@ public class Adherirse extends ActionSupport {
     private int cant;
     private List<Lot> lotes;
     private String message;
-            
-    public Adherirse(){
-        
+
+    public Adherirse() {
+
     }
-    
+
     public String execute() throws Exception {
         UserDAO dao = new UserDAO();
         LotDAO ldao = new LotDAO();
@@ -56,19 +57,19 @@ public class Adherirse extends ActionSupport {
         order = odao.getOrderByLot(idLot);
         ld = lddao.get(idDetail);
         lotes = ldao.getAll();
-        if(order != null) {
+        if (order != null) {
             //LotDetail lotDetail, Order order, User user, float paidTotal, int amount, Date createdDate
-            iorder = new InterlocutorOrder(ld,order,u,0,cant,ahora);
+            iorder = new InterlocutorOrder(ld, order, u, 0, cant, ahora);
             iodao.add(iorder);
-            message="Enhorabuena, te has inscrito en el pedido!!!!";
+            message = "Enhorabuena, te has inscrito en el pedido!!!!";
             return SUCCESS;
-        }else {
+        } else {
             //Lot lot,User user, String stateOrder, Date createdDate
-            order = new Order(l,u,"Abierto",ahora);
+            order = new Order(l, u, "Abierto", ahora);
             odao.add(order);
-            iorder = new InterlocutorOrder (ld,order,u,0,cant,ahora);
-            iodao.add(iorder);            
-           message="Enhorabuena, eres el CLIENTE LIDER del pedido!!";
+            iorder = new InterlocutorOrder(ld, order, u, 0, cant, ahora);
+            iodao.add(iorder);
+            message = "Enhorabuena, eres el CLIENTE LIDER del pedido!!";
             return SUCCESS;
         }
     }
@@ -152,5 +153,5 @@ public class Adherirse extends ActionSupport {
     public void setMessage(String message) {
         this.message = message;
     }
-    
+
 }

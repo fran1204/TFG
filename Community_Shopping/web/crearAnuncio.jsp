@@ -39,17 +39,6 @@
         </s:form>
 
         <!-- ==========================================JAVASCRIPT======================================== -->              
-        <script>
-            $("#addLote_title").attr("placeholder", "Titulo");
-            $("#addLote_title").attr("autofocus", "");
-            $("#addLote_desciption").attr("placeholder", "Descripción");
-            $("#addLote_numSet").attr("placeholder", "Cantidad del lote");
-            $("#addLote_price").attr("placeholder", "Precio unidad");
-            $("#addLote_category").attr("placeholder", "Categoria del producto");
-            $("#addLote_expiryDate").attr("placeholder", "Fecha final de venta (aaaa-mm-dd)");
-
-
-        </script>
 
     </body>
 </html>

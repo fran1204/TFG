@@ -50,7 +50,7 @@
 
                             <div class="fg-overlay">
                                 <h2><s:property value='title'/></h2>
-                                <p><s:property value='desciption'/></p>
+                                <p><s:property value='description'/></p>
                                 <p>Lote: <s:property value='numSet'/> und.</p>
                                 <p>Precio: <s:property value='price'/>€</p>
                             </div>

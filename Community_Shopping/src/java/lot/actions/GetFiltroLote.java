@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package user.actions;
+package lot.actions;
 
 import DAO.CategoryDAO;
 import DAO.LotDAO;
-import DAO.SessionDAO;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
 import modelo.Category;
@@ -17,18 +16,19 @@ import modelo.Lot;
  *
  * @author fmrodriguez
  */
-public class Logout extends ActionSupport {
+public class GetFiltroLote extends ActionSupport {
 
+    private Integer idCategory;
     private List<Lot> lotes;
     private List<Category> categoris;
 
-    public Logout() {
-        lotes = new LotDAO().getAll();
+    public GetFiltroLote() {
+
     }
 
     public String execute() throws Exception {
-        SessionDAO sdao = new SessionDAO();
-        sdao.destroySession();
+        LotDAO ldao = new LotDAO();
+        lotes = ldao.getAllFiltro(idCategory);
         CategoryDAO cdao = new CategoryDAO();
         categoris = cdao.getAll();
         return SUCCESS;
@@ -40,6 +40,14 @@ public class Logout extends ActionSupport {
 
     public void setLotes(List<Lot> lotes) {
         this.lotes = lotes;
+    }
+
+    public Integer getIdCategory() {
+        return idCategory;
+    }
+
+    public void setIdCategory(Integer idCategory) {
+        this.idCategory = idCategory;
     }
 
     public List<Category> getCategoris() {

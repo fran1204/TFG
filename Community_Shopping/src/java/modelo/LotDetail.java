@@ -1,5 +1,5 @@
 package modelo;
-// Generated 04-ago-2017 17:52:38 by Hibernate Tools 4.3.1
+// Generated 14-ago-2017 9:28:28 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -20,6 +20,7 @@ public class LotDetail  implements java.io.Serializable {
      private String color;
      private String size;
      private Integer capacity;
+     private Integer quantityAvailable;
      private Date createdDate;
      private Date deletionDate;
      private Set interlocutorOrders = new HashSet(0);
@@ -29,17 +30,15 @@ public class LotDetail  implements java.io.Serializable {
     }
 
 	
-    public LotDetail(Lot lot, String title, boolean publish, int quantity, String color,String size, Integer capacity,Date createdDate) {
+    public LotDetail(Lot lot, String title, boolean publish, int quantity, String color,String size,Integer capacity,Date createdDate) {
         this.lot = lot;
         this.title = title;
         this.publish = publish;
         this.quantity = quantity;
-        this.color=color;
-        this.size = size;
-        this.capacity=capacity;
         this.createdDate = createdDate;
+        this.quantityAvailable = quantity;
     }
-    public LotDetail(Lot lot, String title, boolean publish, int quantity, String color, String size, Integer capacity, Date createdDate, Date deletionDate, Set interlocutorOrders, Set galleries) {
+    public LotDetail(Lot lot, String title, boolean publish, int quantity, String color, String size, Integer capacity, Integer quantityAvailable, Date createdDate, Date deletionDate, Set interlocutorOrders, Set galleries) {
        this.lot = lot;
        this.title = title;
        this.publish = publish;
@@ -47,6 +46,7 @@ public class LotDetail  implements java.io.Serializable {
        this.color = color;
        this.size = size;
        this.capacity = capacity;
+       this.quantityAvailable = quantityAvailable;
        this.createdDate = createdDate;
        this.deletionDate = deletionDate;
        this.interlocutorOrders = interlocutorOrders;
@@ -108,6 +108,13 @@ public class LotDetail  implements java.io.Serializable {
     
     public void setCapacity(Integer capacity) {
         this.capacity = capacity;
+    }
+    public Integer getQuantityAvailable() {
+        return this.quantityAvailable;
+    }
+    
+    public void setQuantityAvailable(Integer quantityAvailable) {
+        this.quantityAvailable = quantityAvailable;
     }
     public Date getCreatedDate() {
         return this.createdDate;

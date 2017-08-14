@@ -5,12 +5,14 @@
  */
 package user.actions;
 
+import DAO.CategoryDAO;
 import DAO.LotDAO;
 import DAO.LotDetailDAO;
 import DAO.SessionDAO;
 import DAO.UserDAO;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
+import modelo.Category;
 import modelo.Lot;
 import modelo.LotDetail;
 import modelo.User;
@@ -22,6 +24,7 @@ import modelo.User;
 public class ValidarSesion extends ActionSupport {
 
     private List<Lot> lotes;
+    private List<Category> categoris;
     private List<LotDetail> detalles;
 
     public ValidarSesion() {
@@ -32,6 +35,8 @@ public class ValidarSesion extends ActionSupport {
     public String execute() throws Exception {
         SessionDAO sdao = new SessionDAO();
         UserDAO dao = new UserDAO();
+        CategoryDAO cdao = new CategoryDAO();
+        categoris = cdao.getAll();
         User u = dao.get((String) new SessionDAO().getSession().get("email"));
         if (sdao.existeSesion()) {
             if (dao.get(u.getEmail()).isProvider()) {
@@ -58,6 +63,14 @@ public class ValidarSesion extends ActionSupport {
 
     public void setDetalles(List<LotDetail> detalles) {
         this.detalles = detalles;
+    }
+
+    public List<Category> getCategoris() {
+        return categoris;
+    }
+
+    public void setCategoris(List<Category> categoris) {
+        this.categoris = categoris;
     }
 
 }

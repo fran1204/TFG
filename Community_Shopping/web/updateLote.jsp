@@ -50,7 +50,7 @@
                         <div class="col-md-5">
                         <s:form cssClass="form-signin col-lg-offset-2" cssStyle="display: inline-block" action="updateLote">
                             <s:label value="Titulo"/><s:textfield cssClass="form-control" name="title" value="%{lote.title}"/>
-                            <s:label value="Descripcion"/><s:textfield cssClass="form-control" name="desciption" value="%{lote.desciption}"/>
+                            <s:label value="Descripcion"/><s:textfield cssClass="form-control" name="description" value="%{lote.description}"/>
                             <s:select name="category" cssClass="form-control" list="category" listKey="id" listValue="type"/>
                             <s:label value="Cantidad del lote"/><s:textfield cssClass="form-control" name="numSet" value="%{lote.numSet}"/>
                             <s:label value="Precio por unidad"/><s:textfield cssClass="form-control" name="price" value="%{lote.price}"/>

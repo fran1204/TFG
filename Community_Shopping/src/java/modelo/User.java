@@ -1,5 +1,5 @@
 package modelo;
-// Generated 04-ago-2017 17:52:38 by Hibernate Tools 4.3.1
+// Generated 14-ago-2017 9:28:28 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -34,14 +34,14 @@ public class User  implements java.io.Serializable {
     }
 
 	
-    public User(String name,String email, String password, boolean provider, Date createDate) {
+    public User(String name,String email, String password, boolean provider,Date createDate) {
         this.email = email;
-        this.name = name;
         this.password = password;
         this.provider = provider;
         this.createDate = createDate;
+        this.name = name;
     }
-    public User(Sector sector, String name, String email, String password, Integer bank, String companyName, boolean provider, Date createDate) {
+    public User(Sector sector, String name, String email, String password,  Integer bank, String companyName, boolean provider, Date createDate) {
        this.sector = sector;
        this.name = name;
        this.email = email;
@@ -171,6 +171,9 @@ public class User  implements java.io.Serializable {
     public void setAdvertisings(Set advertisings) {
         this.advertisings = advertisings;
     }
+
+
+
 
 }
 

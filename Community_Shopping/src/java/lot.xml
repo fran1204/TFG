@@ -54,5 +54,8 @@
             <result name="success">detalleLote.jsp</result>
             <result name="input">detalleLote.jsp</result>
         </action>
+        <action name="buscar" class="lot.actions.GetFiltroLote">
+            <result name="success">principal1.jsp</result>
+        </action>
     </package>
 </struts>

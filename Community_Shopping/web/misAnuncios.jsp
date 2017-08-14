@@ -33,9 +33,11 @@
                         <img src="img/<s:property value='image'/>" alt="" title="">
                         <div class="caption">
                             <p>URl: <s:property value='url'/></p>
+                            <p>Duración: <s:property value='duration'/></p>
+                            <p>Fecha de alta: <s:property value='createdDate' /></p>
                             <p>
                                 <s:a href="%{actualizar}" cssClass="btn btn-primary" role="button">Actualizar</s:a>
-                                <s:a href="%{borrar}" cssClass="btn btn-default" role="button">Eliminar</s:a>
+                                <s:a href="%{borrar}" cssClass="btn btn-danger" role="button">Eliminar</s:a>
                                 </p>
                             </div>
                         </div>

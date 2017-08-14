@@ -56,8 +56,10 @@ public class AddUser extends ActionSupport {
             SimpleDateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
             formateador.format(ahora);
             if (provider) {
+                //String name,String email, String password, boolean provider, String photo,Date createDate
                 u = new User(sectordao.getSectorById(sector), name, email, password, bank, company_name, provider, ahora);
             } else {
+                //String name,String email, String password, boolean provider, String photo,Date createDate
                 u = new User(name, email, password, provider, ahora);
             }
             if (fileUpload != null && (fileUploadContentType.equals("image/png") || fileUploadContentType.equals("image/jpg") || fileUploadContentType.equals("image/jpeg"))) {

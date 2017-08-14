@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 04-ago-2017 17:52:39 by Hibernate Tools 4.3.1 -->
+<!-- Generated 14-ago-2017 9:28:29 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.PayOrder" table="pay_order" catalog="community_shopping" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -14,8 +14,8 @@
         <property name="paymentDate" type="date">
             <column name="Payment_date" length="10" not-null="true" />
         </property>
-        <property name="total" type="float">
-            <column name="Total" precision="12" scale="0" not-null="true" />
+        <property name="total" type="int">
+            <column name="Total" not-null="true" />
         </property>
         <property name="pdf" type="string">
             <column name="Pdf" not-null="true" />

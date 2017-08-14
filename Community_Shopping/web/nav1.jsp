@@ -16,11 +16,12 @@
                 <li><s:a action="login">Login</s:a></li>
                 <li><s:a action="registrarse">Registrarse</s:a></li>
             </ul>
-            <s:form method="post" action="buscarEvento" cssClass="navbar-form navbar-left">
-                <s:hidden cssClass="filtro_ciudad" name="filtro_ciudad" value=""/>
-                <s:textfield cssClass="form-control" name="filtro_nombre"/>
-                <button class="btn btn-link"><span style="color:white" class="glyphicon glyphicon-search"/></button>
-            </s:form>
+            <s:if test="%{categoris!=null}">
+                <s:form method="post" action="buscar" cssClass="navbar-form navbar-left">
+                    <s:select name="idCategory" cssClass="form-control" list="categoris" listKey="id" listValue="type"/>
+                    <button class="btn btn-link"><span style="color:white" class="glyphicon glyphicon-search"/></button>
+                </s:form>
+            </s:if>
         </div>
     </div>
 </nav>

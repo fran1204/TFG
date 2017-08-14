@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 04-ago-2017 17:52:39 by Hibernate Tools 4.3.1 -->
+<!-- Generated 14-ago-2017 9:28:29 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.LotDetail" table="lot_detail" catalog="community_shopping" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
             <column name="Id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="lot" class="modelo.Lot" fetch="select" lazy="false">
+        <many-to-one name="lot" class="modelo.Lot" fetch="select">
             <column name="Id_lot" not-null="true" />
         </many-to-one>
         <property name="title" type="string">
@@ -28,6 +28,9 @@
         </property>
         <property name="capacity" type="java.lang.Integer">
             <column name="capacity" />
+        </property>
+        <property name="quantityAvailable" type="java.lang.Integer">
+            <column name="quantity_available" />
         </property>
         <property name="createdDate" type="timestamp">
             <column name="Created_date" length="19" not-null="true" />

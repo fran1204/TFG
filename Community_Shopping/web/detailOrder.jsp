@@ -41,7 +41,7 @@
 
                     <div class="col-md-5">
                         <p><s:label value="Titulo"/><s:property value="%{io.order.lot.title}"/></p>
-                        <p><s:label value="Descripcion"/><s:property value="%{io.order.lot.desciption}"/></p>
+                        <p><s:label value="Descripcion"/><s:property value="%{io.order.lot.description}"/></p>
                         <p><s:label value="Estado del Pedido"/><s:property value="%{io.order.stateOrder}"/>
                         <p><s:label value="Cantidad pedida"/><s:property value="%{io.amount}"/></p>
                         <p><s:label value="Precio por unidad"/><s:property value="%{io.order.lot.price}"/></p>

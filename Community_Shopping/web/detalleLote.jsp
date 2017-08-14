@@ -41,7 +41,7 @@
 
                     <div class="col-md-5">
                         <s:label value="Titulo"/><s:label cssClass="form-control" name="title" value="%{lote.title}"/>
-                        <s:label value="Descripcion"/><s:label cssClass="form-control" name="desciption" value="%{lote.desciption}"/>
+                        <s:label value="Descripcion"/><s:label cssClass="form-control" name="description" value="%{lote.description}"/>
                         <s:label value="Categoria"/><s:label cssClass="form-control" name="category" value="%{category}"/>
                         <s:label value="Cantidad del lote"/><s:label cssClass="form-control" name="numSet" value="%{lote.numSet}"/>
                         <s:label value="Precio por unidad"/><s:label cssClass="form-control" name="price" value="%{lote.price}"/>
@@ -56,7 +56,7 @@
                         <table class="table">
                             <tr>
                                 <th>Título</th>
-                                <th>Cant. Lote</th>
+                                <th>Cant. disponible</th>
                                 <th>Color</th>
                                 <th>Tamaño</th>
                                 <th>Capacidad</th>

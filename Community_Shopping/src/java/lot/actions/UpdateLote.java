@@ -25,7 +25,7 @@ public class UpdateLote extends ActionSupport {
 
     private int category;
     private String title;
-    private String desciption;
+    private String description;
     private int numSet;
     private float price;
     private String expiryDate;
@@ -49,7 +49,7 @@ public class UpdateLote extends ActionSupport {
             fechaErronea = "La fecha no puede ser menor que el día actual";
             return ERROR;
         }
-        ldao.update(loteId, cdao.get(category), title, desciption, numSet, price, expiry);
+        ldao.update(loteId, cdao.get(category), title, description, numSet, price, expiry);
         lote = ldao.get(loteId);
         return SUCCESS;
 
@@ -71,12 +71,12 @@ public class UpdateLote extends ActionSupport {
         this.title = title;
     }
 
-    public String getDesciption() {
-        return desciption;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesciption(String desciption) {
-        this.desciption = desciption;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getNumSet() {

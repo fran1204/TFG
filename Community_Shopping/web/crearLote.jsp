@@ -34,7 +34,7 @@
             <span style="color:red"><s:property value="fechaErronea"/></span>
             <s:fielderror/>
             <s:textfield cssClass="form-control" name="title"/>
-            <s:textfield cssClass="form-control" name="desciption"/>
+            <s:textfield cssClass="form-control" name="description"/>
             <s:file name="fileUpload"/>
             <s:textfield cssClass="form-control" name="numSet"/>
             <s:textfield cssClass="form-control" name="price"/>
@@ -48,7 +48,7 @@
             $(document).ready(function () {
                 $("#addLote_title").attr("placeholder", "Titulo");
                 $("#addLote_title").attr("autofocus", "");
-                $("#addLote_desciption").attr("placeholder", "Descripción");
+                $("#addLote_description").attr("placeholder", "Descripción");
                 $("#addLote_numSet").attr("placeholder", "Cantidad del lote");
                 $("#addLote_price").attr("placeholder", "Precio unidad");
                 $("#addLote_category").attr("placeholder", "Categoria del producto");

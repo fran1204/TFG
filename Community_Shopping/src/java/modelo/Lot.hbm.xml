@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 04-ago-2017 17:52:39 by Hibernate Tools 4.3.1 -->
+<!-- Generated 14-ago-2017 9:28:29 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Lot" table="lot" catalog="community_shopping" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -15,19 +15,19 @@
             <column name="Id_provider" not-null="true" />
         </many-to-one>
         <property name="title" type="string">
-            <column name="Title" length="150" not-null="true" />
+            <column name="title" length="150" not-null="true" />
         </property>
-        <property name="desciption" type="string">
-            <column name="Desciption" length="150" not-null="true" />
+        <property name="description" type="string">
+            <column name="description" length="150" not-null="true" />
         </property>
         <property name="numSet" type="int">
             <column name="Num_set" not-null="true" />
         </property>
+        <property name="quantityAvailable" type="java.lang.Integer">
+            <column name="quantity_available" />
+        </property>
         <property name="price" type="float">
             <column name="price" precision="12" scale="0" not-null="true" />
-        </property>
-        <property name="photo" type="string">
-            <column name="photo" />
         </property>
         <property name="expiryDate" type="date">
             <column name="expiry_date" length="10" />
@@ -37,6 +37,9 @@
         </property>
         <property name="deletionDate" type="date">
             <column name="deletion_date" length="10" />
+        </property>
+        <property name="photo" type="string">
+            <column name="photo" />
         </property>
         <set name="shares" table="share" inverse="true" lazy="true" fetch="select">
             <key>
