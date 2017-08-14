@@ -80,4 +80,23 @@ public class LotDetailDAO {
         tx.commit();
         return u;
     }
+
+    public int getCantidadDisponible(int idDetail) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from LotDetail WHERE id = '" + idDetail + "'");
+        LotDetail lotDetail = (LotDetail) q.uniqueResult();
+        tx.commit();
+        return lotDetail.getQuantityAvailable();
+    }
+
+    public void setQuantityAvailable(int idDetail, int total) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from LotDetail WHERE id='" + idDetail + "'");
+        LotDetail ld = (LotDetail) q.uniqueResult();
+        ld.setQuantityAvailable(total);
+        sesion.update(ld);
+        tx.commit();
+    }
 }

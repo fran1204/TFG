@@ -51,7 +51,7 @@
 
 
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <h2>Ofertas</h2>
                         <table class="table">
                             <tr>
@@ -60,7 +60,8 @@
                                 <th>Color</th>
                                 <th>Tamaño</th>
                                 <th>Capacidad</th>
-                                <th>ME LO PIDO</th>
+                                <th>Cant. Pedida</th>
+                                <th></th>
                             </tr>
                             <s:iterator value="details">
                                 <s:url var="adherirse" namespace="/" action="AdherirseOferta" >
@@ -70,17 +71,19 @@
                                 <s:if test="%{publish==true}">
                                     <tr>
                                         <td><s:property value="%{title}"/></td>
-                                        <td><s:property  value="%{quantity}"/></td>
+                                        <td><s:property  value="%{quantityAvailable}"/></td>
                                         <td><s:property value="%{color}"/></td>
                                         <td><s:property value="%{size}"/></td>
                                         <td><s:property value="%{capacity}"/></td>
                                         <s:set var="breakloop" value="%{false}"/>
                                         <s:set var="idetail" value="%{id}"/>
+                                        <s:set var="idlot" value="%{lot.id}"/>
                                         <s:iterator value="io">
                                             <s:if test="%{#idetail == lotDetail.id}">
                                                 <s:url var="verPedido" namespace="/" action="verPedido" >
                                                     <s:param name="id" value="%{id}"/>
                                                 </s:url>
+                                                <td><s:property value="%{amount}"/></td>
                                                 <td><s:a href="%{verPedido}">
                                                         Pedido!
                                                     </s:a></td>
@@ -89,11 +92,15 @@
                                             </s:iterator>
                                             <s:if test="!#breakloop">
                                                 <s:if test="%{#session.id != null && #session.id != ''}">
-                                                <td><s:a href="%{adherirse}">
-                                                        Lo quiero!
-                                                    </s:a></td>
-                                                </s:if>
-                                                <s:else>
+                                                    <s:form action="AdherirseOferta">
+                                                    <td><s:textfield name="amount" size="3" /></td>
+                                                    <s:hidden name="idDetail" value="%{#idetail}"/>
+                                                    <s:hidden name="idLot" value="%{#idlot}"/>
+                                                    <td><s:submit value="Lo quiero!"/></td>
+                                                </s:form>
+                                            </s:if>
+                                            <s:else>
+                                                <td></td>
                                                 <td><s:a href="login.jsp">
                                                         Lo quiero!
                                                     </s:a></td>

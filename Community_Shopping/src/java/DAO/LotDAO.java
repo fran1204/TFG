@@ -9,9 +9,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import javax.imageio.ImageIO;
 import modelo.Category;
@@ -130,12 +128,31 @@ public class LotDAO {
         tx.commit();
     }
 
-     public List<Lot> getAllFiltro(Integer id) {
+    public List<Lot> getAllFiltro(Integer id) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from Lot WHERE id_category = "+id+" AND expiry_date > now() order by expiry_date ASC");
+        Query q = sesion.createQuery("from Lot WHERE id_category = " + id + " AND expiry_date > now() order by expiry_date ASC");
         List<Lot> lotes = (List<Lot>) q.list();
         tx.commit();
         return lotes;
+    }
+
+    public int getCantidadLot(int id) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from Lot WHERE id = " + id);
+        Lot l = (Lot) q.uniqueResult();
+        tx.commit();
+        return l.getQuantityAvailable();
+    }
+
+    public void setQuantityAvailable(int total, int idLot) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from Lot WHERE id='" + idLot + "'");
+        Lot l = (Lot) q.uniqueResult();
+        l.setQuantityAvailable(total);
+        sesion.update(l);
+        tx.commit();
     }
 }

@@ -53,6 +53,7 @@
                                 <p><s:property value='description'/></p>
                                 <p>Lote: <s:property value='numSet'/> und.</p>
                                 <p>Precio: <s:property value='price'/>€</p>
+                                <p>Cantidad Disponible: <s:property value='quantityAvailable'/></p>
                             </div>
                         </s:a>
                     </div>

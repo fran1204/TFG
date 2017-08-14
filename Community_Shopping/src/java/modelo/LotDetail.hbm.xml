@@ -8,7 +8,7 @@
             <column name="Id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="lot" class="modelo.Lot" fetch="select">
+        <many-to-one name="lot" class="modelo.Lot" fetch="select" lazy="false">
             <column name="Id_lot" not-null="true" />
         </many-to-one>
         <property name="title" type="string">

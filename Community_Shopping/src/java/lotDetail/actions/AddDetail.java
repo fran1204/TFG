@@ -42,7 +42,6 @@ public class AddDetail extends ActionSupport {
         Lot lote = ldao.get(idLote);
         //Lot lot, String title, boolean publish, int quantity, String color,String size, Integer capacity,Date createdDate
         ld = new LotDetail(lote,titleDetail,true,quantity,color,size,capacity,ahora);
-        
         lddao.add(ld);
         return SUCCESS;
     }

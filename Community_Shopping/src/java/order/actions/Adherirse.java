@@ -35,9 +35,9 @@ public class Adherirse extends ActionSupport {
     private LotDetail ld;
     private Order order;
     private InterlocutorOrder iorder;
-    private int cant;
     private List<Lot> lotes;
     private String message;
+    private int amount;
 
     public Adherirse() {
 
@@ -59,18 +59,45 @@ public class Adherirse extends ActionSupport {
         lotes = ldao.getAll();
         if (order != null) {
             //LotDetail lotDetail, Order order, User user, float paidTotal, int amount, Date createdDate
-            iorder = new InterlocutorOrder(ld, order, u, 0, cant, ahora);
-            iodao.add(iorder);
-            message = "Enhorabuena, te has inscrito en el pedido!!!!";
-            return SUCCESS;
+            iorder = new InterlocutorOrder(ld, order, u, 0, amount, ahora);
+            int cantidadDisponible = lddao.getCantidadDisponible(idDetail);
+            if (cantidadDisponible > amount) {
+                //actualizo la cantidad disponible del detalle
+                int total = cantidadDisponible - amount;
+                lddao.setQuantityAvailable(idDetail, total);
+
+                //actualizo la cantidad disponible del lote
+                ldao.setQuantityAvailable(l.getQuantityAvailable() - amount, idLot);
+
+                iodao.add(iorder);
+                message = "Enhorabuena, te has inscrito en el pedido!!!!";
+                return SUCCESS;
+            } else {
+                message = "La cantidad es mayor de la que disponemos!!!!";
+                return ERROR;
+            }
+
         } else {
-            //Lot lot,User user, String stateOrder, Date createdDate
-            order = new Order(l, u, "Abierto", ahora);
-            odao.add(order);
-            iorder = new InterlocutorOrder(ld, order, u, 0, cant, ahora);
-            iodao.add(iorder);
-            message = "Enhorabuena, eres el CLIENTE LIDER del pedido!!";
-            return SUCCESS;
+            int cantidadDisponible = lddao.getCantidadDisponible(idDetail);
+            if (cantidadDisponible > amount) {
+                //actualizo la cantidad disponible del detalle
+                int total = cantidadDisponible - amount;
+                lddao.setQuantityAvailable(idDetail, total);
+
+                //actualizo la cantidad disponible del lote
+                ldao.setQuantityAvailable(l.getQuantityAvailable() - amount, idLot);
+
+                order = new Order(l, u, "Abierto", ahora);
+                odao.add(order);
+                iorder = new InterlocutorOrder(ld, order, u, 0, amount, ahora);
+                iodao.add(iorder);
+                message = "Enhorabuena, eres el CLIENTE LIDER del pedido!!";
+                return SUCCESS;
+            } else {
+                message = "La cantidad es mayor de la que disponemos!!!!";
+                return ERROR;
+            }
+
         }
     }
 
@@ -130,14 +157,6 @@ public class Adherirse extends ActionSupport {
         this.iorder = iorder;
     }
 
-    public int getCant() {
-        return cant;
-    }
-
-    public void setCant(int cant) {
-        this.cant = cant;
-    }
-
     public List<Lot> getLotes() {
         return lotes;
     }
@@ -152,6 +171,14 @@ public class Adherirse extends ActionSupport {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
 }
