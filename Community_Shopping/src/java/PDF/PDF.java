@@ -9,7 +9,6 @@ package PDF;
  *
  * @author cayetano
  */
-import java.io.FileOutputStream;
 import java.util.Date;
 
 import com.itextpdf.text.Anchor;
@@ -27,12 +26,11 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Section;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
 
 
 public class PDF {
     
-    //private static String FILE = "/home/cayetano/Escritorio/caca.pdf";
+    private static String FILE = "/home/fmrodriguez/Escritorio/caca.pdf";
     private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
             Font.BOLD);
     private static Font redFont = new Font(Font.FontFamily.TIMES_ROMAN, 12,
@@ -59,7 +57,7 @@ public class PDF {
     // iText allows to add metadata to the PDF which can be viewed in your Adobe
     // Reader
     // under File -> Properties
-    private static void addMetaData(Document document) {
+    public static void addMetaData(Document document) {
         document.addTitle("Community Shopping");
         document.addSubject("Using iText");
         document.addKeywords("Java, PDF, iText");
@@ -67,7 +65,7 @@ public class PDF {
         document.addCreator("Francisco");
     }
 
-    private static void addTitlePage(Document document)
+    public static void addTitlePage(Document document)
             throws DocumentException {
         Paragraph preface = new Paragraph();
         // We add one empty line
@@ -96,7 +94,7 @@ public class PDF {
         document.newPage();
     }
 
-    private static void addContent(Document document) throws DocumentException {
+    public static void addContent(Document document) throws DocumentException {
         Anchor anchor = new Anchor("First Chapter", catFont);
         anchor.setName("First Chapter");
 
@@ -141,7 +139,7 @@ public class PDF {
 
     }
 
-    private static void createTable(Section subCatPart)
+    public static void createTable(Section subCatPart)
             throws BadElementException {
         PdfPTable table = new PdfPTable(3);
 
@@ -174,7 +172,7 @@ public class PDF {
 
     }
 
-    private static void createList(Section subCatPart) {
+    public static void createList(Section subCatPart) {
         List list = new List(true, false, 10);
         list.add(new ListItem("First point"));
         list.add(new ListItem("Second point"));
@@ -182,7 +180,7 @@ public class PDF {
         subCatPart.add(list);
     }
 
-    private static void addEmptyLine(Paragraph paragraph, int number) {
+    public static void addEmptyLine(Paragraph paragraph, int number) {
         for (int i = 0; i < number; i++) {
             paragraph.add(new Paragraph(" "));
         }
