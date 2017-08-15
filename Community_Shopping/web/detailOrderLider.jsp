@@ -47,14 +47,14 @@
                     <s:url var="email" namespace="/" action="sendEmail" >
                         <s:param name="id" value="%{id}"/>
                     </s:url>
-                    
+
                     <s:form cssClass="form-signin" action="updateOrderUser">
-                        <tr>
+                        <tr class="caye">
                             <th><s:property value='%{user.name}'/></th>
-                            <td><s:textfield name="amount" value="%{amount}" cssClass="totalpagado"/></td>
-                            <td><s:textfield name="paidTotal" value="%{paidTotal}"/></td>
-                            <td><s:textfield name="datePurchase" value="%{datePurchase}" cssClass="calendar" /></td>
-                            <td>
+                            <td><s:textfield name="amount" value="%{amount}" cssClass="totalpagado amount"/></td>
+                            <td><s:textfield name="paidTotal" value="%{paidTotal}" cssClass="paid" /></td>
+                            <td><s:textfield  id="%{id}" name="datePurchase" value="%{datePurchase}" cssClass="calendar" /></td>
+                            <td class="total">
                             </td>
                             <td><s:a href="%{actualizar}">Actualizar</s:a></td>                
                             <td><s:a href="%{email}">Recordatorio de pago</s:a></td>        
@@ -68,23 +68,28 @@
         <!-- ==========================================JAVASCRIPT======================================== -->              
         <script>
             $(document).ready(function () {
-                
-                $(".calendar").datepicker({
-                    dateFormat: 'yy-mm-dd'
+                var price = parseFloat($(".price").val());
+
+//                $(".calendar").datepicker({
+//                    dateFormat: 'yy-mm-dd'
+//                });
+
+                $(".calendar").each(function () {
+                    $(this).datepicker({
+                        dateFormat: 'yy-mm-dd'
+                    });
                 });
-                
-                $(".totalpagado").keyup(function(){
-                    var padre=$(this).parent();
-                    var cantidad = parseFloat($(this).val());
-                    var price = parseFloat($(".price").val());
-                    
-                    for(var i=0; i<3;i++){
-                       padre = padre.next();
-                    }
-                    padre.html("");
-                    padre.html(price*cantidad);
-                   
-                    
+
+
+                $(".caye").keyup(function () {
+                    var t = $(this).find("input.amount").val() * price;
+                    $(this).find("td.total").html(t - $(this).find("input.paid").val());
+                });
+
+
+                $('.caye').each(function () {
+                    var t = $(this).find("input.amount").val() * price;
+                    $(this).find("td.total").html(t - $(this).find("input.paid").val());
                 });
 
             });
