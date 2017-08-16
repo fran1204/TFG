@@ -5,12 +5,17 @@
  */
 package lot.actions;
 
+import DAO.AdvertisingDAO;
 import DAO.CategoryDAO;
 import DAO.LotDAO;
+import DAO.SessionDAO;
+import DAO.UserDAO;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import modelo.Category;
-import modelo.Lot;
+import modelo.User;
 
 /**
  *
@@ -19,8 +24,8 @@ import modelo.Lot;
 public class GetFiltroLote extends ActionSupport {
 
     private Integer idCategory;
-    private List<Lot> lotes;
     private List<Category> categoris;
+    private List anuncio;
 
     public GetFiltroLote() {
 
@@ -28,18 +33,29 @@ public class GetFiltroLote extends ActionSupport {
 
     public String execute() throws Exception {
         LotDAO ldao = new LotDAO();
-        lotes = ldao.getAllFiltro(idCategory);
+        UserDAO dao = new UserDAO();
+        SessionDAO sdao = new SessionDAO();
+        AdvertisingDAO adao = new AdvertisingDAO();
+        anuncio = new ArrayList(ldao.getAllFiltro(idCategory));
+        anuncio.addAll(adao.getAllFiltro(idCategory));
+        Collections.shuffle(anuncio);
         CategoryDAO cdao = new CategoryDAO();
         categoris = cdao.getAll();
-        return SUCCESS;
+        User u = dao.get((String) new SessionDAO().getSession().get("email"));
+        if (sdao.existeSesion()) {
+            return "login";
+        }else{
+            return SUCCESS;
+        }
+
     }
 
-    public List<Lot> getLotes() {
-        return lotes;
+    public List getAnuncio() {
+        return anuncio;
     }
 
-    public void setLotes(List<Lot> lotes) {
-        this.lotes = lotes;
+    public void setAnuncio(List anuncio) {
+        this.anuncio = anuncio;
     }
 
     public Integer getIdCategory() {

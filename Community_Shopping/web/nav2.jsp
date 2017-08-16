@@ -37,7 +37,12 @@
                 <li><s:a action="logout">Logout</s:a></li>
                 <!--<span id="notificacion" class="glyphicon glyphicon-comment"/>--> 
             </ul>
-            
+            <s:if test="%{categoris}">
+                <s:form method="post" action="buscar" cssClass="navbar-form navbar-left">
+                    <s:select name="idCategory" cssClass="form-control" list="categoris" listKey="id" listValue="type"/>
+                    <button class="btn btn-link"><span style="color:white" class="glyphicon glyphicon-search"/></button>
+                </s:form>
+            </s:if>
         </div>
     </div>
 </nav>

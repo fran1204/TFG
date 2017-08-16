@@ -56,6 +56,7 @@
         </action>
         <action name="buscar" class="lot.actions.GetFiltroLote">
             <result name="success">principal1.jsp</result>
+            <result name="login">principal2.jsp</result>
         </action>
     </package>
 </struts>

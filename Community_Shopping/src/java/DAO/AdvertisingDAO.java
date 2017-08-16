@@ -13,6 +13,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import modelo.Advertising;
 import modelo.HibernateUtil;
+import modelo.Lot;
 import modelo.User;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -109,5 +110,14 @@ public class AdvertisingDAO {
         a.setImage(fileUploadFileName);
         sesion.update(a);
         tx.commit();
+    }
+
+    public List<Advertising> getAllFiltro(Integer idCategory) {
+         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from Advertising WHERE id_category = " + idCategory );
+        List<Advertising> ad = (List<Advertising>) q.list();
+        tx.commit();
+        return ad;
     }
 }

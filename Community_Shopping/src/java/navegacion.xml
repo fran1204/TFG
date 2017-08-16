@@ -2,7 +2,7 @@
 "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 
-<!-- Author: cayetano -->
+<!-- Author: fran -->
  
 <struts>
     <package name="navegacion" namespace="/" extends="struts-default">
@@ -17,12 +17,6 @@
         </action>
         <action name="login">
             <result>login.jsp</result>
-        </action>
-        <action name="crearMensaje">
-            <result>crearMensaje.jsp</result>
-        </action>
-        <action name="grupos">
-            <result>grupos.jsp</result>
         </action>
     </package>
 </struts>
