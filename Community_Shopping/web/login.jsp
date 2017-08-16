@@ -39,6 +39,7 @@ PÁGINA ENCARGADA DEL LOGIN
                     <s:form id="log" cssClass="form-signin" action="validarLogin">
                         <h2 class="form-signin-heading">Identifícate</h2>
                         <span style="color:red"><s:property value="mensajeError"/></span>
+                        <s:hidden name="idLote" value="%{idLote}" />
                         <s:actionerror></s:actionerror>
                         <s:fielderror></s:fielderror>
                         <s:textfield cssClass="form-control" name="email"/>

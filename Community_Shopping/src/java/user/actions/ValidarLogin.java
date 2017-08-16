@@ -25,7 +25,8 @@ public class ValidarLogin extends ActionSupport {
     private String password;
     private List<Lot> lotes;
     private String mensajeError;
-    
+    private int idLote;
+
     public ValidarLogin() {
         lotes = new LotDAO().getAll();
     }
@@ -37,24 +38,29 @@ public class ValidarLogin extends ActionSupport {
             sdao.getSession().put("email", email);
             sdao.getSession().put("id", dao.get(email).getId());
             sdao.getSession().put("proveedor", dao.get(email).isProvider());
-            if(dao.get(email).isProvider()){
+            if (dao.get(email).isProvider()) {
                 return NONE;
-            }else{
+            } else if (!dao.get(email).isProvider() && idLote == 0) {
                 return SUCCESS;
-            }            
+            } else if (idLote != 0 && !dao.get(email).isProvider()) {
+                return "lotdetail";
+            } else {
+                mensajeError = "Usuario o contraseña incorrectos";
+                return ERROR;
+            }
         } else {
             mensajeError = "Usuario o contraseña incorrectos";
             return ERROR;
         }
-
     }
+
     public String getEmail() {
         return email;
     }
-    
+
     @StringLengthFieldValidator(
-        maxLength = "45",
-        message = "El tamaño del email es de máximo ${maxLength} caracteres"
+            maxLength = "45",
+            message = "El tamaño del email es de máximo ${maxLength} caracteres"
     )
     public void setEmail(String email) {
         this.email = email;
@@ -63,9 +69,10 @@ public class ValidarLogin extends ActionSupport {
     public String getPassword() {
         return password;
     }
+
     @StringLengthFieldValidator(
-        maxLength = "45",
-        message = "El tamaño del password es de máximo ${maxLength} caracteres"
+            maxLength = "45",
+            message = "El tamaño del password es de máximo ${maxLength} caracteres"
     )
     public void setPassword(String password) {
         this.password = password;
@@ -85,6 +92,14 @@ public class ValidarLogin extends ActionSupport {
 
     public void setMensajeError(String mensajeError) {
         this.mensajeError = mensajeError;
+    }
+
+    public int getIdLote() {
+        return idLote;
+    }
+
+    public void setIdLote(int idLote) {
+        this.idLote = idLote;
     }
 
 }

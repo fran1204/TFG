@@ -58,8 +58,11 @@
                     </s:if>
                     <s:else>
                         <div class="feature-gallery">
-                            <s:url var="detalle" namespace="/" action="detalleLote" >
+                            <s:url var="detalle" namespace="/" action="detalleLote">
                                 <s:param name="id" value="%{id}"/>
+                            </s:url>
+                            <s:url var="login" namespace="/" action="loginAnonimo">
+                                <s:param name="idLote" value="%{id}"/>
                             </s:url>
                             <s:a href="%{detalle}">
                                 <img class="thumb" src="img/<s:property value='photo'/>" alt="" title="">
@@ -75,12 +78,12 @@
 
                         </div>
                         <div>                       
-                            <s:a href="login.jsp">
+                            <s:a href="%{login}">
                                 Compartir!
                             </s:a>
                         </div>
                         <div>
-                            <s:a href="login.jsp">
+                            <s:a href="%{login}">
                                 Lo quiero!
                             </s:a>
                         </div>

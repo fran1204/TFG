@@ -5,13 +5,18 @@
  */
 package user.actions;
 
+import DAO.AdvertisingDAO;
 import DAO.CategoryDAO;
 import DAO.LotDAO;
+import DAO.LotDetailDAO;
 import DAO.SessionDAO;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import modelo.Category;
 import modelo.Lot;
+import modelo.LotDetail;
 
 /**
  *
@@ -21,9 +26,15 @@ public class Logout extends ActionSupport {
 
     private List<Lot> lotes;
     private List<Category> categoris;
+    private List<LotDetail> detalles;
+    private List anuncio;
 
     public Logout() {
         lotes = new LotDAO().getAll();
+        detalles = new LotDetailDAO().getAll();
+        anuncio = new ArrayList(new LotDAO().getAll());
+        anuncio.addAll(new AdvertisingDAO().getAll());
+        Collections.shuffle(anuncio);
     }
 
     public String execute() throws Exception {
@@ -48,6 +59,22 @@ public class Logout extends ActionSupport {
 
     public void setCategoris(List<Category> categoris) {
         this.categoris = categoris;
+    }
+
+    public List<LotDetail> getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(List<LotDetail> detalles) {
+        this.detalles = detalles;
+    }
+
+    public List getAnuncio() {
+        return anuncio;
+    }
+
+    public void setAnuncio(List anuncio) {
+        this.anuncio = anuncio;
     }
 
 }

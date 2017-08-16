@@ -5,9 +5,13 @@
 <!-- Author: fmrodriguez -->
  
 <struts>
-      <package name="user" namespace="/" extends="struts-default">
+    <package name="user" namespace="/" extends="struts-default">
         <action name="validarLogin" class="user.actions.ValidarLogin">
             <result name="success">principal2.jsp</result>
+            <result name="lotdetail" type="redirectAction">
+                <param name="actionName">detalleLote</param>
+                <param name="id">${idLote}</param>
+            </result>
             <result name="none">principal3.jsp</result>
             <result name="error">login.jsp</result>
             <result name="input">login.jsp</result>
@@ -57,6 +61,9 @@
                 <param name="actionName">getUsuario</param>
                 <param name="perfil_email">${perfil_email}</param>
             </result>
+        </action>
+        <action name="loginAnonimo" class="user.actions.LoginAnonimo">
+            <result name="success">login.jsp</result>
         </action>
         <action name="existeUsuario" class="user.actions.ExisteUsuario">
             <result type="stream">
