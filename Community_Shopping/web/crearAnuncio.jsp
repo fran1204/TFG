@@ -31,6 +31,7 @@
             <h2 class="form-signin-heading">Crear Anuncio </h2>
             <s:file  name="fileUpload"/>
             <s:textfield cssClass="form-control" name="url"/>
+            <s:select name="category" cssClass="form-control" list="category" listKey="id" listValue="type"/>
             <select name="duration" class="form-control">
                 <option value="1">1 Mes</option>
                 <option value="3">3 Meses</option>

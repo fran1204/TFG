@@ -10,7 +10,10 @@
             <result name="success">misAnuncios.jsp</result>
             <result name="error">principal3.jsp</result>
         </action>
-        
+        <action name="crearAnuncio" class="advertising.actions.GetCategory">
+            <result name="success">crearAnuncio.jsp</result>
+            <result name="error">principal3.jsp</result>
+        </action>
         <action name="addAnuncio" class="advertising.actions.AddAnuncio">
             <result type="redirectAction">misAnuncios</result>
             <result name="input">misAnuncios.jsp</result>

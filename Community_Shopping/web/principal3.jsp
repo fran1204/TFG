@@ -34,14 +34,16 @@
             <div class="row placeholders">
                 <s:url var="lote" namespace="/" action="crearLote">
                 </s:url>
+                <s:url var="anunc" namespace="/" action="crearAnuncio">
+                </s:url>
               
-                <div class="col-md-4 center-block placeholder">
-                    <s:a href="%{lote}"><img src="img/futbol.jpg" width="200" height="200" class="img-responsive" alt="futbol"></s:a>
+                <div class="col-md-5 center-block placeholder">
+                    <s:a href="%{lote}"><img src="img/crearLote.jpg" width="300" height="300" class="img-responsive" alt="crear lote"></s:a>
                     <h4>Crear lote</h4>
                     
                 </div>
-                <div class="col-md-4 center-block placeholder">
-                    <s:a href="crearAnuncio.jsp"><img src="img/baloncesto.jpg" width="200" height="200" class="img-responsive" alt="baloncesto"></s:a>
+                <div class="col-md-5 center-block placeholder">
+                    <s:a href="%{anunc}"><img src="img/crearAnuncio2.png" width="300" height="300" class="img-responsive" alt="crear anuncio"></s:a>
                     <h4>Crear anuncio</h4>
                 </div>
             </div> 

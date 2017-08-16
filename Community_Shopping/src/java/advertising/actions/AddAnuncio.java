@@ -34,7 +34,7 @@ public class AddAnuncio extends ActionSupport {
     private int duration;
     private Advertising a;
     private String ErrorImg;
-    private int idCategory;
+    private int category;
 
     public AddAnuncio() {
 
@@ -53,11 +53,11 @@ public class AddAnuncio extends ActionSupport {
             fileUploadFileName = System.currentTimeMillis() + "." + extension;
             String urlDir = ServletActionContext.getRequest().getSession().getServletContext().getRealPath("/");
             urlDir = urlDir.split("build")[0] + "web/";
-            
+
             adao.resize(fileUpload.getAbsolutePath(), urlDir + "img/" + fileUploadFileName, 480, 480);
             CategoryDAO cdao = new CategoryDAO();
             //Category category, User user, String image, String url, Date createdDate, int duration
-            a = new Advertising(cdao.get(idCategory),u, fileUploadFileName, url, ahora, duration);
+            a = new Advertising(cdao.get(category), u, fileUploadFileName, url, ahora, duration);
             adao.add(a);
             return SUCCESS;
         } else {
@@ -131,12 +131,12 @@ public class AddAnuncio extends ActionSupport {
         this.ErrorImg = ErrorImg;
     }
 
-    public int getIdCategory() {
-        return idCategory;
+    public int getCategory() {
+        return category;
     }
 
-    public void setIdCategory(int idCategory) {
-        this.idCategory = idCategory;
+    public void setCategory(int category) {
+        this.category = category;
     }
 
 }
