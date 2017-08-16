@@ -35,35 +35,56 @@
                 </div>
                 <div class="col-md-3"></div>
             </div>
-
-            <s:iterator value="lotes"> 
+            <!--Prueba de anuncio y oferta -->
+            <s:iterator value="anuncio"> 
                 <div class="col-md-3 col-sm-3">
-                    <div class="feature-gallery">
-                        <s:url var="detalle" namespace="/" action="detalleLote" >
-                            <s:param name="id" value="%{id}"/>
-                        </s:url>
-                        <s:a href="%{detalle}">
-                            <img class="thumb" src="img/<s:property value='photo'/>" alt="" title="">
+                    <s:if test="%{url!=null && url!=''}">
+                        <div class="feature-gallery">
+                            <a href="<s:url value='%{url}'/>">
+                                <img class="thumb" src="img/<s:property value='image'/>" alt="" title="">
+                            </a>
 
-                            <div class="fg-overlay">
-                                <h2><s:property value='title'/></h2>
-                                <p><s:property value='description'/></p>
-                                <p>Lote: <s:property value='numSet'/> und.</p>
-                                <p>Precio: <s:property value='price'/>€</p>
-                                <p>Cantidad Disponible: <s:property value='quantityAvailable'/></p>
-                            </div>
-                        </s:a>
-                    </div>
-                    <div>                       
-                        <s:a href="login.jsp">
-                            Compartir!
-                        </s:a>
-                    </div>
-                    <div>
-                        <s:a href="login.jsp">
-                            Lo quiero!
-                        </s:a>
-                    </div>
+                        </div>
+                        <div>                       
+                            <a href="<s:url value='%{url}'/>">
+                                Compartir!
+                            </a>
+                        </div>
+                        <div>
+                            <a href="<s:url value='%{url}'/>">
+                                Lo quiero!
+                            </a>
+                        </div>
+                    </s:if>
+                    <s:else>
+                        <div class="feature-gallery">
+                            <s:url var="detalle" namespace="/" action="detalleLote" >
+                                <s:param name="id" value="%{id}"/>
+                            </s:url>
+                            <s:a href="%{detalle}">
+                                <img class="thumb" src="img/<s:property value='photo'/>" alt="" title="">
+
+                                <div class="fg-overlay">
+                                    <h2><s:property value='title'/></h2>
+                                    <p><s:property value='description'/></p>
+                                    <p>Lote: <s:property value='numSet'/> und.</p>
+                                    <p>Precio: <s:property value='price'/>€</p>
+                                    <p>Cantidad Disponible: <s:property value='quantityAvailable'/></p>
+                                </div>
+                            </s:a>
+
+                        </div>
+                        <div>                       
+                            <s:a href="login.jsp">
+                                Compartir!
+                            </s:a>
+                        </div>
+                        <div>
+                            <s:a href="login.jsp">
+                                Lo quiero!
+                            </s:a>
+                        </div>
+                    </s:else>
                 </div>
             </s:iterator>
         </div>
