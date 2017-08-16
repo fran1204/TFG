@@ -56,7 +56,7 @@ public class AddUser extends ActionSupport {
             SimpleDateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
             formateador.format(ahora);
             if (provider) {
-                //String name,String email, String password, boolean provider, String photo,Date createDate
+                //Sector sector, String name, String email, String password, Integer bank, String company_name, Boolean provider, Date created_date
                 u = new User(sectordao.getSectorById(sector), name, email, password, bank, company_name, provider, ahora);
             } else {
                 //String name,String email, String password, boolean provider, String photo,Date createDate

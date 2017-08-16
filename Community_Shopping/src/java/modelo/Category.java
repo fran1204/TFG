@@ -1,5 +1,5 @@
 package modelo;
-// Generated 14-ago-2017 9:28:28 by Hibernate Tools 4.3.1
+// Generated 16-ago-2017 13:01:14 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -13,6 +13,7 @@ public class Category  implements java.io.Serializable {
 
      private Integer id;
      private String type;
+     private Set advertisings = new HashSet(0);
      private Set lots = new HashSet(0);
 
     public Category() {
@@ -22,8 +23,9 @@ public class Category  implements java.io.Serializable {
     public Category(String type) {
         this.type = type;
     }
-    public Category(String type, Set lots) {
+    public Category(String type, Set advertisings, Set lots) {
        this.type = type;
+       this.advertisings = advertisings;
        this.lots = lots;
     }
    
@@ -40,6 +42,13 @@ public class Category  implements java.io.Serializable {
     
     public void setType(String type) {
         this.type = type;
+    }
+    public Set getAdvertisings() {
+        return this.advertisings;
+    }
+    
+    public void setAdvertisings(Set advertisings) {
+        this.advertisings = advertisings;
     }
     public Set getLots() {
         return this.lots;

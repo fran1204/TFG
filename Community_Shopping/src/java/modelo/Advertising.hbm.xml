@@ -1,13 +1,16 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 14-ago-2017 9:28:29 by Hibernate Tools 4.3.1 -->
+<!-- Generated 16-ago-2017 13:01:14 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Advertising" table="advertising" catalog="community_shopping" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
             <column name="Id" />
             <generator class="identity" />
         </id>
+        <many-to-one name="category" class="modelo.Category" fetch="select" lazy="false">
+            <column name="id_category" not-null="true" />
+        </many-to-one>
         <many-to-one name="user" class="modelo.User" fetch="select">
             <column name="Id_provider" not-null="true" />
         </many-to-one>

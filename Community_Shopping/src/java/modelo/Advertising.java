@@ -1,5 +1,5 @@
 package modelo;
-// Generated 14-ago-2017 9:28:28 by Hibernate Tools 4.3.1
+// Generated 16-ago-2017 13:01:14 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -13,6 +13,7 @@ public class Advertising  implements java.io.Serializable {
 
 
      private Integer id;
+     private Category category;
      private User user;
      private String image;
      private String url;
@@ -25,14 +26,16 @@ public class Advertising  implements java.io.Serializable {
     }
 
 	
-    public Advertising(User user, String image, String url, Date createdDate, int duration) {
+    public Advertising(Category category, User user, String image, String url, Date createdDate, int duration) {
+        this.category = category;
         this.user = user;
         this.image = image;
         this.url = url;
         this.createdDate = createdDate;
         this.duration = duration;
     }
-    public Advertising(User user, String image, String url, Date createdDate, int duration, Date deletionDate, Set payOrders) {
+    public Advertising(Category category, User user, String image, String url, Date createdDate, int duration, Date deletionDate, Set payOrders) {
+       this.category = category;
        this.user = user;
        this.image = image;
        this.url = url;
@@ -48,6 +51,13 @@ public class Advertising  implements java.io.Serializable {
     
     public void setId(Integer id) {
         this.id = id;
+    }
+    public Category getCategory() {
+        return this.category;
+    }
+    
+    public void setCategory(Category category) {
+        this.category = category;
     }
     public User getUser() {
         return this.user;

@@ -6,6 +6,7 @@
 package advertising.actions;
 
 import DAO.AdvertisingDAO;
+import DAO.CategoryDAO;
 import DAO.SessionDAO;
 import DAO.UserDAO;
 import static com.opensymphony.xwork2.Action.ERROR;
@@ -16,7 +17,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import modelo.Advertising;
-import modelo.Lot;
 import modelo.User;
 import org.apache.struts2.ServletActionContext;
 
@@ -34,6 +34,7 @@ public class AddAnuncio extends ActionSupport {
     private int duration;
     private Advertising a;
     private String ErrorImg;
+    private int idCategory;
 
     public AddAnuncio() {
 
@@ -54,8 +55,9 @@ public class AddAnuncio extends ActionSupport {
             urlDir = urlDir.split("build")[0] + "web/";
             
             adao.resize(fileUpload.getAbsolutePath(), urlDir + "img/" + fileUploadFileName, 480, 480);
-
-            a = new Advertising(u, fileUploadFileName, url, ahora, duration);
+            CategoryDAO cdao = new CategoryDAO();
+            //Category category, User user, String image, String url, Date createdDate, int duration
+            a = new Advertising(cdao.get(idCategory),u, fileUploadFileName, url, ahora, duration);
             adao.add(a);
             return SUCCESS;
         } else {
@@ -127,6 +129,14 @@ public class AddAnuncio extends ActionSupport {
 
     public void setErrorImg(String ErrorImg) {
         this.ErrorImg = ErrorImg;
+    }
+
+    public int getIdCategory() {
+        return idCategory;
+    }
+
+    public void setIdCategory(int idCategory) {
+        this.idCategory = idCategory;
     }
 
 }

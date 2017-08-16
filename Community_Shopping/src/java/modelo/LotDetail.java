@@ -1,5 +1,5 @@
 package modelo;
-// Generated 14-ago-2017 9:28:28 by Hibernate Tools 4.3.1
+// Generated 16-ago-2017 13:01:14 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -30,16 +30,15 @@ public class LotDetail  implements java.io.Serializable {
     }
 
 	
-    public LotDetail(Lot lot, String title, boolean publish, int quantity, String color,String size,Integer capacity,Date createdDate) {
+    public LotDetail(Lot lot, String title, boolean publish, int quantity, String color,String size, Integer capacity,Date createdDate) {
         this.lot = lot;
         this.title = title;
         this.publish = publish;
         this.quantity = quantity;
-        this.createdDate = createdDate;
-        this.quantityAvailable = quantity;
         this.color = color;
         this.size = size;
         this.capacity = capacity;
+        this.createdDate = createdDate;
     }
     public LotDetail(Lot lot, String title, boolean publish, int quantity, String color, String size, Integer capacity, Integer quantityAvailable, Date createdDate, Date deletionDate, Set interlocutorOrders, Set galleries) {
        this.lot = lot;
