@@ -6,12 +6,14 @@
 package advertising.actions;
 
 import DAO.AdvertisingDAO;
+import DAO.CategoryDAO;
 import DAO.SessionDAO;
 import DAO.UserDAO;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
 import modelo.Advertising;
+import modelo.Category;
 import modelo.User;
 
 /**
@@ -23,6 +25,8 @@ public class UpdateAnuncio extends ActionSupport {
     private Advertising ad;
     private String url;
     private int anuncioId;
+    private List<Category> categoris;
+    private int category;
 
     public UpdateAnuncio() {
 
@@ -30,8 +34,10 @@ public class UpdateAnuncio extends ActionSupport {
 
     public String execute() throws Exception {
         AdvertisingDAO adao = new AdvertisingDAO();
-        adao.update(anuncioId,url);
+        CategoryDAO cdao = new CategoryDAO();
+        adao.update(anuncioId, url,cdao.get(category));
         ad = adao.get(anuncioId);
+        categoris = cdao.getAll();
         return SUCCESS;
     }
 
@@ -58,5 +64,21 @@ public class UpdateAnuncio extends ActionSupport {
     public void setAnuncioId(int anuncioId) {
         this.anuncioId = anuncioId;
     }
-    
+
+    public List<Category> getCategoris() {
+        return categoris;
+    }
+
+    public void setCategoris(List<Category> categoris) {
+        this.categoris = categoris;
+    }
+
+    public int getCategory() {
+        return category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
+    }
+
 }

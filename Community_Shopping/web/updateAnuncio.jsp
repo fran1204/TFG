@@ -50,6 +50,7 @@
                         <div class="col-md-5">
                         <s:form cssClass="form-signin col-lg-offset-2" cssStyle="display: inline-block" action="updateAnuncio">
                             <s:label value="Url"/><s:textfield cssClass="form-control" name="url" value="%{ad.url}"/>
+                            <s:select name="category" cssClass="form-control" list="categoris" listKey="id" listValue="type"/>
                         </div>
                         <div class="col-md-4">
                             <s:hidden name="anuncioId" value="%{ad.id}"/>

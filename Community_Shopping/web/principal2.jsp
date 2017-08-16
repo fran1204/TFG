@@ -49,12 +49,7 @@
                         </div>
                         <div>                       
                             <a href="<s:url value='%{url}'/>">
-                                Compartir!
-                            </a>
-                        </div>
-                        <div>
-                            <a href="<s:url value='%{url}'/>">
-                                Lo quiero!
+                               ir al anuncio
                             </a>
                         </div>
                     </s:if>

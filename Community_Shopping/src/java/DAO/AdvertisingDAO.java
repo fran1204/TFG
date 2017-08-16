@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.util.List;
 import javax.imageio.ImageIO;
 import modelo.Advertising;
+import modelo.Category;
 import modelo.HibernateUtil;
-import modelo.Lot;
 import modelo.User;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -68,12 +68,13 @@ public class AdvertisingDAO {
         tx.commit();
     }
 
-    public Advertising update(Integer id, String url) {
+    public Advertising update(Integer id, String url, Category category) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
         Query q = sesion.createQuery("from Advertising WHERE id='" + id + "'");
         Advertising u = (Advertising) q.uniqueResult();
         u.setUrl(url);
+        u.setCategory(category);
         sesion.update(u);
         tx.commit();
         return u;
