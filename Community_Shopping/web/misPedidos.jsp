@@ -31,6 +31,7 @@
                     <th>Descripción</th>
                     <th>Características</th>
                     <th>Estado</th>
+                    <th>ClienteLider</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -47,6 +48,7 @@
                         <td><s:property value="%{order.lot.description}" /></td>
                         <td><s:property value="%{lotDetail.color}" />, <s:property value="%{lotDetail.size}" /></td>
                         <td><s:property value='%{order.stateOrder}'/></td>
+                        <td><a href="mailto:<s:property value='%{order.user.email}' />"><s:property value='%{order.user.email}' /></a></td>
                         <td><s:a href="%{ver}">Ver</s:a></td>                
                         <td><s:a href="%{borrar}">Eliminar</s:a></td>        
                         </tr>

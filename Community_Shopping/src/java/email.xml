@@ -1,0 +1,15 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Author: fmrodriguez -->
+ 
+<struts>
+    <constant name="struts.devMode" value="true" />
+    <package name="email" namespace="/" extends="struts-default">
+        <action name="emailer" class="email.actions.Emailer" method="execute">
+            <result name="success"></result>
+            <result name="error"></result>
+        </action>
+    </package>
+</struts>

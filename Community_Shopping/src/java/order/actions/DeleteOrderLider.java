@@ -35,7 +35,8 @@ public class DeleteOrderLider extends ActionSupport {
                 ildao.delete(idLotDetail);
                 allUserOrder = ildao.getAllUserOrder(ildao.get(idInterOrder).getOrder().getId());
                 odao.updateClienteLider(ildao.get(idInterOrder).getOrder().getId(),allUserOrder.get(0).getUser());
-                //ENVIAR CORREO AL NUEVO CLIENTE LIDER
+                //ENVIAR CORREO AL NUEVO CLIENTE LIDER PARA AVISARLO
+                //ENVIAR CORREO A LOS ADHERIDOS DEL NUEVO CLIENTE LIDER 
                 //PENSAR ESTO, SI TENGO EL DINERO Y LE PASO AL MARRON AL OTRO QUE?
             }else{
                 int idOrder = ildao.get(idInterOrder).getOrder().getId();

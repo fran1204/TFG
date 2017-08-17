@@ -9,6 +9,7 @@
     <include file="navegacion.xml"/>
     <include file="order.xml"/>
     <include file="lotdetail.xml"/>
+    <include file="email.xml"/>
     <constant name="struts.multipart.maxSize" value="100000000000" /> 
     <constant name="struts.mapper.action.prefix.enabled" value="true" />
     <constant name="struts.custom.i18n.resources" value="global" />
