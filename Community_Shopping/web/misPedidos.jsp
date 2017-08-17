@@ -72,7 +72,8 @@
                             <s:param name="id" value="%{lotDetail.id}"/>
                         </s:url>
                         <s:url var="borrar" namespace="/" action="eliminarPedidoLider" >
-                            <s:param name="id" value="%{lotDetail.id}"/>
+                            <s:param name="idInterOrder" value="%{id}"/>
+                            <s:param name="idLotDetail" value="%{lotDetail.id}"/>
                         </s:url>
                         <tr>
                             <td>0<s:property value='%{id}'/></td>

@@ -72,4 +72,13 @@ public class InterlocutorOrderDAO {
         return interlocutorOrder;
     }
 
+    public List<InterlocutorOrder> getAllUserOrder(Integer id) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from InterlocutorOrder WHERE id_order= '" + id + "' ORDER BY created_date asc");
+        List<InterlocutorOrder> interlocutorOrder = (List<InterlocutorOrder>) q.list();
+        tx.commit();
+        return interlocutorOrder;
+    }
+
 }
