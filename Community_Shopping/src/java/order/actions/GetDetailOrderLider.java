@@ -7,6 +7,7 @@ package order.actions;
 
 import DAO.InterlocutorOrderDAO;
 import DAO.LotDAO;
+import DAO.OrderDAO;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
@@ -17,7 +18,7 @@ import modelo.InterlocutorOrder;
  * @author fran
  */
 public class GetDetailOrderLider extends ActionSupport {
-    private int id;
+    private int id; // id del pedido
     private List<InterlocutorOrder> io;
     private float price;
     private int cantidadOferta;

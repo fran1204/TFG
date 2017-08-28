@@ -5,10 +5,11 @@
  */
 package DAO;
 
+import java.util.Date;
 import java.util.List;
-import static jdk.nashorn.internal.runtime.Debug.id;
 import modelo.HibernateUtil;
 import modelo.InterlocutorOrder;
+import modelo.Order;
 import modelo.User;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -46,10 +47,11 @@ public class InterlocutorOrderDAO {
         tx.commit();
     }
 
-    public void delete(Integer id) {
+    public void delete(Integer id, Integer idUser) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        InterlocutorOrder u = (InterlocutorOrder) sesion.load(InterlocutorOrder.class, id);
+        Query q = sesion.createQuery("from InterlocutorOrder WHERE id_lotDetail=" + id + " and id_interlocutor="+idUser);
+        InterlocutorOrder u = (InterlocutorOrder) q.uniqueResult();
         sesion.delete(u);
         tx.commit();
     }
@@ -57,7 +59,7 @@ public class InterlocutorOrderDAO {
     public List<InterlocutorOrder> getLotDetailUser(User u) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from InterlocutorOrder WHERE id_interlocutor = '" + u.getId() + "'");
+        Query q = sesion.createQuery("from InterlocutorOrder WHERE id_interlocutor = '" + u.getId() + "' and deletion_date is NULL ");
         List<InterlocutorOrder> interlocutorOrder = (List<InterlocutorOrder>) q.list();
         tx.commit();
         return interlocutorOrder;
@@ -66,7 +68,7 @@ public class InterlocutorOrderDAO {
     public List<InterlocutorOrder> getOrderDetailClienteLider(int id) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from InterlocutorOrder WHERE id_lotDetail = '" + id + "'");
+        Query q = sesion.createQuery("from InterlocutorOrder WHERE id_order = '" + id + "'and deletion_date is NULL ");
         List<InterlocutorOrder> interlocutorOrder = (List<InterlocutorOrder>) q.list();
         tx.commit();
         return interlocutorOrder;
@@ -75,10 +77,20 @@ public class InterlocutorOrderDAO {
     public List<InterlocutorOrder> getAllUserOrder(Integer id) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from InterlocutorOrder WHERE id_order= '" + id + "' ORDER BY created_date asc");
+        Query q = sesion.createQuery("from InterlocutorOrder WHERE id_order= '" + id + "'and deletion_date is NULL ORDER BY created_date asc");
         List<InterlocutorOrder> interlocutorOrder = (List<InterlocutorOrder>) q.list();
         tx.commit();
         return interlocutorOrder;
+    }
+
+    public void deleteOrder(int id, Date hoy) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from InterlocutorOrder WHERE id='" + id + "'");
+        InterlocutorOrder o = (InterlocutorOrder) q.uniqueResult();
+        o.setDeletionDate(hoy);
+        sesion.update(o);
+        tx.commit();
     }
 
 }

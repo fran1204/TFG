@@ -11,6 +11,10 @@
                 <param name="actionName">misPedidos</param>
                 <param name="message">${message}</param>
             </result>
+             <result name="error" type="redirectAction">
+                <param name="actionName">misPedidos</param>
+                <param name="message">${message}</param>
+            </result>
         </action>
         <action name="misPedidos" class="order.actions.GetOrder">
             <result name="success">misPedidos.jsp</result>

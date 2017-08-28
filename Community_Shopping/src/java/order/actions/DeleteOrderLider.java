@@ -6,8 +6,10 @@
 package order.actions;
 
 import DAO.InterlocutorOrderDAO;
+import DAO.LotDAO;
 import DAO.LotDetailDAO;
 import DAO.OrderDAO;
+import DAO.SessionDAO;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
 import modelo.InterlocutorOrder;
@@ -29,18 +31,29 @@ public class DeleteOrderLider extends ActionSupport {
         InterlocutorOrderDAO ildao = new InterlocutorOrderDAO();
         OrderDAO odao = new OrderDAO();
         LotDetailDAO lddao = new LotDetailDAO();
+        LotDAO ldao = new LotDAO();
+        int idUser = (Integer) new SessionDAO().getSession().get("id");
         if (odao.IsLeader(ildao.get(idInterOrder).getUser().getId(), lddao.get(idLotDetail).getLot().getId())) {
             List<InterlocutorOrder> allUserOrder = ildao.getAllUserOrder(ildao.get(idInterOrder).getOrder().getId());
             if (allUserOrder.size() > 1) {
-                ildao.delete(idLotDetail);
-                allUserOrder = ildao.getAllUserOrder(ildao.get(idInterOrder).getOrder().getId());
-                odao.updateClienteLider(ildao.get(idInterOrder).getOrder().getId(),allUserOrder.get(0).getUser());
+                int idOrder = ildao.get(idInterOrder).getOrder().getId();
+                InterlocutorOrder il = ildao.get(idInterOrder);
+                int cantDetail = il.getLotDetail().getQuantityAvailable();
+                int cantLot = il.getOrder().getLot().getQuantityAvailable();
+                int totalDetail = cantDetail + il.getAmount();
+                int totalLot = cantLot + il.getAmount();
+                lddao.setQuantityAvailable(il.getLotDetail().getId(), totalDetail);
+                ldao.setQuantityAvailable(totalLot, il.getOrder().getLot().getId());
+                
+                ildao.delete(idLotDetail, idUser);//pasar el user tambien
+                allUserOrder = ildao.getAllUserOrder(idOrder);
+                odao.updateClienteLider(idOrder, allUserOrder.get(0).getUser());
                 //ENVIAR CORREO AL NUEVO CLIENTE LIDER PARA AVISARLO
                 //ENVIAR CORREO A LOS ADHERIDOS DEL NUEVO CLIENTE LIDER 
                 //PENSAR ESTO, SI TENGO EL DINERO Y LE PASO AL MARRON AL OTRO QUE?
-            }else{
+            } else {
                 int idOrder = ildao.get(idInterOrder).getOrder().getId();
-                ildao.delete(idLotDetail);
+                ildao.delete(idLotDetail, idUser);
                 odao.delete(idOrder);
             }
         }

@@ -47,19 +47,19 @@ Contributor(s):
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">root</property>
     <property name="hibernate.current_session_context_class">thread</property>
-    <mapping resource="modelo/Lot.hbm.xml"/>
-    <mapping resource="modelo/Category.hbm.xml"/>
-    <mapping resource="modelo/PaymentMethod.hbm.xml"/>
-    <mapping resource="modelo/InterlocutorOrder.hbm.xml"/>
-    <mapping resource="modelo/User.hbm.xml"/>
-    <mapping resource="modelo/PayOrder.hbm.xml"/>
-    <mapping resource="modelo/Share.hbm.xml"/>
     <mapping resource="modelo/Order.hbm.xml"/>
-    <mapping resource="modelo/Sector.hbm.xml"/>
-    <mapping resource="modelo/Purchase.hbm.xml"/>
-    <mapping resource="modelo/Gallery.hbm.xml"/>
+    <mapping resource="modelo/User.hbm.xml"/>
     <mapping resource="modelo/Channel.hbm.xml"/>
     <mapping resource="modelo/LotDetail.hbm.xml"/>
+    <mapping resource="modelo/Gallery.hbm.xml"/>
+    <mapping resource="modelo/Share.hbm.xml"/>
     <mapping resource="modelo/Advertising.hbm.xml"/>
+    <mapping resource="modelo/Lot.hbm.xml"/>
+    <mapping resource="modelo/InterlocutorOrder.hbm.xml"/>
+    <mapping resource="modelo/Category.hbm.xml"/>
+    <mapping resource="modelo/Sector.hbm.xml"/>
+    <mapping resource="modelo/PayOrder.hbm.xml"/>
+    <mapping resource="modelo/PaymentMethod.hbm.xml"/>
+    <mapping resource="modelo/Purchase.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

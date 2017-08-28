@@ -71,7 +71,7 @@
                     </tr>
                     <s:iterator value="orderDetail"> 
                         <s:url var="ver" namespace="/" action="verPedidoLider" >
-                            <s:param name="id" value="%{lotDetail.id}"/>
+                            <s:param name="id" value="%{order.id}"/>
                         </s:url>
                         <s:url var="borrar" namespace="/" action="eliminarPedidoLider" >
                             <s:param name="idInterOrder" value="%{id}"/>

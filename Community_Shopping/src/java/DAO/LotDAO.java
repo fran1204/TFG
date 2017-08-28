@@ -30,7 +30,7 @@ public class LotDAO {
     public List<Lot> getAll() {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from Lot where expiry_date > now() order by expiry_date ASC");
+        Query q = sesion.createQuery("from Lot where DATE(expiry_date) > DATE(now()) OR DATE(expiry_date) = DATE(now()) order by expiry_date ASC");
         List<Lot> lotes = (List<Lot>) q.list();
         tx.commit();
         return lotes;

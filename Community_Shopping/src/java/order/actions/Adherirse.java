@@ -61,7 +61,7 @@ public class Adherirse extends ActionSupport {
             //LotDetail lotDetail, Order order, User user, float paidTotal, int amount, Date createdDate
             iorder = new InterlocutorOrder(ld, order, u, 0, amount, ahora);
             int cantidadDisponible = lddao.getCantidadDisponible(idDetail);
-            if (cantidadDisponible > amount) {
+            if (cantidadDisponible >= amount) {
                 //actualizo la cantidad disponible del detalle
                 int total = cantidadDisponible - amount;
                 lddao.setQuantityAvailable(idDetail, total);

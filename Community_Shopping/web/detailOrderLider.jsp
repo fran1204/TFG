@@ -45,7 +45,9 @@
                         <s:param name="id" value="%{id}"/>
                     </s:url>
                     <s:url var="email" namespace="/" action="sendEmail" >
-                        <s:param name="id" value="%{id}"/>
+                        <s:param name="idInterOrder" value="%{id}"/>
+                        <s:param name="emailUser" value="%{user.email}"/>
+                        <s:param name="op" value="recordatorio"/>
                     </s:url>
 
                     <s:form cssClass="form-signin" action="updateOrderUser">

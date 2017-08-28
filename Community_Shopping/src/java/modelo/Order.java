@@ -1,5 +1,5 @@
 package modelo;
-// Generated 16-ago-2017 13:01:14 by Hibernate Tools 4.3.1
+// Generated 28-ago-2017 10:14:22 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -26,9 +26,8 @@ public class Order  implements java.io.Serializable {
     }
 
 	
-    public Order(Lot lot,User user, String stateOrder, Date createdDate) {
+    public Order(Lot lot, String stateOrder, Date createdDate) {
         this.lot = lot;
-        this.user = user;
         this.stateOrder = stateOrder;
         this.createdDate = createdDate;
     }
@@ -42,6 +41,13 @@ public class Order  implements java.io.Serializable {
        this.interlocutorOrders = interlocutorOrders;
        this.purchases = purchases;
     }
+    public Order(Lot l, User u, String stateOrder, Date ahora) {
+        this.lot = l;
+        this.user = u;
+        this.stateOrder = stateOrder;
+        this.createdDate=ahora;
+    }
+
    
     public Integer getId() {
         return this.id;

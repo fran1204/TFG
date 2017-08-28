@@ -7,7 +7,7 @@
 <struts>
     <constant name="struts.devMode" value="true" />
     <package name="email" namespace="/" extends="struts-default">
-        <action name="emailer" class="email.actions.Emailer" method="execute">
+        <action name="sendEmail" class="email.actions.Emailer" method="execute">
             <result name="success"></result>
             <result name="error"></result>
         </action>

@@ -51,6 +51,19 @@
                             </a>
                         </div>
                     </s:if>
+                    <s:elseif test="%{numSet == null}">
+                        <div class="feature-gallery">
+                            <s:a href="%{urlExternal}">
+                                <img class="thumb" src="<s:property value='photo'/>" alt="" title="">
+
+                                <div class="fg-overlay">
+                                    <h2><s:property value='title'/></h2>
+                                    <p><s:property value='description'/></p>
+                                    <p>Precio: <s:property value='price'/>€ und.</p>
+                                </div>
+                            </s:a>
+                        </div>
+                    </s:elseif>
                     <s:else>
                         <div class="feature-gallery">
                             <s:url var="detalle" namespace="/" action="detalleLote">

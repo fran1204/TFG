@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 16-ago-2017 13:01:14 by Hibernate Tools 4.3.1 -->
+<!-- Generated 28-ago-2017 10:14:24 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Advertising" table="advertising" catalog="community_shopping" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -11,7 +11,7 @@
         <many-to-one name="category" class="modelo.Category" fetch="select" lazy="false">
             <column name="id_category" not-null="true" />
         </many-to-one>
-        <many-to-one name="user" class="modelo.User" fetch="select">
+        <many-to-one name="user" class="modelo.User" fetch="select" lazy="false">
             <column name="Id_provider" not-null="true" />
         </many-to-one>
         <property name="image" type="string">
@@ -19,6 +19,12 @@
         </property>
         <property name="url" type="string">
             <column name="Url" not-null="true" />
+        </property>
+        <property name="pagado" type="java.lang.Boolean">
+            <column name="pagado" />
+        </property>
+        <property name="purshaceDate" type="date">
+            <column name="purshace_date" length="10" />
         </property>
         <property name="createdDate" type="timestamp">
             <column name="Created_date" length="19" not-null="true" />

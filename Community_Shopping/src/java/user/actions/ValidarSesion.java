@@ -43,12 +43,13 @@ public class ValidarSesion extends ActionSupport {
         SessionDAO sdao = new SessionDAO();
         UserDAO dao = new UserDAO();
         CategoryDAO cdao = new CategoryDAO();
-        categoris = cdao.getAll();
+
         User u = dao.get((String) new SessionDAO().getSession().get("email"));
         if (sdao.existeSesion()) {
             if (dao.get(u.getEmail()).isProvider()) {
                 return NONE;
             } else {
+                categoris = cdao.getAll();
                 return SUCCESS;
             }
         } else {

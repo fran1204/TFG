@@ -9,7 +9,6 @@ import DAO.CategoryDAO;
 import DAO.LotDAO;
 import DAO.SessionDAO;
 import DAO.UserDAO;
-import static com.opensymphony.xwork2.Action.INPUT;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.validator.annotations.IntRangeFieldValidator;

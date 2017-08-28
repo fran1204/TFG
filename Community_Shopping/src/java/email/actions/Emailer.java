@@ -22,12 +22,24 @@ import javax.mail.internet.MimeMessage;
  */
 public class Emailer extends ActionSupport {
 
-    private String from;
-    private String password;
-    private String to;
-    private String subject;
-    private String body;
+    private String from = "franciscomiguel.rodalv@gmail.com";
+    private String password="franmi12";
+    private String to="franshesco12@gmail.com";
+    private String subject="prueba";
+    private String body="pruebaaaaaaaaaa";
+    private int idInterOrder;
+    private String emailUser;
+    private String op;
 
+    public Emailer () {
+        switch (op) {
+            case  "recordatorio":
+                to = emailUser;
+                subject="CommunityShopping: Recordatorio de pago";
+                body="MEnsaje de prueba";
+                break;
+        }
+    }
     static Properties properties = new Properties();
 
     static {
@@ -38,11 +50,12 @@ public class Emailer extends ActionSupport {
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.port", "465");
     }
+    
 
     public String execute() {
         String ret = SUCCESS;
         try {
-            Session session = Session.getDefaultInstance(properties,
+            Session session = Session.getInstance(properties,
                     new javax.mail.Authenticator() {
                 protected PasswordAuthentication
                         getPasswordAuthentication() {
@@ -111,4 +124,29 @@ public class Emailer extends ActionSupport {
     public static void setProperties(Properties properties) {
         Emailer.properties = properties;
     }
+
+    public String getOp() {
+        return op;
+    }
+
+    public void setOp(String op) {
+        this.op = op;
+    }
+
+    public int getIdInterOrder() {
+        return idInterOrder;
+    }
+
+    public void setIdInterOrder(int idInterOrder) {
+        this.idInterOrder = idInterOrder;
+    }
+
+    public String getEmailUser() {
+        return emailUser;
+    }
+
+    public void setEmailUser(String emailUser) {
+        this.emailUser = emailUser;
+    }
+    
 }

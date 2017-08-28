@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <h1 class="page-header text-center">¡Chollos a compartir! Principal 11</h1>
+                    <h1 class="page-header text-center">¡Chollos a compartir!</h1>
                 </div>
                 <div class="col-md-3"></div>
             </div>
@@ -49,10 +49,23 @@
                         </div>
                         <div>                       
                             <a href="<s:url value='%{url}'/>">
-                               ir al anuncio
+                                ir al anuncio
                             </a>
                         </div>
                     </s:if>
+                    <s:elseif test="%{numSet == null}">
+                        <div class="feature-gallery">
+                            <s:a href="%{urlExternal}">
+                                <img class="thumb" src="<s:property value='photo'/>" alt="" title="">
+
+                                <div class="fg-overlay">
+                                    <h2><s:property value='title'/></h2>
+                                    <p><s:property value='description'/></p>
+                                    <p>Precio: <s:property value='price'/>€ und.</p>
+                                </div>
+                            </s:a>
+                        </div>
+                    </s:elseif>
                     <s:else>
                         <div class="feature-gallery">
                             <s:url var="detalle" namespace="/" action="detalleLote" >

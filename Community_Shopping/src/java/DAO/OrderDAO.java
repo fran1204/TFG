@@ -5,6 +5,8 @@
  */
 package DAO;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import modelo.HibernateUtil;
 import modelo.InterlocutorOrder;
@@ -106,6 +108,26 @@ public class OrderDAO {
         Query q = sesion.createQuery("from Order WHERE id='" + id + "'");
         Order o = (Order) q.uniqueResult();
         o.setUser(user);
+        sesion.update(o);
+        tx.commit();
+    }
+
+    public void setState(Order order, String estado) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from Order WHERE id='" + order.getId() + "'");
+        Order o = (Order) q.uniqueResult();
+        o.setStateOrder(estado);
+        sesion.update(o);
+        tx.commit();
+    }
+
+    public void setDateDelete(Order order, Date hoy) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from Order WHERE id='" + order.getId() + "'");
+        Order o = (Order) q.uniqueResult();
+        o.setDeletionDate(hoy);
         sesion.update(o);
         tx.commit();
     }

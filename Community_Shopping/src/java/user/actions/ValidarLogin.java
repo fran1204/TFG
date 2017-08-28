@@ -43,7 +43,7 @@ public class ValidarLogin extends ActionSupport {
         SessionDAO sdao = new SessionDAO();
         UserDAO dao = new UserDAO();
         CategoryDAO cdao = new CategoryDAO();
-        categoris = cdao.getAll();
+
         if (dao.validarLogin(email, password)) {
             sdao.getSession().put("email", email);
             sdao.getSession().put("id", dao.get(email).getId());
@@ -51,8 +51,10 @@ public class ValidarLogin extends ActionSupport {
             if (dao.get(email).isProvider()) {
                 return NONE;
             } else if (!dao.get(email).isProvider() && idLote == 0) {
+                categoris = cdao.getAll();
                 return SUCCESS;
             } else if (idLote != 0 && !dao.get(email).isProvider()) {
+                categoris = cdao.getAll();
                 return "lotdetail";
             } else {
                 mensajeError = "Usuario o contraseña incorrectos";
