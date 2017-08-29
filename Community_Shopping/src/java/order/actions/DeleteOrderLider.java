@@ -22,6 +22,7 @@ public class DeleteOrderLider extends ActionSupport {
 
     private int idInterOrder;
     private int idLotDetail;
+    private String emailUser;
 
     public DeleteOrderLider() {
 
@@ -44,13 +45,13 @@ public class DeleteOrderLider extends ActionSupport {
                 int totalLot = cantLot + il.getAmount();
                 lddao.setQuantityAvailable(il.getLotDetail().getId(), totalDetail);
                 ldao.setQuantityAvailable(totalLot, il.getOrder().getLot().getId());
-                
+
                 ildao.delete(idLotDetail, idUser);//pasar el user tambien
                 allUserOrder = ildao.getAllUserOrder(idOrder);
                 odao.updateClienteLider(idOrder, allUserOrder.get(0).getUser());
+                emailUser = allUserOrder.get(0).getUser().getEmail();
                 //ENVIAR CORREO AL NUEVO CLIENTE LIDER PARA AVISARLO
                 //ENVIAR CORREO A LOS ADHERIDOS DEL NUEVO CLIENTE LIDER 
-                //PENSAR ESTO, SI TENGO EL DINERO Y LE PASO AL MARRON AL OTRO QUE?
             } else {
                 int idOrder = ildao.get(idInterOrder).getOrder().getId();
                 ildao.delete(idLotDetail, idUser);
@@ -75,6 +76,14 @@ public class DeleteOrderLider extends ActionSupport {
 
     public void setIdLotDetail(int idLotDetail) {
         this.idLotDetail = idLotDetail;
+    }
+
+    public String getEmailUser() {
+        return emailUser;
+    }
+
+    public void setEmailUser(String emailUser) {
+        this.emailUser = emailUser;
     }
 
 }

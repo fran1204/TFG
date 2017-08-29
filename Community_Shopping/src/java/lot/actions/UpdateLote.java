@@ -7,15 +7,12 @@ package lot.actions;
 
 import DAO.CategoryDAO;
 import DAO.LotDAO;
-import DAO.SessionDAO;
-import DAO.UserDAO;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import modelo.Lot;
-import modelo.User;
 
 /**
  *

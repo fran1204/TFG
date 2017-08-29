@@ -1,5 +1,5 @@
 package modelo;
-// Generated 28-ago-2017 10:14:22 by Hibernate Tools 4.3.1
+// Generated 29-ago-2017 11:33:50 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -30,11 +30,17 @@ public class Lot implements java.io.Serializable {
     public Lot() {
     }
 
-    public Lot(String title, String description, float price, Date createDate) {
+    public Lot(Category category, User user, String title, String description, int numSet, float price, String photo, Date expiryDate, Date createDate) {
+        this.category = category;
+        this.user = user;
         this.title = title;
         this.description = description;
+        this.numSet = numSet;
+        this.quantityAvailable = numSet;
         this.price = price;
+        this.expiryDate = expiryDate;
         this.createDate = createDate;
+        this.photo = photo;
     }
 
     public Lot(Category category, User user, String title, String description, Integer numSet, Integer quantityAvailable, float price, Date expiryDate, Date createDate, Date deletionDate, String photo, String urlExternal, Set shares, Set orders, Set lotDetails) {
@@ -53,19 +59,6 @@ public class Lot implements java.io.Serializable {
         this.shares = shares;
         this.orders = orders;
         this.lotDetails = lotDetails;
-    }
-
-    public Lot(Category category, User user, String title, String description, int numSet, float price, String photo, Date expiry, Date ahora) {
-        this.category = category;
-        this.user = user;
-        this.title = title;
-        this.description = description;
-        this.numSet = numSet;
-        this.quantityAvailable = numSet;
-        this.price = price;
-        this.expiryDate = expiry;
-        this.photo = photo;
-
     }
 
     public Integer getId() {

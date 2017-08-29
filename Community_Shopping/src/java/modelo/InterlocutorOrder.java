@@ -1,5 +1,5 @@
 package modelo;
-// Generated 28-ago-2017 10:14:22 by Hibernate Tools 4.3.1
+// Generated 29-ago-2017 11:33:50 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -19,6 +19,7 @@ public class InterlocutorOrder  implements java.io.Serializable {
      private Date datePurchase;
      private Date createdDate;
      private Date deletionDate;
+     private String state;
 
     public InterlocutorOrder() {
     }
@@ -32,7 +33,7 @@ public class InterlocutorOrder  implements java.io.Serializable {
         this.amount = amount;
         this.createdDate = createdDate;
     }
-    public InterlocutorOrder(LotDetail lotDetail, Order order, User user, float paidTotal, int amount, Date datePurchase, Date createdDate, Date deletionDate) {
+    public InterlocutorOrder(LotDetail lotDetail, Order order, User user, float paidTotal, int amount, Date datePurchase, Date createdDate, Date deletionDate, String state) {
        this.lotDetail = lotDetail;
        this.order = order;
        this.user = user;
@@ -41,6 +42,7 @@ public class InterlocutorOrder  implements java.io.Serializable {
        this.datePurchase = datePurchase;
        this.createdDate = createdDate;
        this.deletionDate = deletionDate;
+       this.state = state;
     }
    
     public Integer getId() {
@@ -105,6 +107,13 @@ public class InterlocutorOrder  implements java.io.Serializable {
     
     public void setDeletionDate(Date deletionDate) {
         this.deletionDate = deletionDate;
+    }
+    public String getState() {
+        return this.state;
+    }
+    
+    public void setState(String state) {
+        this.state = state;
     }
 
 

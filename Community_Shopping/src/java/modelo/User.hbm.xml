@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 28-ago-2017 10:14:24 by Hibernate Tools 4.3.1 -->
+<!-- Generated 29-ago-2017 11:33:51 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.User" table="user" catalog="community_shopping" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -23,8 +23,8 @@
         <property name="photo" type="string">
             <column name="photo" />
         </property>
-        <property name="bank" type="java.lang.Integer">
-            <column name="bank" />
+        <property name="bank" type="string">
+            <column name="bank" length="24"/>
         </property>
         <property name="companyName" type="string">
             <column name="company_name" length="150" />

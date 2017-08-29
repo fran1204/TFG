@@ -1,5 +1,5 @@
 package modelo;
-// Generated 28-ago-2017 10:14:22 by Hibernate Tools 4.3.1
+// Generated 29-ago-2017 11:33:50 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -27,11 +27,15 @@ public class LotDetail implements java.io.Serializable {
     public LotDetail() {
     }
 
-    public LotDetail(Lot lot, String title, boolean publish, int quantity, Date createdDate) {
+    public LotDetail(Lot lot, String title, boolean publish, int quantity, String color, String size, Integer capacity, Date createdDate) {
         this.lot = lot;
         this.title = title;
+        this.color = color;
+        this.size = size;
+        this.capacity = capacity;
         this.publish = publish;
         this.quantity = quantity;
+        this.quantityAvailable = quantity;
         this.createdDate = createdDate;
     }
 
@@ -43,23 +47,11 @@ public class LotDetail implements java.io.Serializable {
         this.color = color;
         this.size = size;
         this.capacity = capacity;
-        this.quantityAvailable = quantityAvailable;
+        this.quantityAvailable = quantity;
         this.createdDate = createdDate;
         this.deletionDate = deletionDate;
         this.interlocutorOrders = interlocutorOrders;
         this.galleries = galleries;
-    }
-
-    public LotDetail(Lot lote, String titleDetail, boolean b, int quantity, String color, String size, int capacity, Date ahora) {
-        this.lot = lote;
-        this.title = titleDetail;
-        this.publish = b;
-        this.quantity = quantity;
-        this.color = color;
-        this.size = size;
-        this.capacity = capacity;
-        this.quantityAvailable = quantity;
-        this.createdDate = ahora;
     }
 
     public Integer getId() {

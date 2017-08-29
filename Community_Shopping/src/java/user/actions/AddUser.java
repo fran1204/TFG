@@ -13,6 +13,7 @@ import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.StringLengthFieldValidator;
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 import modelo.Sector;
@@ -31,7 +32,7 @@ public class AddUser extends ActionSupport {
     private String name;
     private String company_name;
     private List<Sector> sectores;
-    private Integer bank;
+    private String bank;
     private String password;
     private User u;
     private File fileUpload;
@@ -56,10 +57,13 @@ public class AddUser extends ActionSupport {
             SimpleDateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
             formateador.format(ahora);
             if (provider) {
-                //Sector sector, String name, String email, String password, Integer bank, String company_name, Boolean provider, Date created_date
-                u = new User(sectordao.getSectorById(sector), name, email, password, bank, company_name, provider, ahora);
+
+                // encode data on your side using BASE64
+                byte[] bytesEncoded = Base64.getEncoder().encode(bank.getBytes());
+                //Sector sector, String name, String email, String password, String bank, String company_name, Boolean provider, Date created_date
+                u = new User(sectordao.getSectorById(sector), name, email, password, new String(bytesEncoded), company_name, provider, ahora);
             } else {
-                //String name,String email, String password, boolean provider, String photo,Date createDate
+                //String name,String email, String password, boolean provider, Date createDate
                 u = new User(name, email, password, provider, ahora);
             }
             if (fileUpload != null && (fileUploadContentType.equals("image/png") || fileUploadContentType.equals("image/jpg") || fileUploadContentType.equals("image/jpeg"))) {
@@ -144,11 +148,11 @@ public class AddUser extends ActionSupport {
         this.sectores = sectores;
     }
 
-    public Integer getBank() {
+    public String getBank() {
         return bank;
     }
 
-    public void setBank(Integer bank) {
+    public void setBank(String bank) {
         this.bank = bank;
     }
 

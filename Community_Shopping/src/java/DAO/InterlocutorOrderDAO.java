@@ -50,7 +50,7 @@ public class InterlocutorOrderDAO {
     public void delete(Integer id, Integer idUser) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from InterlocutorOrder WHERE id_lotDetail=" + id + " and id_interlocutor="+idUser);
+        Query q = sesion.createQuery("from InterlocutorOrder WHERE id_lotDetail=" + id + " and id_interlocutor=" + idUser);
         InterlocutorOrder u = (InterlocutorOrder) q.uniqueResult();
         sesion.delete(u);
         tx.commit();
@@ -91,6 +91,20 @@ public class InterlocutorOrderDAO {
         o.setDeletionDate(hoy);
         sesion.update(o);
         tx.commit();
+    }
+
+    public InterlocutorOrder update(int id, int amount, float paidTotal, Date datePurchase, String estadoPago) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from InterlocutorOrder WHERE id='" + id + "'");
+        InterlocutorOrder o = (InterlocutorOrder) q.uniqueResult();
+        o.setAmount(amount);
+        o.setPaidTotal(paidTotal);
+        o.setDatePurchase(datePurchase);
+        o.setState(estadoPago);
+        sesion.update(o);
+        tx.commit();
+        return o;
     }
 
 }

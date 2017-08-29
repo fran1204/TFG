@@ -11,7 +11,7 @@
                 <param name="actionName">misPedidos</param>
                 <param name="message">${message}</param>
             </result>
-             <result name="error" type="redirectAction">
+            <result name="error" type="redirectAction">
                 <param name="actionName">misPedidos</param>
                 <param name="message">${message}</param>
             </result>
@@ -26,14 +26,29 @@
         <action name="eliminarPedido" class="order.actions.DeleteOrderUser">
             <result type="redirectAction">misPedidos</result>
         </action>
-         <action name="verPedidoLider" class="order.actions.GetDetailOrderLider">
+        <action name="verPedidoLider" class="order.actions.GetDetailOrderLider">
             <result name="success">detailOrderLider.jsp</result>
         </action>
         <action name="eliminarPedidoLider" class="order.actions.DeleteOrderLider">
-            <result type="redirectAction">misPedidos</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">sendEmail</param>
+                <param name="emailUser" >${emailUser}</param>
+                <param name="idInterOrder">${idInterOrder}</param>
+                <param name="op">2</param>
+            </result>
         </action>
-        <action name="updateOrderUser" class="order.actions.DeleteOrderLider">
-            <result type="redirectAction">misPedidos</result>
+        <action name="updateOrderUser" class="order.actions.UpdateOrderLider">
+            <result type="redirectAction">
+                <param name="actionName">verPedidoLider</param>
+                <param name="id">${idOrder}</param>
+            </result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">verPedidoLider</param>
+                <param name="id">${idOrder}</param>
+            </result>
         </action>       
+        <action name="pagoRealizado" class="order.actions.PagoRealizado">
+            
+        </action>
     </package>
 </struts>
