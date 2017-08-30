@@ -132,4 +132,15 @@ public class OrderDAO {
         tx.commit();
     }
 
+    public void updateState(int id, String state, Date hoy) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from Order WHERE id='" + id + "'");
+        Order o = (Order) q.uniqueResult();
+        o.setDatePurchase(hoy);
+        o.setStateOrder(state);
+        sesion.update(o);
+        tx.commit();
+    }
+
 }

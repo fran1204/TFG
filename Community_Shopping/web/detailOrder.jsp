@@ -40,16 +40,21 @@
                     </div>
 
                     <div class="col-md-5">
-                        <p><s:label value="Titulo"/><s:property value="%{io.order.lot.title}"/></p>
-                        <p><s:label value="Descripcion"/><s:property value="%{io.order.lot.description}"/></p>
-                        <p><s:label value="Estado del Pedido"/><s:property value="%{io.order.stateOrder}"/>
-                        <p><s:label value="Cantidad pedida"/><s:property value="%{io.amount}"/></p>
-                        <p><s:label value="Precio por unidad"/><s:property value="%{io.order.lot.price}"/></p>
-                        <p><s:label value="Cantidad Pagada"/><s:property value="%{io.paidTotal}"/></p>
-                        <p><s:label value="Fecha de expiración"/><s:property value="%{io.order.lot.expiryDate}"/></p>
-                        <p><s:label value="Color pedido"/><s:property value="%{io.lotDetail.color}"/></p>
-                        <p><s:label value="Tamaño pedido"/><s:property value="%{io.lotDetail.size}"/></p>
-                        <p><s:label value="Capacidad pedida"/><s:property value="%{io.lotDetail.quantity}"/></p>
+                        <p><s:label value="Titulo "/> <s:property value="%{io.order.lot.title}"/></p>
+                        <p><s:label value="Descripcion "/> <s:property value="%{io.order.lot.description}"/></p>
+                        <p><s:label value="Estado del Pedido "/> <s:property value="%{io.order.stateOrder}"/>
+                        <p><s:label value="Cantidad pedida "/> <s:property value="%{io.amount}"/></p>
+                        <p><s:label value="Precio por unidad " /> <s:property value="%{io.order.lot.price}"/>€</p>
+                        <p><s:label value="Cantidad Pagada "/> <s:property value="%{io.paidTotal}"/>€</p>
+                        <p><s:label value="Fecha de expiración "/> <s:property value="%{io.order.lot.expiryDate}"/></p>
+                        <p><s:label value="Color pedido "/> <s:property value="%{io.lotDetail.color}"/></p>
+                        <p><s:label value="Talla pedida "/> <s:property value="%{io.lotDetail.size}"/></p>
+                        <s:if test="%{io.lotDetail.capacity != 0}">
+                            <p><s:label value="Capacidad "/> <s:property value="%{io.lotDetail.capacity}"/></p>
+                        </s:if>
+                        <s:if test="%{pdf != null}">
+                            <p><s:label value="PDF Compra "/> <a href="pdf/<s:property value="%{pdf}" />">PDF</a></p>
+                        </s:if>
                     </div>
                 </div>
             </div>

@@ -6,6 +6,7 @@
 package order.actions;
 
 import DAO.InterlocutorOrderDAO;
+import DAO.PurchaseDAO;
 import com.opensymphony.xwork2.ActionSupport;
 import modelo.InterlocutorOrder;
 
@@ -16,13 +17,17 @@ import modelo.InterlocutorOrder;
 public class GetDetailOrder extends ActionSupport {
     private int id;
     private InterlocutorOrder io;
+    private String pdf;
+    
     public GetDetailOrder(){
         
     }
     
     public String execute() throws Exception {
         InterlocutorOrderDAO iodao = new InterlocutorOrderDAO();
-        io = iodao.get(id);       
+        io = iodao.get(id); 
+        PurchaseDAO pdao = new PurchaseDAO();
+        pdf = pdao.getByOrder(iodao.get(id).getOrder().getId()).getPdf();
         
         return SUCCESS;
     }
@@ -41,6 +46,14 @@ public class GetDetailOrder extends ActionSupport {
 
     public void setIo(InterlocutorOrder io) {
         this.io = io;
+    }
+
+    public String getPdf() {
+        return pdf;
+    }
+
+    public void setPdf(String pdf) {
+        this.pdf = pdf;
     }
     
 }

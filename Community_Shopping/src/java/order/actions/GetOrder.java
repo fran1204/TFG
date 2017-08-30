@@ -23,10 +23,11 @@ import modelo.User;
  * @author fran
  */
 public class GetOrder extends ActionSupport {
+
     private List<InterlocutorOrder> orderDetail;
     private String message;
     private User session;
-    
+
     public GetOrder() {
 
     }
@@ -41,19 +42,21 @@ public class GetOrder extends ActionSupport {
         Date ahora = new Date();
         SimpleDateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
         formateador.format(ahora);
-        while(ite.hasNext()){
-            InterlocutorOrder io = (InterlocutorOrder)ite.next();
-            if(io.getLotDetail().getLot().getExpiryDate().before(ahora)){
-               odao.setState(io.getOrder(),"Caducado");
-               odao.setDateDelete(io.getOrder(),ahora);
-               
+        while (ite.hasNext()) {
+            InterlocutorOrder io = (InterlocutorOrder) ite.next();
+            if (io.getLotDetail().getLot().getExpiryDate().before(ahora)) {
+                if (!io.getOrder().getStateOrder().equals("Pagado")) {
+                    odao.setState(io.getOrder(), "Caducado");
+                    odao.setDateDelete(io.getOrder(), ahora);
+                }
             }
-            
+
         }
         session = u;
-        
+
         return SUCCESS;
     }
+
     public List<InterlocutorOrder> getOrderDetail() {
         return orderDetail;
     }
@@ -78,5 +81,4 @@ public class GetOrder extends ActionSupport {
         this.session = session;
     }
 
-  
 }

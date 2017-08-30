@@ -155,4 +155,5 @@ public class LotDAO {
         sesion.update(l);
         tx.commit();
     }
+
 }

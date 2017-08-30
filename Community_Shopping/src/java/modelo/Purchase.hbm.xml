@@ -1,27 +1,24 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 29-ago-2017 11:33:51 by Hibernate Tools 4.3.1 -->
+<!-- Generated 30-ago-2017 1:10:39 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Purchase" table="purchase" catalog="community_shopping" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
             <column name="Id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="order" class="modelo.Order" fetch="select">
+        <many-to-one name="order" class="modelo.Order" fetch="select" lazy="false">
             <column name="Id_order" not-null="true" />
         </many-to-one>
-        <many-to-one name="paymentMethod" class="modelo.PaymentMethod" fetch="select">
-            <column name="Id_paymentmethod" not-null="true" />
-        </many-to-one>
-        <many-to-one name="user" class="modelo.User" fetch="select">
+        <many-to-one name="user" class="modelo.User" fetch="select" lazy="false">
             <column name="Id_interlocutor" not-null="true" />
         </many-to-one>
         <property name="datePurchase" type="date">
             <column name="Date_purchase" length="10" not-null="true" />
         </property>
-        <property name="total" type="int">
-            <column name="Total" not-null="true" />
+        <property name="total" type="float">
+            <column name="Total" precision="12" scale="0" not-null="true" />
         </property>
         <property name="pdf" type="string">
             <column name="Pdf" not-null="true" />

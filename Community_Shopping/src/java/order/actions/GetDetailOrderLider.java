@@ -7,12 +7,15 @@ package order.actions;
 
 import DAO.InterlocutorOrderDAO;
 import DAO.LotDAO;
+import DAO.OrderDAO;
+import DAO.PurchaseDAO;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Base64;
 import java.util.Iterator;
 import java.util.List;
 import modelo.InterlocutorOrder;
+import org.apache.struts2.ServletActionContext;
 
 /**
  *
@@ -26,6 +29,8 @@ public class GetDetailOrderLider extends ActionSupport {
     private int cantidadOferta;
     private boolean comprar;
     private String bank;
+    private boolean paid;
+    private String pdf;
 
     public GetDetailOrderLider() {
 
@@ -35,6 +40,8 @@ public class GetDetailOrderLider extends ActionSupport {
         comprar = false;
         InterlocutorOrderDAO iodao = new InterlocutorOrderDAO();
         LotDAO ldao = new LotDAO();
+        OrderDAO odao = new OrderDAO();
+        PurchaseDAO pdao = new PurchaseDAO();
         io = iodao.getOrderDetailClienteLider(id);
         int idLot = io.get(0).getLotDetail().getLot().getId();
         price = ldao.getPrecioLot(idLot);
@@ -53,6 +60,12 @@ public class GetDetailOrderLider extends ActionSupport {
                 comprar = true;
                 byte[] valueDecoded = Base64.getDecoder().decode(ldao.get(idLot).getUser().getBank());
                 bank = new String(valueDecoded);
+            }
+            if (odao.get(id).getStateOrder().equals("Pagado")) {
+                paid = true;
+                pdf = pdao.getByOrder(id).getPdf();
+            } else {
+                paid = false;
             }
         }
 
@@ -105,6 +118,22 @@ public class GetDetailOrderLider extends ActionSupport {
 
     public void setBank(String bank) {
         this.bank = bank;
+    }
+
+    public boolean isPaid() {
+        return paid;
+    }
+
+    public void setPaid(boolean paid) {
+        this.paid = paid;
+    }
+
+    public String getPdf() {
+        return pdf;
+    }
+
+    public void setPdf(String pdf) {
+        this.pdf = pdf;
     }
 
 }

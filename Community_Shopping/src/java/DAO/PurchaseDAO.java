@@ -16,17 +16,18 @@ import org.hibernate.Session;
  * @author fmrodriguez
  */
 public class PurchaseDAO {
+
     private Session sesion = null;
-    
-    public Purchase get(Integer id){
+
+    public Purchase get(Integer id) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from Purchase WHERE id = '"+id+"'");
-        Purchase purchase = (Purchase)q.uniqueResult();
+        Query q = sesion.createQuery("from Purchase WHERE id = '" + id + "'");
+        Purchase purchase = (Purchase) q.uniqueResult();
         tx.commit();
         return purchase;
     }
-    
+
     public List<Purchase> getAll() {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
@@ -41,5 +42,14 @@ public class PurchaseDAO {
         org.hibernate.Transaction tx = sesion.beginTransaction();
         sesion.save(u);
         tx.commit();
+    }
+
+    public Purchase getByOrder(int id) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from Purchase WHERE id_order = '" + id + "'");
+        Purchase purchase = (Purchase) q.uniqueResult();
+        tx.commit();
+        return purchase;
     }
 }

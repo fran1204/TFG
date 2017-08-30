@@ -1,5 +1,5 @@
 package modelo;
-// Generated 29-ago-2017 11:33:50 by Hibernate Tools 4.3.1
+// Generated 30-ago-2017 1:10:38 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -31,31 +31,14 @@ public class User implements java.io.Serializable {
     public User() {
     }
 
-    public User(String email, String password, boolean provider, Date createDate) {
+    public User(String name, String email, String password, boolean provider, Date createDate) {
         this.email = email;
-        this.password = password;
-        this.provider = provider;
-        this.createDate = createDate;
-    }
-
-    public User(Sector sector, String name, String email, String password, String bank, String companyName, Boolean provider, Date createDate) {
-        this.sector = sector;
         this.name = name;
-        this.email = email;
         this.password = password;
-        this.bank = bank;
-        this.companyName = companyName;
         this.provider = provider;
         this.createDate = createDate;
-    }
+    } 
 
-    public User (String name,String email, String password, boolean provider, Date createDate){
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.provider = provider;
-        this.createDate = createDate;
-    }
     public User(Sector sector, String name, String email, String password, String photo, String bank, String companyName, boolean provider, Date createDate, Date deleteDate, Set interlocutorOrders, Set orders, Set shares, Set lots, Set purchases, Set advertisings) {
         this.sector = sector;
         this.name = name;
@@ -73,6 +56,17 @@ public class User implements java.io.Serializable {
         this.lots = lots;
         this.purchases = purchases;
         this.advertisings = advertisings;
+    }
+
+    public User(Sector sector, String name, String email, String password, String bank, String companyName, Boolean provider, Date createDate) {
+        this.sector = sector;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.bank = bank;
+        this.companyName = companyName;
+        this.provider = provider;
+        this.createDate = createDate;
     }
 
     public Integer getId() {

@@ -1,5 +1,5 @@
 package modelo;
-// Generated 29-ago-2017 11:33:50 by Hibernate Tools 4.3.1
+// Generated 30-ago-2017 1:10:38 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -12,18 +12,16 @@ public class Purchase  implements java.io.Serializable {
 
      private Integer id;
      private Order order;
-     private PaymentMethod paymentMethod;
      private User user;
      private Date datePurchase;
-     private int total;
+     private float total;
      private String pdf;
 
     public Purchase() {
     }
 
-    public Purchase(Order order, PaymentMethod paymentMethod, User user, Date datePurchase, int total, String pdf) {
+    public Purchase(Order order, User user, Date datePurchase, float total, String pdf) {
        this.order = order;
-       this.paymentMethod = paymentMethod;
        this.user = user;
        this.datePurchase = datePurchase;
        this.total = total;
@@ -44,13 +42,6 @@ public class Purchase  implements java.io.Serializable {
     public void setOrder(Order order) {
         this.order = order;
     }
-    public PaymentMethod getPaymentMethod() {
-        return this.paymentMethod;
-    }
-    
-    public void setPaymentMethod(PaymentMethod paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
     public User getUser() {
         return this.user;
     }
@@ -65,11 +56,11 @@ public class Purchase  implements java.io.Serializable {
     public void setDatePurchase(Date datePurchase) {
         this.datePurchase = datePurchase;
     }
-    public int getTotal() {
+    public float getTotal() {
         return this.total;
     }
     
-    public void setTotal(int total) {
+    public void setTotal(float total) {
         this.total = total;
     }
     public String getPdf() {

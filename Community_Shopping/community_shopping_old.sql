@@ -2,10 +2,10 @@
 -- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Aug 30, 2017 at 02:10 AM
--- Server version: 5.7.19-0ubuntu0.16.04.1
--- PHP Version: 7.0.22-0ubuntu0.16.04.1
+-- Servidor: localhost
+-- Tiempo de generación: 17-08-2017 a las 09:14:12
+-- Versión del servidor: 5.7.19-0ubuntu0.16.04.1
+-- Versión de PHP: 7.0.22-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `community_shopping`
+-- Base de datos: `community_shopping`
 --
 CREATE DATABASE IF NOT EXISTS `community_shopping` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
 USE `community_shopping`;
@@ -25,7 +25,7 @@ USE `community_shopping`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `advertising`
+-- Estructura de tabla para la tabla `advertising`
 --
 
 CREATE TABLE `advertising` (
@@ -34,24 +34,22 @@ CREATE TABLE `advertising` (
   `id_category` int(11) NOT NULL,
   `Image` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `Url` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `pagado` tinyint(1) DEFAULT NULL,
-  `purshace_date` date DEFAULT NULL,
   `Created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Duration` int(11) NOT NULL,
   `deletion_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `advertising`
+-- Volcado de datos para la tabla `advertising`
 --
 
-INSERT INTO `advertising` (`Id`, `Id_provider`, `id_category`, `Image`, `Url`, `pagado`, `purshace_date`, `Created_date`, `Duration`, `deletion_date`) VALUES
-(4, 1, 1, '1502883348738.jpg', 'https://www.emergya.com', NULL, NULL, '2017-08-16 11:35:49', 1, NULL);
+INSERT INTO `advertising` (`Id`, `Id_provider`, `id_category`, `Image`, `Url`, `Created_date`, `Duration`, `deletion_date`) VALUES
+(4, 1, 1, '1502883348738.jpg', 'https://www.emergya.com', '2017-08-16 11:35:49', 1, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Estructura de tabla para la tabla `category`
 --
 
 CREATE TABLE `category` (
@@ -60,7 +58,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `category`
+-- Volcado de datos para la tabla `category`
 --
 
 INSERT INTO `category` (`id`, `type`) VALUES
@@ -70,7 +68,7 @@ INSERT INTO `category` (`id`, `type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `channel`
+-- Estructura de tabla para la tabla `channel`
 --
 
 CREATE TABLE `channel` (
@@ -79,7 +77,7 @@ CREATE TABLE `channel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `channel`
+-- Volcado de datos para la tabla `channel`
 --
 
 INSERT INTO `channel` (`Id`, `Social_network`) VALUES
@@ -89,7 +87,7 @@ INSERT INTO `channel` (`Id`, `Social_network`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gallery`
+-- Estructura de tabla para la tabla `gallery`
 --
 
 CREATE TABLE `gallery` (
@@ -102,7 +100,7 @@ CREATE TABLE `gallery` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `interlocutor_order`
+-- Estructura de tabla para la tabla `interlocutor_order`
 --
 
 CREATE TABLE `interlocutor_order` (
@@ -114,69 +112,49 @@ CREATE TABLE `interlocutor_order` (
   `Amount` int(11) NOT NULL,
   `Date_purchase` date DEFAULT NULL,
   `Created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `deletion_date` date DEFAULT NULL,
-  `state` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL
+  `deletion_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `interlocutor_order`
+-- Volcado de datos para la tabla `interlocutor_order`
 --
 
-INSERT INTO `interlocutor_order` (`Id`, `Id_interlocutor`, `Id_order`, `Id_lotDetail`, `Paid_total`, `Amount`, `Date_purchase`, `Created_date`, `deletion_date`, `state`) VALUES
-(9, 3, 1, 2, 20, 3, '2017-08-29', '2017-08-28 20:14:17', NULL, 'pagado'),
-(10, 2, 2, 3, 10, 1, '2017-08-29', '2017-08-29 15:55:02', NULL, 'pagado');
+INSERT INTO `interlocutor_order` (`Id`, `Id_interlocutor`, `Id_order`, `Id_lotDetail`, `Paid_total`, `Amount`, `Date_purchase`, `Created_date`, `deletion_date`) VALUES
+(3, 2, 1, 2, 1, 9, NULL, '2017-08-15 17:14:12', NULL),
+(4, 3, 1, 2, 2, 0, NULL, '2017-08-15 17:14:16', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lot`
+-- Estructura de tabla para la tabla `lot`
 --
 
 CREATE TABLE `lot` (
   `Id` int(10) NOT NULL,
-  `Id_provider` int(11) DEFAULT NULL,
-  `id_category` int(11) DEFAULT NULL,
+  `Id_provider` int(11) NOT NULL,
+  `id_category` int(11) NOT NULL,
   `title` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
   `description` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
-  `Num_set` int(11) DEFAULT NULL,
+  `Num_set` int(11) NOT NULL,
   `quantity_available` int(11) DEFAULT NULL,
   `price` float NOT NULL,
   `expiry_date` date DEFAULT NULL,
   `Create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `deletion_date` date DEFAULT NULL,
-  `photo` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `url_external` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL
+  `photo` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `lot`
+-- Volcado de datos para la tabla `lot`
 --
 
-INSERT INTO `lot` (`Id`, `Id_provider`, `id_category`, `title`, `description`, `Num_set`, `quantity_available`, `price`, `expiry_date`, `Create_date`, `deletion_date`, `photo`, `url_external`) VALUES
-(2, 1, 1, 'Lote de prueba 1', 'Botines Nike para salir', 10, 3, 29.9, '2017-08-30', '2017-08-29 09:46:30', NULL, '1502697943914.jpg', ''),
-(130, NULL, NULL, '', 'MOTOSIERRAS DE GASOLINA SOVEREIGN - DEVOLUCION DE LOS CLIENTES', NULL, NULL, 1, '2017-08-29', '2017-08-28 11:01:32', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/arll-sovereign-petrol-chain-saw5-customer-returns-164-1503917565-1503917573.jpg', 'https://merkandi.com/products/motosierras-de-gasolina-sovereign-devolucion-de-los-clientes/141645'),
-(131, NULL, NULL, '', 'John Richmond pullovers - nueva colección', NULL, NULL, 16.95, '2017-08-29', '2017-08-28 11:01:32', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/img-3068-1503863993-1503864074.jpg', 'https://merkandi.com/products/john-richmond-pullovers-nueva-coleccion/141616'),
-(132, NULL, NULL, '', 'SUDADERAS ,JOVENES (REPORTER)', NULL, NULL, 3.5, '2017-08-29', '2017-08-28 11:01:32', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/3-max-1503854156-1503854186.jpg', 'https://merkandi.com/products/sudaderas-jovenes-reporter/141613'),
-(133, NULL, NULL, '', 'Daikin FTXB50C / RXB50C', NULL, NULL, 560, '2017-08-29', '2017-08-28 11:01:32', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/daikinjpg50-1503772806-1503772824.jpg', 'https://merkandi.com/products/daikin-ftxb50c-rxb50c/141608'),
-(134, NULL, NULL, '', 'Inverter acondicionador de aire Daikin FTX25KM / RX25KM', NULL, NULL, 300, '2017-08-29', '2017-08-28 11:01:32', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/daikinjpg1-1503772098-1503772157.jpg', 'https://merkandi.com/products/inverter-acondicionador-de-aire-daikin-ftx25km-rx25km/141607'),
-(135, NULL, NULL, '', 'Aire acondicionado Lomo - inversor mono-split system', NULL, NULL, 300, '2017-08-29', '2017-08-28 11:01:32', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/lomo-gree-1503770658-1503770900.jpg', 'https://merkandi.com/products/aire-acondicionado-lomo-inversor-mono-split-system/141606'),
-(136, NULL, NULL, '', 'Acondicionadores de aire Greer lomo', NULL, NULL, 280, '2017-08-29', '2017-08-28 11:01:32', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/gree-lomo-gwh09qb-k3nn2a-600x600-1503768813-1503769119.jpg', 'https://merkandi.com/products/acondicionadores-de-aire-greer-lomo/141605'),
-(137, NULL, NULL, '', 'Chaqueta para hombre John Richmond con un 92% de descuento en PVP', NULL, NULL, 53, '2017-08-29', '2017-08-28 11:01:32', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/img-6280-1503766880-1503766921.jpg', 'https://merkandi.com/products/chaqueta-para-hombre-john-richmond-con-un-92-de-descuento-en-pvp/141604'),
-(138, NULL, NULL, '', 'MOTOSIERRAS DE GASOLINA SOVEREIGN - DEVOLUCION DE LOS CLIENTES', NULL, NULL, 1, '2017-08-29', '2017-08-28 11:01:33', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/arll-sovereign-petrol-chain-saw5-customer-returns-164-1503917565-1503917573.jpg', 'https://merkandi.com/products/motosierras-de-gasolina-sovereign-devolucion-de-los-clientes/141645'),
-(139, NULL, NULL, '', 'John Richmond pullovers - nueva colección', NULL, NULL, 16.95, '2017-08-29', '2017-08-28 11:01:33', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/img-3068-1503863993-1503864074.jpg', 'https://merkandi.com/products/john-richmond-pullovers-nueva-coleccion/141616'),
-(140, NULL, NULL, '', 'SUDADERAS ,JOVENES (REPORTER)', NULL, NULL, 3.5, '2017-08-29', '2017-08-28 11:01:33', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/3-max-1503854156-1503854186.jpg', 'https://merkandi.com/products/sudaderas-jovenes-reporter/141613'),
-(141, NULL, NULL, '', 'Daikin FTXB50C / RXB50C', NULL, NULL, 560, '2017-08-29', '2017-08-28 11:01:33', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/daikinjpg50-1503772806-1503772824.jpg', 'https://merkandi.com/products/daikin-ftxb50c-rxb50c/141608'),
-(142, NULL, NULL, '', 'Inverter acondicionador de aire Daikin FTX25KM / RX25KM', NULL, NULL, 300, '2017-08-29', '2017-08-28 11:01:33', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/daikinjpg1-1503772098-1503772157.jpg', 'https://merkandi.com/products/inverter-acondicionador-de-aire-daikin-ftx25km-rx25km/141607'),
-(143, NULL, NULL, '', 'Aire acondicionado Lomo - inversor mono-split system', NULL, NULL, 300, '2017-08-29', '2017-08-28 11:01:33', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/lomo-gree-1503770658-1503770900.jpg', 'https://merkandi.com/products/aire-acondicionado-lomo-inversor-mono-split-system/141606'),
-(144, NULL, NULL, '', 'Acondicionadores de aire Greer lomo', NULL, NULL, 280, '2017-08-29', '2017-08-28 11:01:33', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/gree-lomo-gwh09qb-k3nn2a-600x600-1503768813-1503769119.jpg', 'https://merkandi.com/products/acondicionadores-de-aire-greer-lomo/141605'),
-(145, NULL, NULL, '', 'Chaqueta para hombre John Richmond con un 92% de descuento en PVP', NULL, NULL, 53, '2017-08-29', '2017-08-28 11:01:33', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/img-6280-1503766880-1503766921.jpg', 'https://merkandi.com/products/chaqueta-para-hombre-john-richmond-con-un-92-de-descuento-en-pvp/141604'),
-(146, NULL, NULL, '', 'LAVADORAS HOOVER / CANDY 8 , 9 , 10 , 12 , 13KG', NULL, NULL, 145, '2017-08-29', '2017-08-28 11:01:34', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/img-20161104-wa0007-1503512226-1503512298.jpg', 'https://merkandi.com/products/lavadoras-hoover-candy-8-9-10-12-13kg/141404'),
-(147, 5, 1, 'Lote final', 'Lote de prueba definitivo', 1, 0, 10, '2017-08-30', '2017-08-29 15:41:59', NULL, '1504021319491.png', NULL);
+INSERT INTO `lot` (`Id`, `Id_provider`, `id_category`, `title`, `description`, `Num_set`, `quantity_available`, `price`, `expiry_date`, `Create_date`, `deletion_date`, `photo`) VALUES
+(2, 1, 2, 'Lote de prueba 1', 'Botines Nike para salir', 10, 1, 29.9, '2017-08-20', '2017-08-14 08:05:44', NULL, '1502697943914.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lot_detail`
+-- Estructura de tabla para la tabla `lot_detail`
 --
 
 CREATE TABLE `lot_detail` (
@@ -194,17 +172,16 @@ CREATE TABLE `lot_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `lot_detail`
+-- Volcado de datos para la tabla `lot_detail`
 --
 
 INSERT INTO `lot_detail` (`Id`, `Id_lot`, `Title`, `Publish`, `Quantity`, `color`, `size`, `capacity`, `quantity_available`, `Created_date`, `deletion_date`) VALUES
-(2, 2, 'detalle 1', 1, 10, 'Verde', '44', 0, 3, '2017-08-28 16:38:30', NULL),
-(3, 147, 'Clase User', 1, 1, 'Verde', 'M', 0, 0, '2017-08-29 15:43:47', NULL);
+(2, 2, 'detalle 1', 1, 10, 'Verde', '44', 0, 1, '2017-08-14 08:05:56', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order`
+-- Estructura de tabla para la tabla `order`
 --
 
 CREATE TABLE `order` (
@@ -218,17 +195,16 @@ CREATE TABLE `order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `order`
+-- Volcado de datos para la tabla `order`
 --
 
 INSERT INTO `order` (`Id`, `Id_lot`, `Id_leader`, `state_order`, `Created_date`, `Date_purchase`, `deletion_date`) VALUES
-(1, 2, 3, 'Abierto', '2017-08-29 09:47:04', NULL, NULL),
-(2, 147, 2, 'Pagado', '2017-08-29 23:56:39', '2017-08-30', '2017-08-30');
+(1, 2, 2, 'Abierto', '2017-08-14 09:21:06', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `payment_method`
+-- Estructura de tabla para la tabla `payment_method`
 --
 
 CREATE TABLE `payment_method` (
@@ -237,7 +213,7 @@ CREATE TABLE `payment_method` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `payment_method`
+-- Volcado de datos para la tabla `payment_method`
 --
 
 INSERT INTO `payment_method` (`Id`, `Type`) VALUES
@@ -247,21 +223,21 @@ INSERT INTO `payment_method` (`Id`, `Type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pay_order`
+-- Estructura de tabla para la tabla `pay_order`
 --
 
 CREATE TABLE `pay_order` (
   `Id` int(10) NOT NULL,
   `Id_advertising` int(11) NOT NULL,
   `Payment_date` date NOT NULL,
-  `Total` float NOT NULL,
+  `Total` int(11) NOT NULL,
   `Pdf` varchar(255) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `purchase`
+-- Estructura de tabla para la tabla `purchase`
 --
 
 CREATE TABLE `purchase` (
@@ -269,21 +245,15 @@ CREATE TABLE `purchase` (
   `Id_order` int(11) NOT NULL,
   `Id_interlocutor` int(11) NOT NULL,
   `Date_purchase` date NOT NULL,
-  `Total` float NOT NULL,
+  `Id_paymentmethod` int(11) NOT NULL,
+  `Total` int(11) NOT NULL,
   `Pdf` varchar(255) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Dumping data for table `purchase`
---
-
-INSERT INTO `purchase` (`Id`, `Id_order`, `Id_interlocutor`, `Date_purchase`, `Total`, `Pdf`) VALUES
-(6, 2, 2, '2017-08-30', 10, '1504051021295Lote final.pdf');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sector`
+-- Estructura de tabla para la tabla `sector`
 --
 
 CREATE TABLE `sector` (
@@ -292,7 +262,7 @@ CREATE TABLE `sector` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `sector`
+-- Volcado de datos para la tabla `sector`
 --
 
 INSERT INTO `sector` (`id`, `sector`) VALUES
@@ -302,7 +272,7 @@ INSERT INTO `sector` (`id`, `sector`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `share`
+-- Estructura de tabla para la tabla `share`
 --
 
 CREATE TABLE `share` (
@@ -315,7 +285,7 @@ CREATE TABLE `share` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Estructura de tabla para la tabla `user`
 --
 
 CREATE TABLE `user` (
@@ -325,7 +295,7 @@ CREATE TABLE `user` (
   `email` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
   `password` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
   `photo` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `bank` varchar(24) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `bank` int(11) DEFAULT NULL,
   `company_name` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL,
   `provider` bit(1) NOT NULL,
   `create_date` date NOT NULL,
@@ -333,22 +303,20 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `user`
+-- Volcado de datos para la tabla `user`
 --
 
 INSERT INTO `user` (`id`, `id_sector`, `name`, `email`, `password`, `photo`, `bank`, `company_name`, `provider`, `create_date`, `delete_date`) VALUES
-(1, 1, 'Proveedor1', 'proveedor1@emergya.com', 'proveedor1', '1502698057671.JPG', '123456789', 'Emergya', b'1', '2017-08-03', NULL),
+(1, 1, 'Proveedor1', 'proveedor1@emergya.com', 'proveedor1', '1502698057671.JPG', 123456789, 'Emergya', b'1', '2017-08-03', NULL),
 (2, NULL, 'user1', 'user1@gmail.com', 'user1234', '1502543005110.png', NULL, NULL, b'0', '2017-08-03', NULL),
-(3, NULL, 'Francisco', 'user2@gmail.com', 'user1234', 'defecto.jpeg', NULL, NULL, b'0', '2017-08-10', NULL),
-(4, 2, '', 'prov@emergya.com', '12345', 'defecto.jpeg', '123456789', '20 minutos', b'1', '2017-08-28', NULL),
-(5, 1, 'Fatima', 'pro@gmail.com', 'pro1234', '1504021151833.jpg', 'MTIzNDU2Nzg5MTAxMTEy', 'Dell', b'1', '2017-08-29', NULL);
+(3, NULL, 'Francisco', 'user2@gmail.com', 'user1234', 'defecto.jpeg', NULL, NULL, b'0', '2017-08-10', NULL);
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `advertising`
+-- Indices de la tabla `advertising`
 --
 ALTER TABLE `advertising`
   ADD PRIMARY KEY (`Id`),
@@ -356,26 +324,26 @@ ALTER TABLE `advertising`
   ADD KEY `id_category` (`id_category`);
 
 --
--- Indexes for table `category`
+-- Indices de la tabla `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `channel`
+-- Indices de la tabla `channel`
 --
 ALTER TABLE `channel`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indexes for table `gallery`
+-- Indices de la tabla `gallery`
 --
 ALTER TABLE `gallery`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `Id_lotDetail` (`Id_lotDetail`);
 
 --
--- Indexes for table `interlocutor_order`
+-- Indices de la tabla `interlocutor_order`
 --
 ALTER TABLE `interlocutor_order`
   ADD PRIMARY KEY (`Id`),
@@ -384,7 +352,7 @@ ALTER TABLE `interlocutor_order`
   ADD KEY `Id_lotDetail` (`Id_lotDetail`);
 
 --
--- Indexes for table `lot`
+-- Indices de la tabla `lot`
 --
 ALTER TABLE `lot`
   ADD PRIMARY KEY (`Id`),
@@ -392,14 +360,14 @@ ALTER TABLE `lot`
   ADD KEY `id_category` (`id_category`);
 
 --
--- Indexes for table `lot_detail`
+-- Indices de la tabla `lot_detail`
 --
 ALTER TABLE `lot_detail`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `Id_lot` (`Id_lot`);
 
 --
--- Indexes for table `order`
+-- Indices de la tabla `order`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`Id`),
@@ -407,34 +375,35 @@ ALTER TABLE `order`
   ADD KEY `Id_leader` (`Id_leader`);
 
 --
--- Indexes for table `payment_method`
+-- Indices de la tabla `payment_method`
 --
 ALTER TABLE `payment_method`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indexes for table `pay_order`
+-- Indices de la tabla `pay_order`
 --
 ALTER TABLE `pay_order`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `Id_advertising` (`Id_advertising`);
 
 --
--- Indexes for table `purchase`
+-- Indices de la tabla `purchase`
 --
 ALTER TABLE `purchase`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `Id_order` (`Id_order`),
+  ADD KEY `Payment_method` (`Id_paymentmethod`),
   ADD KEY `Id_interlocutor` (`Id_interlocutor`);
 
 --
--- Indexes for table `sector`
+-- Indices de la tabla `sector`
 --
 ALTER TABLE `sector`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `share`
+-- Indices de la tabla `share`
 --
 ALTER TABLE `share`
   ADD PRIMARY KEY (`Id`),
@@ -443,105 +412,105 @@ ALTER TABLE `share`
   ADD KEY `Id_channel` (`Id_channel`);
 
 --
--- Indexes for table `user`
+-- Indices de la tabla `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_ojlaaseef8auyyrc5r1w4x7ao` (`id_sector`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `advertising`
+-- AUTO_INCREMENT de la tabla `advertising`
 --
 ALTER TABLE `advertising`
   MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `category`
+-- AUTO_INCREMENT de la tabla `category`
 --
 ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `channel`
+-- AUTO_INCREMENT de la tabla `channel`
 --
 ALTER TABLE `channel`
   MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `gallery`
+-- AUTO_INCREMENT de la tabla `gallery`
 --
 ALTER TABLE `gallery`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `interlocutor_order`
+-- AUTO_INCREMENT de la tabla `interlocutor_order`
 --
 ALTER TABLE `interlocutor_order`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `lot`
+-- AUTO_INCREMENT de la tabla `lot`
 --
 ALTER TABLE `lot`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
---
--- AUTO_INCREMENT for table `lot_detail`
---
-ALTER TABLE `lot_detail`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `order`
---
-ALTER TABLE `order`
   MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `payment_method`
+-- AUTO_INCREMENT de la tabla `lot_detail`
+--
+ALTER TABLE `lot_detail`
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `order`
+--
+ALTER TABLE `order`
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `payment_method`
 --
 ALTER TABLE `payment_method`
   MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `pay_order`
+-- AUTO_INCREMENT de la tabla `pay_order`
 --
 ALTER TABLE `pay_order`
   MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `purchase`
+-- AUTO_INCREMENT de la tabla `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `sector`
+-- AUTO_INCREMENT de la tabla `sector`
 --
 ALTER TABLE `sector`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `share`
+-- AUTO_INCREMENT de la tabla `share`
 --
 ALTER TABLE `share`
   MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `advertising`
+-- Filtros para la tabla `advertising`
 --
 ALTER TABLE `advertising`
   ADD CONSTRAINT `advertising_ibfk_1` FOREIGN KEY (`id_category`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `provider_advertising` FOREIGN KEY (`Id_provider`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `gallery`
+-- Filtros para la tabla `gallery`
 --
 ALTER TABLE `gallery`
   ADD CONSTRAINT `gallery_lotDetail` FOREIGN KEY (`Id_lotDetail`) REFERENCES `lot_detail` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `interlocutor_order`
+-- Filtros para la tabla `interlocutor_order`
 --
 ALTER TABLE `interlocutor_order`
   ADD CONSTRAINT `FK_69a9ojt5syipjov2m5ehpjouk` FOREIGN KEY (`Id_order`) REFERENCES `order` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -549,40 +518,41 @@ ALTER TABLE `interlocutor_order`
   ADD CONSTRAINT `interlocutor_order_ibfk_1` FOREIGN KEY (`Id_lotDetail`) REFERENCES `lot_detail` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `lot`
+-- Filtros para la tabla `lot`
 --
 ALTER TABLE `lot`
   ADD CONSTRAINT `lot_ibfk_1` FOREIGN KEY (`Id_provider`) REFERENCES `user` (`id`),
   ADD CONSTRAINT `lot_ibfk_2` FOREIGN KEY (`id_category`) REFERENCES `category` (`id`);
 
 --
--- Constraints for table `lot_detail`
+-- Filtros para la tabla `lot_detail`
 --
 ALTER TABLE `lot_detail`
   ADD CONSTRAINT `lot_detail_ibfk_1` FOREIGN KEY (`Id_lot`) REFERENCES `lot` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `order`
+-- Filtros para la tabla `order`
 --
 ALTER TABLE `order`
   ADD CONSTRAINT `FK_omb1t0737o3pyup79s7jmwk2t` FOREIGN KEY (`Id_leader`) REFERENCES `user` (`id`),
   ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`Id_lot`) REFERENCES `lot` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `pay_order`
+-- Filtros para la tabla `pay_order`
 --
 ALTER TABLE `pay_order`
   ADD CONSTRAINT `Payorder_advertising` FOREIGN KEY (`Id_advertising`) REFERENCES `advertising` (`Id`);
 
 --
--- Constraints for table `purchase`
+-- Filtros para la tabla `purchase`
 --
 ALTER TABLE `purchase`
   ADD CONSTRAINT `FK_dmjk7vhynv07q96q7uqy6f73a` FOREIGN KEY (`Id_order`) REFERENCES `order` (`Id`),
-  ADD CONSTRAINT `Purchase_interlocutor` FOREIGN KEY (`Id_interlocutor`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `Purchase_interlocutor` FOREIGN KEY (`Id_interlocutor`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `Purchase_paymentmethod` FOREIGN KEY (`Id_paymentmethod`) REFERENCES `payment_method` (`Id`);
 
 --
--- Constraints for table `share`
+-- Filtros para la tabla `share`
 --
 ALTER TABLE `share`
   ADD CONSTRAINT `Share_channel` FOREIGN KEY (`Id_channel`) REFERENCES `channel` (`Id`),
@@ -590,7 +560,7 @@ ALTER TABLE `share`
   ADD CONSTRAINT `Share_offer` FOREIGN KEY (`Id_lot`) REFERENCES `lot` (`Id`);
 
 --
--- Constraints for table `user`
+-- Filtros para la tabla `user`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `FK_ojlaaseef8auyyrc5r1w4x7ao` FOREIGN KEY (`id_sector`) REFERENCES `sector` (`id`);
