@@ -48,7 +48,9 @@ public class ValidarLogin extends ActionSupport {
             sdao.getSession().put("email", email);
             sdao.getSession().put("id", dao.get(email).getId());
             sdao.getSession().put("proveedor", dao.get(email).isProvider());
-            if (dao.get(email).isProvider()) {
+            if (dao.get(email).getId() == 1) {
+                return "admin";
+            } else if (dao.get(email).isProvider()) {
                 return NONE;
             } else if (!dao.get(email).isProvider() && idLote == 0) {
                 categoris = cdao.getAll();

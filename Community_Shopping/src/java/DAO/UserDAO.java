@@ -117,4 +117,22 @@ public class UserDAO {
         // writes to output file
         ImageIO.write(outputImage, formatName, new File(outputImagePath));
     }
+
+    public List<User> getAllInterlocutor() {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from User where provider = 0");
+        List<User> usuarios = (List<User>) q.list();
+        tx.commit();
+        return usuarios;
+    }
+
+    public List<User> getAllProveedor() {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from User where provider = 1");
+        List<User> usuarios = (List<User>) q.list();
+        tx.commit();
+        return usuarios;
+    }
 }

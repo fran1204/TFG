@@ -50,5 +50,8 @@
         <action name="pagoRealizado" class="order.actions.PagoRealizado">
             <result type="redirectAction">misPedidos</result>
         </action>
+        <action name="allOrders" class="order.actions.GetAll">
+            <result name="success">allOrder.jsp</result>
+        </action>
     </package>
 </struts>

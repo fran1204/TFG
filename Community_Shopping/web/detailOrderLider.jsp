@@ -29,7 +29,6 @@
         <s:if test="%{comprar}">
             <s:if test="%{paid}">
                 <a href="pdf/<s:property value="%{pdf}" />">PDF</a>
-
             </s:if>
             <s:else>
                 Banco del proveedor para realizar el pago: <s:property value="%{bank}" />

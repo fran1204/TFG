@@ -48,6 +48,8 @@ public class ValidarSesion extends ActionSupport {
         if (sdao.existeSesion()) {
             if (dao.get(u.getEmail()).isProvider()) {
                 return NONE;
+            } else if (u.getId() == 1) {
+                return "admin";
             } else {
                 categoris = cdao.getAll();
                 return SUCCESS;

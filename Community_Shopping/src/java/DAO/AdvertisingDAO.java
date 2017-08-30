@@ -114,11 +114,18 @@ public class AdvertisingDAO {
     }
 
     public List<Advertising> getAllFiltro(Integer idCategory) {
-         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from Advertising WHERE id_category = " + idCategory );
+        Query q = sesion.createQuery("from Advertising WHERE id_category = " + idCategory);
         List<Advertising> ad = (List<Advertising>) q.list();
         tx.commit();
         return ad;
+    }
+
+    public void updatePurchase(Advertising ad) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        sesion.update(ad);
+        tx.commit();
     }
 }

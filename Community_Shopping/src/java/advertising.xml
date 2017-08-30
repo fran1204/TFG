@@ -47,5 +47,11 @@
                 <param name="id">${idAnuncio}</param>
             </result>
         </action>
+        <action name="allAdvertisings" class="advertising.actions.GetAll">
+            <result name="success">allAdvertising.jsp</result>
+        </action>
+        <action name="updatePurchaseAdver" class="advertising.actions.PurchaseAdvertising">
+           <result type="redirectAction">allAdvertisings</result>
+        </action>
     </package>
 </struts>

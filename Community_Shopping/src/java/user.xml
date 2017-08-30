@@ -15,11 +15,13 @@
             <result name="none">principal3.jsp</result>
             <result name="error">login.jsp</result>
             <result name="input">login.jsp</result>
+            <result name="admin">administracion.jsp</result>
         </action>
         <action name="validarSesion" class="user.actions.ValidarSesion">
             <result name="success">principal2.jsp</result>
             <result name="none">principal3.jsp</result>
             <result name="error">principal1.jsp</result>
+            <result name="admin">administracion.jsp</result>
         </action>
         <action name="logout" class="user.actions.Logout">
             <result name="success">principal1.jsp</result>
@@ -70,6 +72,9 @@
                 <param name="contentType">text/plain</param>
                 <param name="inputName">respuesta</param>
             </result>
+        </action>
+         <action name="allUser" class="user.actions.GetAllUser">
+             <result name="success">allUser.jsp</result>
         </action>
     </package>
 </struts>

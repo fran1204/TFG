@@ -7,14 +7,11 @@ package advertising.actions;
 
 import DAO.AdvertisingDAO;
 import DAO.CategoryDAO;
-import DAO.SessionDAO;
-import DAO.UserDAO;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
 import modelo.Advertising;
 import modelo.Category;
-import modelo.User;
 
 /**
  *

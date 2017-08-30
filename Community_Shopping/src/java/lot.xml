@@ -58,5 +58,11 @@
             <result name="success">principal1.jsp</result>
             <result name="login">principal2.jsp</result>
         </action>
+        <action name="allLotess" class="lot.actions.GetAll">
+            <result name="success">allLot.jsp</result>
+        </action>
+        <action name="lanzarCrawler" class="lot.actions.LanzarCrawler">
+             <result type="redirectAction">allLotess</result>
+        </action>
     </package>
 </struts>
