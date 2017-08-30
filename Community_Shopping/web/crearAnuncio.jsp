@@ -33,8 +33,8 @@
             <s:textfield cssClass="form-control" name="url"/>
             <s:select name="category" cssClass="form-control" list="category" listKey="id" listValue="type"/>
             <select name="duration" class="form-control">
-                <option value="1">1 Mes</option>
-                <option value="3">3 Meses</option>
+                <option value="1">1 Mes - 30€</option>
+                <option value="3">3 Meses - 75€</option>
             </select>
             <s:submit cssClass="btn btn-lg btn-primary btn-bloc" value="Crear"/>
         </s:form>

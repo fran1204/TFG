@@ -7,16 +7,23 @@ package advertising.actions;
 
 import DAO.AdvertisingDAO;
 import DAO.CategoryDAO;
+import DAO.PayOrderDAO;
 import DAO.SessionDAO;
 import DAO.UserDAO;
+import PDF.PDF;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfWriter;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import modelo.Advertising;
+import modelo.PayOrder;
 import modelo.User;
 import org.apache.struts2.ServletActionContext;
 
@@ -59,6 +66,45 @@ public class AddAnuncio extends ActionSupport {
             //Category category, User user, String image, String url, Date createdDate, int duration
             a = new Advertising(cdao.get(category), u, fileUploadFileName, url, ahora, duration);
             adao.add(a);
+            int total= 0;
+
+            //CREAR ORDEN DE PAGO
+            PDF pdf = new PDF();
+            Document document = new Document();
+            String url = ServletActionContext.getRequest().getSession().getServletContext().getRealPath("/");
+            String name = System.currentTimeMillis() + u.getCompanyName();
+            url = url.split("build")[0] + "web/pdf/" + name + ".pdf";
+            File file = new File(url);
+            PdfWriter.getInstance(document, new FileOutputStream(file));
+            document.open();
+            pdf.addMetaData(document);
+            String cuerpo = "ID Anuncio: " + a.getId() + "\n"
+                    + "Proveedor: " + a.getUser().getName() + "Compañia: " + a.getUser().getCompanyName() + "\n"
+                    + "Fecha Creación: " + a.getCreatedDate() + "\n" + "Duración: " + a.getDuration() + " mes \n";
+            if (a.getDuration() == 1) {
+                cuerpo += "Total a pagar: 30€";
+                total = 30;
+            } else {
+                cuerpo += "Total a pagar: 75€";
+                total = 75;
+            }
+
+            Date hoy = new Date();
+            formateador.format(hoy);
+            DateFormat fechaHora = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String convertido = fechaHora.format(hoy);
+            pdf.addTitlePage(document, "Orden de Pago", convertido, cuerpo);
+            //pdf.addContent(document);
+            document.close();
+
+            PayOrderDAO podao = new PayOrderDAO();
+            PayOrder po = new PayOrder();
+            po.setAdvertising(a);
+            po.setPdf(name + ".pdf");
+            po.setTotal(total);
+            po.setPaymentDate(ahora);
+            podao.add(po);
+
             return SUCCESS;
         } else {
             ErrorImg = "La imagen tiene el formato erroneo";

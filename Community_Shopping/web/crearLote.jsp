@@ -38,6 +38,7 @@
             <s:file name="fileUpload"/>
             <s:textfield cssClass="form-control" name="numSet"/>
             <s:textfield cssClass="form-control" name="price"/>
+            <h5>El 2.5% de la operación será descontado a favor de CommunityShopping.</h5>
             <s:select name="category" cssClass="form-control" list="category" listKey="id" listValue="type"/>
             <s:textfield cssClass="form-control" name="expiryDate" size="10" />
             <s:submit cssClass="btn btn-lg btn-primary btn-bloc" value="Crear"/>
