@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 30, 2017 at 02:10 AM
+-- Generation Time: Aug 31, 2017 at 01:42 AM
 -- Server version: 5.7.19-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -46,7 +46,7 @@ CREATE TABLE `advertising` (
 --
 
 INSERT INTO `advertising` (`Id`, `Id_provider`, `id_category`, `Image`, `Url`, `pagado`, `purshace_date`, `Created_date`, `Duration`, `deletion_date`) VALUES
-(4, 1, 1, '1502883348738.jpg', 'https://www.emergya.com', NULL, NULL, '2017-08-16 11:35:49', 1, NULL);
+(5, 4, 1, '1504107369315.jpg', 'http://www.marca.com', 1, '2017-08-31', '2017-08-30 15:36:09', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -123,7 +123,6 @@ CREATE TABLE `interlocutor_order` (
 --
 
 INSERT INTO `interlocutor_order` (`Id`, `Id_interlocutor`, `Id_order`, `Id_lotDetail`, `Paid_total`, `Amount`, `Date_purchase`, `Created_date`, `deletion_date`, `state`) VALUES
-(9, 3, 1, 2, 20, 3, '2017-08-29', '2017-08-28 20:14:17', NULL, 'pagado'),
 (10, 2, 2, 3, 10, 1, '2017-08-29', '2017-08-29 15:55:02', NULL, 'pagado');
 
 -- --------------------------------------------------------
@@ -153,25 +152,15 @@ CREATE TABLE `lot` (
 --
 
 INSERT INTO `lot` (`Id`, `Id_provider`, `id_category`, `title`, `description`, `Num_set`, `quantity_available`, `price`, `expiry_date`, `Create_date`, `deletion_date`, `photo`, `url_external`) VALUES
-(2, 1, 1, 'Lote de prueba 1', 'Botines Nike para salir', 10, 3, 29.9, '2017-08-30', '2017-08-29 09:46:30', NULL, '1502697943914.jpg', ''),
-(130, NULL, NULL, '', 'MOTOSIERRAS DE GASOLINA SOVEREIGN - DEVOLUCION DE LOS CLIENTES', NULL, NULL, 1, '2017-08-29', '2017-08-28 11:01:32', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/arll-sovereign-petrol-chain-saw5-customer-returns-164-1503917565-1503917573.jpg', 'https://merkandi.com/products/motosierras-de-gasolina-sovereign-devolucion-de-los-clientes/141645'),
-(131, NULL, NULL, '', 'John Richmond pullovers - nueva colección', NULL, NULL, 16.95, '2017-08-29', '2017-08-28 11:01:32', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/img-3068-1503863993-1503864074.jpg', 'https://merkandi.com/products/john-richmond-pullovers-nueva-coleccion/141616'),
-(132, NULL, NULL, '', 'SUDADERAS ,JOVENES (REPORTER)', NULL, NULL, 3.5, '2017-08-29', '2017-08-28 11:01:32', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/3-max-1503854156-1503854186.jpg', 'https://merkandi.com/products/sudaderas-jovenes-reporter/141613'),
-(133, NULL, NULL, '', 'Daikin FTXB50C / RXB50C', NULL, NULL, 560, '2017-08-29', '2017-08-28 11:01:32', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/daikinjpg50-1503772806-1503772824.jpg', 'https://merkandi.com/products/daikin-ftxb50c-rxb50c/141608'),
-(134, NULL, NULL, '', 'Inverter acondicionador de aire Daikin FTX25KM / RX25KM', NULL, NULL, 300, '2017-08-29', '2017-08-28 11:01:32', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/daikinjpg1-1503772098-1503772157.jpg', 'https://merkandi.com/products/inverter-acondicionador-de-aire-daikin-ftx25km-rx25km/141607'),
-(135, NULL, NULL, '', 'Aire acondicionado Lomo - inversor mono-split system', NULL, NULL, 300, '2017-08-29', '2017-08-28 11:01:32', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/lomo-gree-1503770658-1503770900.jpg', 'https://merkandi.com/products/aire-acondicionado-lomo-inversor-mono-split-system/141606'),
-(136, NULL, NULL, '', 'Acondicionadores de aire Greer lomo', NULL, NULL, 280, '2017-08-29', '2017-08-28 11:01:32', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/gree-lomo-gwh09qb-k3nn2a-600x600-1503768813-1503769119.jpg', 'https://merkandi.com/products/acondicionadores-de-aire-greer-lomo/141605'),
-(137, NULL, NULL, '', 'Chaqueta para hombre John Richmond con un 92% de descuento en PVP', NULL, NULL, 53, '2017-08-29', '2017-08-28 11:01:32', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/img-6280-1503766880-1503766921.jpg', 'https://merkandi.com/products/chaqueta-para-hombre-john-richmond-con-un-92-de-descuento-en-pvp/141604'),
-(138, NULL, NULL, '', 'MOTOSIERRAS DE GASOLINA SOVEREIGN - DEVOLUCION DE LOS CLIENTES', NULL, NULL, 1, '2017-08-29', '2017-08-28 11:01:33', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/arll-sovereign-petrol-chain-saw5-customer-returns-164-1503917565-1503917573.jpg', 'https://merkandi.com/products/motosierras-de-gasolina-sovereign-devolucion-de-los-clientes/141645'),
-(139, NULL, NULL, '', 'John Richmond pullovers - nueva colección', NULL, NULL, 16.95, '2017-08-29', '2017-08-28 11:01:33', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/img-3068-1503863993-1503864074.jpg', 'https://merkandi.com/products/john-richmond-pullovers-nueva-coleccion/141616'),
-(140, NULL, NULL, '', 'SUDADERAS ,JOVENES (REPORTER)', NULL, NULL, 3.5, '2017-08-29', '2017-08-28 11:01:33', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/3-max-1503854156-1503854186.jpg', 'https://merkandi.com/products/sudaderas-jovenes-reporter/141613'),
-(141, NULL, NULL, '', 'Daikin FTXB50C / RXB50C', NULL, NULL, 560, '2017-08-29', '2017-08-28 11:01:33', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/daikinjpg50-1503772806-1503772824.jpg', 'https://merkandi.com/products/daikin-ftxb50c-rxb50c/141608'),
-(142, NULL, NULL, '', 'Inverter acondicionador de aire Daikin FTX25KM / RX25KM', NULL, NULL, 300, '2017-08-29', '2017-08-28 11:01:33', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/daikinjpg1-1503772098-1503772157.jpg', 'https://merkandi.com/products/inverter-acondicionador-de-aire-daikin-ftx25km-rx25km/141607'),
-(143, NULL, NULL, '', 'Aire acondicionado Lomo - inversor mono-split system', NULL, NULL, 300, '2017-08-29', '2017-08-28 11:01:33', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/lomo-gree-1503770658-1503770900.jpg', 'https://merkandi.com/products/aire-acondicionado-lomo-inversor-mono-split-system/141606'),
-(144, NULL, NULL, '', 'Acondicionadores de aire Greer lomo', NULL, NULL, 280, '2017-08-29', '2017-08-28 11:01:33', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/gree-lomo-gwh09qb-k3nn2a-600x600-1503768813-1503769119.jpg', 'https://merkandi.com/products/acondicionadores-de-aire-greer-lomo/141605'),
-(145, NULL, NULL, '', 'Chaqueta para hombre John Richmond con un 92% de descuento en PVP', NULL, NULL, 53, '2017-08-29', '2017-08-28 11:01:33', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/img-6280-1503766880-1503766921.jpg', 'https://merkandi.com/products/chaqueta-para-hombre-john-richmond-con-un-92-de-descuento-en-pvp/141604'),
-(146, NULL, NULL, '', 'LAVADORAS HOOVER / CANDY 8 , 9 , 10 , 12 , 13KG', NULL, NULL, 145, '2017-08-29', '2017-08-28 11:01:34', NULL, 'https://img.merkandi.com/imgcache/290x190/offer/img-20161104-wa0007-1503512226-1503512298.jpg', 'https://merkandi.com/products/lavadoras-hoover-candy-8-9-10-12-13kg/141404'),
-(147, 5, 1, 'Lote final', 'Lote de prueba definitivo', 1, 0, 10, '2017-08-30', '2017-08-29 15:41:59', NULL, '1504021319491.png', NULL);
+(147, 5, 1, 'Lote final', 'Lote de prueba definitivo', 1, 0, 10, '2017-08-31', '2017-08-30 22:01:49', NULL, '1504021319491.png', NULL),
+(181, NULL, NULL, 'Pantalla Lcd + Tactil Con Marco Original Tablet Bq Aquaris M10 HD - Negra', 'Pantalla Lcd + Tactil Con Marco Original Tablet Bq Aquaris M10 HD - Negra', NULL, NULL, 70.34, '2017-09-01', '2017-08-30 22:02:31', NULL, 'https://images.ssstatic.com/pantalla-lcd-tactil-con-marco-original-tablet-bq-aquaris-m10-hd-negra-21226194n0-17262967.jpg', 'http://www.solostocks.com/venta-productos/telefonos-accesorios/pantallas-moviles/pantalla-lcd-tactil-con-marco-original-tablet-bq-aquaris-m10-hd-negra-21226194'),
+(182, NULL, NULL, 'Parasol papel bambú blanco', 'Parasol papel bambú blanco', NULL, NULL, 4.48, '2017-09-01', '2017-08-30 22:02:31', NULL, 'https://images.ssstatic.com/parasol-papel-bambu-blanco-26992436n0-14145467.jpg', 'http://www.solostocks.com/venta-productos/regalos-promocionales-campo-playa/parasoles-promocionales/parasol-papel-bambu-blanco-26992436'),
+(183, NULL, NULL, 'Mejillones de la Rías Gallegas Benimar 115gr.', 'Fabricación: Conservar Benimar (Valencia) Conserva elaborada con mejillones procedentes de las Rías Gallegas.', NULL, NULL, 1.65, '2017-09-01', '2017-08-30 22:02:31', NULL, 'https://images.ssstatic.com/mejillones-de-la-rias-gallegas-benimar-115gr-28373790n0-11035067.jpg', 'http://www.solostocks.com/venta-productos/conservas/mariscos/mejillones-de-la-rias-gallegas-benimar-115gr-28373790'),
+(184, NULL, NULL, 'Pijama punto manga larga Hombre', 'Pijama punto manga larga Hombre,tallas 48-52-56-60,65% poliéster 35% algodón,color cheviot o granate.', NULL, NULL, 14.18, '2017-09-01', '2017-08-30 22:02:31', NULL, 'https://images.ssstatic.com/pijama-punto-manga-larga-hombre-13949791n0-17362267.jpg', 'http://www.solostocks.com/venta-productos/ropa-estar-casa-pijamas/pijamas/pijama-punto-manga-larga-hombre-13949791'),
+(185, NULL, NULL, 'Panel De Señalizacion De Carga Posterior- No homologado', 'Panel de señalización de carga posterior NO HOMOLOGADO 50x50cmx', NULL, NULL, 7.99, '2017-09-01', '2017-08-30 22:02:33', NULL, 'https://cdn.ssstatic.com/6.10.6/img/noimg/fotoNoDisponible-67.gif', 'http://www.solostocks.com/venta-productos/seguridad-carretera/material-reflectante/panel-de-senalizacion-de-carga-posterior-no-homologado-28635309'),
+(186, NULL, NULL, 'Tomate Deshidratado Seco Mironous 1 kg', 'Tomate Deshidratado Seco 1 kg', NULL, NULL, 5.2, '2017-09-01', '2017-08-30 22:02:33', NULL, 'https://images.ssstatic.com/tomate-deshidratado-seco-mironous-1-kg-9629671n0-00000067.jpg', 'http://www.solostocks.com/venta-productos/frutos-secos-semillas/otros-frutos-secos-semillas/tomate-deshidratado-seco-mironous-1-kg-9629671'),
+(187, NULL, NULL, 'Dátiles en Rama Mironous 1 kg', 'Dátiles en Rama Mironous 1 kg para mas información en mironous.com', NULL, NULL, 4.75, '2017-09-01', '2017-08-30 22:02:33', NULL, 'https://images.ssstatic.com/datiles-en-rama-mironous-1-kg-10539713n0-00000067.jpg', 'http://www.solostocks.com/venta-productos/fruta/otras-frutas/datiles-en-rama-mironous-1-kg-10539713'),
+(188, NULL, NULL, 'Lote pasahilos o cosedor de madera', 'Lote en liquidación de juegos de coser. Incluye dos unidades, hilo y pasador. En caja de cartón individual y retractilado. A partir de 2 años.', NULL, NULL, 1.25, '2017-09-01', '2017-08-30 22:02:34', NULL, 'https://images.ssstatic.com/lote-pasahilos-o-cosedor-de-madera-26953233n0-11401767.jpg', 'http://www.solostocks.com/venta-productos/juegos-educativos/otros-juegos-educativos/lote-pasahilos-o-cosedor-de-madera-26953233');
 
 -- --------------------------------------------------------
 
@@ -198,7 +187,6 @@ CREATE TABLE `lot_detail` (
 --
 
 INSERT INTO `lot_detail` (`Id`, `Id_lot`, `Title`, `Publish`, `Quantity`, `color`, `size`, `capacity`, `quantity_available`, `Created_date`, `deletion_date`) VALUES
-(2, 2, 'detalle 1', 1, 10, 'Verde', '44', 0, 3, '2017-08-28 16:38:30', NULL),
 (3, 147, 'Clase User', 1, 1, 'Verde', 'M', 0, 0, '2017-08-29 15:43:47', NULL);
 
 -- --------------------------------------------------------
@@ -222,7 +210,6 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`Id`, `Id_lot`, `Id_leader`, `state_order`, `Created_date`, `Date_purchase`, `deletion_date`) VALUES
-(1, 2, 3, 'Abierto', '2017-08-29 09:47:04', NULL, NULL),
 (2, 147, 2, 'Pagado', '2017-08-29 23:56:39', '2017-08-30', '2017-08-30');
 
 -- --------------------------------------------------------
@@ -257,6 +244,13 @@ CREATE TABLE `pay_order` (
   `Total` float NOT NULL,
   `Pdf` varchar(255) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Dumping data for table `pay_order`
+--
+
+INSERT INTO `pay_order` (`Id`, `Id_advertising`, `Payment_date`, `Total`, `Pdf`) VALUES
+(1, 5, '2017-08-30', 30, '150410736989620 minutos.pdf');
 
 -- --------------------------------------------------------
 
@@ -337,10 +331,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `id_sector`, `name`, `email`, `password`, `photo`, `bank`, `company_name`, `provider`, `create_date`, `delete_date`) VALUES
-(1, 1, 'Proveedor1', 'proveedor1@emergya.com', 'proveedor1', '1502698057671.JPG', '123456789', 'Emergya', b'1', '2017-08-03', NULL),
+(1, NULL, 'admin', 'admin@gmail.com', 'admin1234', '1504088309510.jpg', NULL, NULL, b'0', '2017-08-30', NULL),
 (2, NULL, 'user1', 'user1@gmail.com', 'user1234', '1502543005110.png', NULL, NULL, b'0', '2017-08-03', NULL),
 (3, NULL, 'Francisco', 'user2@gmail.com', 'user1234', 'defecto.jpeg', NULL, NULL, b'0', '2017-08-10', NULL),
-(4, 2, '', 'prov@emergya.com', '12345', 'defecto.jpeg', '123456789', '20 minutos', b'1', '2017-08-28', NULL),
+(4, 2, 'Nike', 'prov@emergya.com', '12345', 'defecto.jpeg', 'MTIzNDU2Nzg5MTAxMTEy', '20 minutos', b'1', '2017-08-28', NULL),
 (5, 1, 'Fatima', 'pro@gmail.com', 'pro1234', '1504021151833.jpg', 'MTIzNDU2Nzg5MTAxMTEy', 'Dell', b'1', '2017-08-29', NULL);
 
 --
@@ -457,7 +451,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `advertising`
 --
 ALTER TABLE `advertising`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `category`
 --
@@ -482,7 +476,7 @@ ALTER TABLE `interlocutor_order`
 -- AUTO_INCREMENT for table `lot`
 --
 ALTER TABLE `lot`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=189;
 --
 -- AUTO_INCREMENT for table `lot_detail`
 --
@@ -502,7 +496,7 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT for table `pay_order`
 --
 ALTER TABLE `pay_order`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `purchase`
 --
@@ -552,7 +546,7 @@ ALTER TABLE `interlocutor_order`
 -- Constraints for table `lot`
 --
 ALTER TABLE `lot`
-  ADD CONSTRAINT `lot_ibfk_1` FOREIGN KEY (`Id_provider`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `lot_ibfk_1` FOREIGN KEY (`Id_provider`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `lot_ibfk_2` FOREIGN KEY (`id_category`) REFERENCES `category` (`id`);
 
 --

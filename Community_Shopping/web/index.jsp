@@ -1,9 +1,3 @@
-<%-- 
-DECIDE SI ENVIAR AL USUARIO A PRINCIPAL1 O PRINCIPAL2
-    Document   : index
-    Created on : 23-abr-2016, 16:59:49
-    Author     : cayetano
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>

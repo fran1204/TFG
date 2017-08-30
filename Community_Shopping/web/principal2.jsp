@@ -28,95 +28,74 @@
     <body>
 
         <%@ include file="nav2.jsp" %>
-
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h1 class="page-header text-center">¡Chollos a compartir!</h1>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <h1 class="page-header text-center">¡Chollos a compartir!</h1>
-                </div>
-                <div class="col-md-3"></div>
-            </div>
-
-            <s:iterator value="anuncio"> 
-                <div class="col-md-3 col-sm-3">
-                    <s:if test="%{url!=null && url!=''}">
-                        <div class="feature-gallery">
-                            <a href="<s:url value='%{url}'/>">
-                                <img class="thumb" src="img/<s:property value='image'/>" alt="" title="">
-                            </a>
-
-                        </div>
-                        <div>                       
-                            <a href="<s:url value='%{url}'/>">
-                                ir al anuncio
-                            </a>
-                        </div>
-                    </s:if>
-                    <s:elseif test="%{numSet == null}">
-                        <div class="feature-gallery">
-                            <s:a href="%{urlExternal}">
-                                <img class="thumb" src="<s:property value='photo'/>" alt="" title="">
-
-                                <div class="fg-overlay">
-                                    <h2><s:property value='title'/></h2>
-                                    <p><s:property value='description'/></p>
-                                    <p>Precio: <s:property value='price'/>€ und.</p>
-                                </div>
-                            </s:a>
-                        </div>
-                    </s:elseif>
-                    <s:else>
-                        <div class="feature-gallery">
-                            <s:url var="detalle" namespace="/" action="detalleLote" >
-                                <s:param name="id" value="%{id}"/>
-                            </s:url>
-                            <div class="fecha"><s:date name="expiryDate" nice="true" /></div>
-                            <s:a href="%{detalle}">
-                                <img class="thumb" src="img/<s:property value='photo'/>" alt="" title="">
-
-                                <div class="fg-overlay">
-                                    <h2><s:property value='title'/></h2>
-                                    <p><s:property value='description'/></p>
-                                    <p>Lote: <s:property value='numSet'/> und.</p>
-                                    <p>Precio: <s:property value='price'/>€</p>
-                                    <p>Cantidad Disponible: <s:property value='quantityAvailable'/></p>
-                                </div>
-                            </s:a>
-                        </div>
-                        <div>
-                            <s:url var="compartir" namespace="/" action="compartirRedes" >
-                                <s:param name="id" value="%{id}"/>
-                            </s:url>
-                            <s:a href="%{compartir}">
-                                Compartir!
-                            </s:a>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#redes<s:property value="id"/>">
-                                Compartir!
-                            </button>
-                        </div>
-                    </s:else>
-                </div>
-                <!--                MODAL PARA COMPARTIR
-                                <div class="modal fade" id="redes<s:property value="id"/>" tabindex="-1" role="dialog" aria-labelledby="RedesSociales" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                                <h4 class="modal-title" id="myModalLabel">Elige la red social para compartir</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                Texto del modal
-                                            </div>
-                                        </div>
+                <s:iterator value="anuncio"> 
+                    <div class="col-md-3 col-sm-3">
+                        <s:if test="%{url!=null && url!=''}">
+                            <div class="feature-gallery">
+                                <a href="<s:url value='%{url}'/>">
+                                    <img class="thumb" src="img/<s:property value='image'/>" alt="" title="">
+                                    <div class="fg-overlay">
+                                        <h2>Ir al anuncio!!</h2>
                                     </div>
-                                </div>-->
-            </s:iterator>
+                                </a>
+
+                            </div>
+                        </s:if>
+                        <s:elseif test="%{numSet == null}">
+                            <div class="feature-gallery">
+                                <s:a href="%{urlExternal}">
+                                    <img class="thumb" src="<s:property value='photo'/>" alt="" title="">
+
+                                    <div class="fg-overlay">
+                                        <h2><s:property value='title'/></h2>
+                                        <p><s:property value='description'/></p>
+                                        <p>Precio: <s:property value='price'/>€ und.</p>
+                                    </div>
+                                </s:a>
+                            </div>
+                        </s:elseif>
+                        <s:else>
+                            <div class="feature-gallery">
+                                <s:url var="detalle" namespace="/" action="detalleLote" >
+                                    <s:param name="id" value="%{id}"/>
+                                </s:url>
+                                <div class="fecha"><s:date name="expiryDate" nice="true" /></div>
+                                <s:a href="%{detalle}">
+                                    <img class="thumb" src="img/<s:property value='photo'/>" alt="" title="">
+
+                                    <div class="fg-overlay">
+                                        <h2><s:property value='title'/></h2>
+                                        <p><s:property value='description'/></p>
+                                        <p>Lote: <s:property value='numSet'/> und.</p>
+                                        <p>Precio: <s:property value='price'/>€</p>
+                                        <p>Cantidad Disponible: <s:property value='quantityAvailable'/></p>
+                                    </div>
+                                </s:a>
+                            </div>
+                            <div>
+                                <s:url var="compartir" namespace="/" action="compartirRedes" >
+                                    <s:param name="id" value="%{id}"/>
+                                </s:url>
+                                <s:a href="%{compartir}">
+                                    Compartir!
+                                </s:a>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#redes<s:property value="id"/>">
+                                    Compartir!
+                                </button>
+                            </div>
+                        </s:else>
+                    </div>
+                </s:iterator>
+            </div>
         </div>
-
-
-
     </body>
 </html>

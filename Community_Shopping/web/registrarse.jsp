@@ -1,10 +1,3 @@
-<%-- 
-PÁGINA ENCARGADA DE REGISTRAR UN USUARIO
-    Document   : registrarse
-    Created on : 24-abr-2016, 17:18:34
-    Author     : cayetano
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 

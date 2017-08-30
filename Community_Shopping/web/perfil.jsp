@@ -1,10 +1,3 @@
-<%-- 
-PERFIL DEL USUARIO
-    Document   : perfil
-    Created on : 30-abr-2016, 14:24:00
-    Author     : cayetano
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
@@ -41,14 +34,14 @@ PERFIL DEL USUARIO
                     <div class="col-md-3">
                         <img src="img/perfil/<s:property value="%{usuario.photo}"/>" class="img-thumbnail" alt="foto perfil"/>
                         <s:if test="%{sesion_email==usuario.email}">
-                        <center>
-                            <s:form method="post" enctype="multipart/form-data" action="updateFotoPerfil"><s:hidden name="perfil_email" value="%{usuario.email}"/><s:hidden name="nombre_foto" value="%{usuario.photo}"/><label class="btn btn-default btn-file"><span class="glyphicon glyphicon-pencil"/><s:file name="fileUpload" cssStyle="display:none" onchange="this.form.submit();"/></label></s:form>
-                            <s:form method="post" action="deleteFotoPerfil"><button class="btn btn-default"><s:hidden name="perfil_email" value="%{usuario.email}"/><s:hidden name="nombre_foto" value="%{usuario.photo}"/><span class="glyphicon glyphicon-trash"/></button></s:form>
-                        </center>
+                            <center>
+                                <s:form method="post" enctype="multipart/form-data" action="updateFotoPerfil"><s:hidden name="perfil_email" value="%{usuario.email}"/><s:hidden name="nombre_foto" value="%{usuario.photo}"/><label class="btn btn-default btn-file"><span class="glyphicon glyphicon-pencil"/><s:file name="fileUpload" cssStyle="display:none" onchange="this.form.submit();"/></label></s:form>
+                                <s:form method="post" action="deleteFotoPerfil"><button class="btn btn-default"><s:hidden name="perfil_email" value="%{usuario.email}"/><s:hidden name="nombre_foto" value="%{usuario.photo}"/><span class="glyphicon glyphicon-trash"/></button></s:form>
+                                </center>
                         </s:if>
                     </div>
 
-                        <div class="col-md-5">
+                    <div class="col-md-5">
                         <s:if test="%{sesion_email!=usuario.email}">
                             <%--Si NO es tu perfil:--%>
                             <ul style="display: inline-block;">
@@ -60,10 +53,13 @@ PERFIL DEL USUARIO
                             <%--Si es tu perfil:--%>
                             <s:fielderror/>
                             <s:form cssClass="form-signin col-lg-offset-2" cssStyle="display: inline-block">
-                                <s:label value="Nombreee"/><s:textfield cssClass="form-control" name="nombre" value="%{usuario.name}"/>
+                                <s:label value="Nombre"/><s:textfield cssClass="form-control" name="nombre" value="%{usuario.name}"/>
                                 <s:label value="Contraseña"/><s:textfield cssClass="form-control" name="password" value="%{usuario.password}"/>
                                 <s:label value="Email"/><s:textfield id="Usuario_email" cssClass="form-control" name="email" value="%{usuario.email}"/>
-                               
+                                <s:if test="usuario.provider">
+                                    <s:label value="Compañia"/><s:textfield id="Usuario_compania" cssClass="form-control" name="company" value="%{usuario.companyName}"/>
+                                    <s:label value="Banco"/><s:textfield   name="banco"  cssClass="form-control"  value="%{bank}"/>
+                                </s:if>
                                 <%--</s:form>--%>
 
                             </div>
@@ -86,10 +82,10 @@ PERFIL DEL USUARIO
 
         <!-- ==========================================JAVASCRIPT======================================== --> 
         <script>
-            $(document).ready(function(){
-                $("#Usuario_email").attr("disabled","");
+            $(document).ready(function () {
+                $("#Usuario_email").attr("disabled", "");
             });
-            
+
         </script>
     </body>
 </html>

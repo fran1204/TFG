@@ -9,6 +9,8 @@ import DAO.SectorDAO;
 import DAO.SessionDAO;
 import DAO.UserDAO;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import modelo.Sector;
 import modelo.User;
@@ -18,22 +20,27 @@ import modelo.User;
  * @author fmrodriguez
  */
 public class GetUser extends ActionSupport {
-    
+
     private User usuario;
     private String perfil_email;
     private String sesion_email;
     private List<Sector> sectores;
-    
+    private String bank;
+
     public GetUser() {
-        this.sesion_email = (String)new SessionDAO().getSession().get("email");
+        this.sesion_email = (String) new SessionDAO().getSession().get("email");
+        sectores = new ArrayList();
     }
-    
+
     public String execute() throws Exception {
         UserDAO dao = new UserDAO();
         SectorDAO sdao = new SectorDAO();
         usuario = dao.get(perfil_email);
         sectores = sdao.getAll();
-        System.out.println("TEMITA "+usuario);
+        if (usuario.getBank() != "" || usuario.getBank() != null) {
+            byte[] valueDecoded = Base64.getDecoder().decode(usuario.getBank());
+            bank = new String(valueDecoded);
+        }
         return SUCCESS;
     }
 
@@ -69,8 +76,12 @@ public class GetUser extends ActionSupport {
         this.sectores = sectores;
     }
 
-    
-    
-    
-    
+    public String getBank() {
+        return bank;
+    }
+
+    public void setBank(String bank) {
+        this.bank = bank;
+    }
+
 }
