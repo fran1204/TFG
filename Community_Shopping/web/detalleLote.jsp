@@ -15,6 +15,7 @@
 
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="bootstrap/css/dashboard.css" rel="stylesheet">
+        <link href="bootstrap/css/styleGaleri.css" rel="stylesheet">
         <%@ include file="javascript.html" %>
     </head>
     <body>
@@ -35,9 +36,18 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-3">
-                        <img src="img/<s:property value="%{lote.photo}"/>" class="img-thumbnail" alt="foto perfil"/>
+                    <div class="col-md-5">
+                        <div id="panel">
+                            <img id="largeImage" src="img/<s:property value="%{lote.photo}"/>" height="400em" width="400em" />
+                        </div>
+                        <div id="thumbs">
+                            <img src="img/futbol.jpg" alt="1st image description" height="120em" width="120em"/>
+                            <img src="img/<s:property value="%{lote.photo}"/>" alt="5th image description" height="120em" width="120em"/>
+                        </div>
                     </div>
+<!--                    <div class="col-md-3">
+                        <img src="img/<s:property value="%{lote.photo}"/>" class="img-thumbnail" alt="foto perfil"/>
+                    </div>-->
 
                     <div class="col-md-5">
                         <s:label value="Titulo"/><s:label cssClass="form-control" name="title" value="%{lote.title}"/>
@@ -114,5 +124,12 @@
                 </div>
             </div>
         </div>
+        <script>
+            $(document).ready(function () {
+                $('#thumbs').delegate('img', 'click', function () {
+                    $('#largeImage').attr('src', $(this).attr('src').replace('thumb', 'large'));
+                });
+            });
+        </script>
     </body>
 </html>

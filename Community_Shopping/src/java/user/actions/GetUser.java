@@ -37,7 +37,7 @@ public class GetUser extends ActionSupport {
         SectorDAO sdao = new SectorDAO();
         usuario = dao.get(perfil_email);
         sectores = sdao.getAll();
-        if (usuario.getBank() != "" || usuario.getBank() != null) {
+        if (usuario.getBank() != null) {
             byte[] valueDecoded = Base64.getDecoder().decode(usuario.getBank());
             bank = new String(valueDecoded);
         }
