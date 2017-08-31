@@ -51,7 +51,7 @@ public class DeleteOrderLider extends ActionSupport {
                 odao.updateClienteLider(idOrder, allUserOrder.get(0).getUser());
                 emailUser = allUserOrder.get(0).getUser().getEmail();
                 //ENVIAR CORREO AL NUEVO CLIENTE LIDER PARA AVISARLO
-                //ENVIAR CORREO A LOS ADHERIDOS DEL NUEVO CLIENTE LIDER 
+                
             } else {
                 int idOrder = ildao.get(idInterOrder).getOrder().getId();
                 ildao.delete(idLotDetail, idUser);

@@ -57,7 +57,7 @@ public class Emailer extends ActionSupport {
         InterlocutorOrder io = iodao.get(idInterOrder);
         switch (op) {
             case 1:
-                //to = emailUser;
+                to = emailUser;
                 //to = "franshesco12@gmail.com";
                 subject = "CommunityShopping: Recordatorio de pago";
                 body = "Buenas " + u.getName() + " le recordamos que tienes aún pendiente"
@@ -68,7 +68,7 @@ public class Emailer extends ActionSupport {
                 id = iodao.get(idInterOrder).getOrder().getId();
                 break;
             case 2:
-                //to = emailUser;
+                to = emailUser;
                 //to = "franshesco12@gmail.com";
                 subject = "CommunityShopping: Nuevo Cliente Lider!";
                 body = "Buenas " + u.getName() + " te informamos que ahora eres"
