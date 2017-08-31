@@ -18,17 +18,18 @@ import org.hibernate.Session;
  * @author fmrodriguez
  */
 public class GalleryDAO {
+
     private Session sesion = null;
-    
-     public Gallery get(Integer id){
+
+    public Gallery get(Integer id) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from Channel WHERE id = '"+id+"'");
-        Gallery gallery = (Gallery)q.uniqueResult();
+        Query q = sesion.createQuery("from Channel WHERE id = '" + id + "'");
+        Gallery gallery = (Gallery) q.uniqueResult();
         tx.commit();
         return gallery;
     }
-    
+
     public List<Gallery> getAll() {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
@@ -37,8 +38,8 @@ public class GalleryDAO {
         tx.commit();
         return gallery;
     }
-    
-     public void add(Gallery u) {
+
+    public void add(Gallery u) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
         sesion.save(u);
@@ -56,13 +57,22 @@ public class GalleryDAO {
     public Gallery update(Integer id, LotDetail lot, String url) {
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         org.hibernate.Transaction tx = sesion.beginTransaction();
-        Query q = sesion.createQuery("from Gallery WHERE id='"+id+"'");
+        Query q = sesion.createQuery("from Gallery WHERE id='" + id + "'");
         Gallery u = (Gallery) q.uniqueResult();
-       // Usuario u = (Usuario) sesion.load(Usuario.class, email);
+        // Usuario u = (Usuario) sesion.load(Usuario.class, email);
         u.setLotDetail(lot);
         u.setUrl(url);
         sesion.update(u);
         tx.commit();
         return u;
+    }
+
+    public List<Gallery> getAllDetail(Integer id) {
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        org.hibernate.Transaction tx = sesion.beginTransaction();
+        Query q = sesion.createQuery("from Gallery where id_lotDetail ="+id);
+        List<Gallery> gallery = (List<Gallery>) q.list();
+        tx.commit();
+        return gallery;
     }
 }

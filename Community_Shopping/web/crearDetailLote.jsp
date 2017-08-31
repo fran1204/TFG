@@ -32,7 +32,7 @@
         <h2 class="form-signin-heading">Crear Oferta para el Lote <s:property value="title" /></h2>
         <s:form cssClass="form-signin" method="POST" enctype="multipart/form-data" action="addDetail" >
 
-            <span style="color:red"><s:property value="fechaErronea"/></span>
+            <span style="color:red"><s:property value="formatoErroneo"/></span>
             <s:fielderror/>
             <s:if test="%{lote.id!=null && lote.id!=''}">
                 <s:hidden cssClass="form-control" name="idLote" value="%{lote.id}"/>
@@ -45,6 +45,9 @@
             <s:textfield cssClass="form-control" name="color"/>
             <s:textfield cssClass="form-control" name="size"/>
             <s:textfield cssClass="form-control" name="capacity" size="10" />
+            <s:file label="Imagen 1" name="fileUpload"/>
+            <s:file label="Imagen 2" name="fileUpload"/>
+            <s:file label="Imagen 3" name="fileUpload"/>
             <s:submit cssClass="btn btn-lg btn-primary btn-bloc" value="Crear"/>
         </s:form>
 

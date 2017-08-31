@@ -41,13 +41,12 @@
                             <img id="largeImage" src="img/<s:property value="%{lote.photo}"/>" height="400em" width="400em" />
                         </div>
                         <div id="thumbs">
-                            <img src="img/futbol.jpg" alt="1st image description" height="120em" width="120em"/>
-                            <img src="img/<s:property value="%{lote.photo}"/>" alt="5th image description" height="120em" width="120em"/>
+                            <s:iterator value="gallery">
+                                <img src="img/<s:property value="%{url}"/>" alt="5th image description" height="95em" width="95em"/>
+                            </s:iterator>
+                            <img  src="img/<s:property value="%{lote.photo}"/>" height="95em" width="95em" />
                         </div>
                     </div>
-<!--                    <div class="col-md-3">
-                        <img src="img/<s:property value="%{lote.photo}"/>" class="img-thumbnail" alt="foto perfil"/>
-                    </div>-->
 
                     <div class="col-md-5">
                         <s:label value="Titulo"/><s:label cssClass="form-control" name="title" value="%{lote.title}"/>

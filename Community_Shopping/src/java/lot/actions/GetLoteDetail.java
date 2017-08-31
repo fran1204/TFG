@@ -6,6 +6,7 @@
 package lot.actions;
 
 import DAO.CategoryDAO;
+import DAO.GalleryDAO;
 import DAO.InterlocutorOrderDAO;
 import DAO.LotDAO;
 import DAO.LotDetailDAO;
@@ -14,6 +15,7 @@ import DAO.UserDAO;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
+import modelo.Gallery;
 import modelo.InterlocutorOrder;
 import modelo.Lot;
 import modelo.LotDetail;
@@ -31,6 +33,7 @@ public class GetLoteDetail extends ActionSupport {
     private String category;
     private String session;
     private List<InterlocutorOrder> io;
+    private List<Gallery> gallery;
 
     public GetLoteDetail() {
         this.session = (String) new SessionDAO().getSession().get("email");
@@ -49,7 +52,8 @@ public class GetLoteDetail extends ActionSupport {
         if (u != null) {
             io = iodao.getLotDetailUser(u);
         }
-
+        GalleryDAO gdao = new GalleryDAO();
+        gallery = gdao.getAllDetail(details.get(0).getId());
         return SUCCESS;
     }
 
@@ -99,6 +103,14 @@ public class GetLoteDetail extends ActionSupport {
 
     public void setIo(List<InterlocutorOrder> io) {
         this.io = io;
+    }
+
+    public List<Gallery> getGallery() {
+        return gallery;
+    }
+
+    public void setGallery(List<Gallery> gallery) {
+        this.gallery = gallery;
     }
 
 }

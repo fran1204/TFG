@@ -35,7 +35,7 @@
             <s:fielderror/>
             <s:textfield cssClass="form-control" name="title"/>
             <s:textfield cssClass="form-control" name="description"/>
-            <s:file name="fileUpload"/>
+            <s:file label="Imagen Lote " name="fileUpload"/>
             <s:textfield cssClass="form-control" name="numSet"/>
             <s:textfield cssClass="form-control" name="price"/>
             <h5>El 2.5% de la operación será descontado a favor de CommunityShopping.</h5>
