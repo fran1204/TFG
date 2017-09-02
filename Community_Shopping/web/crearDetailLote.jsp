@@ -45,9 +45,9 @@
             <s:textfield cssClass="form-control" name="color"/>
             <s:textfield cssClass="form-control" name="size"/>
             <s:textfield cssClass="form-control" name="capacity" size="10" />
-            <s:file label="Imagen 1" name="fileUpload"/>
-            <s:file label="Imagen 2" name="fileUpload"/>
-            <s:file label="Imagen 3" name="fileUpload"/>
+            <s:label>Imagen 1</s:label><s:file label="Imagen 1" name="fileUpload"/>
+            <s:label>Imagen 2</s:label><s:file label="Imagen 2" name="fileUpload"/>
+            <s:label>Imagen 3</s:label><s:file label="Imagen 3" name="fileUpload"/>
             <s:submit cssClass="btn btn-lg btn-primary btn-bloc" value="Crear"/>
         </s:form>
 

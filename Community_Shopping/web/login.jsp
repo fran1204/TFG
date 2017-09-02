@@ -41,7 +41,7 @@
 
                         <s:submit cssClass="btn btn-lg btn-primary btn-bloc" value="login"/>
                     </s:form>
-                    <s:a action="registrarse">¿No estás registrado?</s:a>
+                        <s:a action="registrarse" cssStyle="margin-left:30%">¿No estás registrado?</s:a>
                     <br/><br/><br/><br/><center><p style="display:none"><img src='img/loading.gif' width='75' height='75'/></p></center>
                 </div>
                 <div class="col-md-4">

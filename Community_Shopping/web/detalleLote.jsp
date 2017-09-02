@@ -4,14 +4,14 @@
 <html>
     <head>
         <style>form{display:inline-block;}</style>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <meta property="og:url"                content="http://communityshopping/<s:property value='title'/>" />
+        <meta property="og:type"               content="article" />
+        <meta property="og:title"              content="<s:property value='title'/>" />
+        <meta property="og:description"        content="<s:property value='title'/>" />
+        <meta property="og:image"              content="<s:property value='image'/>" />
         <link rel="icon" href="img/favicon.ico">
 
-        <title>Perfil</title>
+        <title>Dellate Lote</title>
 
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="bootstrap/css/dashboard.css" rel="stylesheet">
@@ -55,10 +55,11 @@
                         <s:label value="Cantidad del lote"/><s:label cssClass="form-control" name="numSet" value="%{lote.numSet}"/>
                         <s:label value="Precio por unidad"/><s:label cssClass="form-control" name="price" value="%{lote.price}"/>
                         <s:label value="Fecha de expiración"/><s:label cssClass="form-control" name="expiryDate" value="%{lote.expiryDate}"/>
-                    </div>
-                    <div>
-
-
+                        </br>
+                        <div class="fb-share-button" 
+                             data-href="http://communityshopping.com" 
+                             data-layout="button">
+                        </div>
                     </div>
                     <div class="col-md-12">
                         <h2>Ofertas</h2>
@@ -110,7 +111,7 @@
                                             </s:if>
                                             <s:else>
                                                 <td></td>
-                                                <td><s:a href="login.jsp">
+                                                <td><s:a href="login.jsp" cssClass="btn btn-primary">
                                                         Lo quiero!
                                                     </s:a></td>
                                                 </s:else>
@@ -123,11 +124,22 @@
                 </div>
             </div>
         </div>
+        <div id="fb-root"></div>
         <script>
             $(document).ready(function () {
                 $('#thumbs').delegate('img', 'click', function () {
                     $('#largeImage').attr('src', $(this).attr('src').replace('thumb', 'large'));
                 });
+
+                (function (d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id))
+                        return;
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.10";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
             });
         </script>
     </body>

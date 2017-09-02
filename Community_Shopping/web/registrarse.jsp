@@ -27,10 +27,10 @@
             <%--<s:actionerror></s:actionerror>--%>
             <span style="color:red"><s:property value="existeUsuario"/></span>
             <s:fielderror/>
-            <s:checkbox name="provider" fieldValue="true" label="¿Eres proveedor?"/>
+            <s:label>¿Eres proveedor? </s:label><s:checkbox name="provider" fieldValue="true" />
             <s:textfield cssClass="form-control" name="email"/>
             <s:textfield cssClass="form-control" name="name"/>
-            <s:file name="fileUpload"/>
+            <s:label>Imagen Perfil </s:label><s:file label="Foto Perfil" name="fileUpload"/>
             <s:textfield cssClass="form-control" name="company_name"/>
             <s:select name="sector" cssClass="form-control" list="sectores" listKey="id" listValue="sector"/>
             <s:textfield cssClass="form-control" name="bank"/>

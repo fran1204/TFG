@@ -28,7 +28,7 @@
         <h1>Pedido</h1>
         <s:if test="%{comprar}">
             <s:if test="%{paid}">
-                <a href="pdf/<s:property value="%{pdf}" />">PDF</a>
+                <a href="pdf/<s:property value="%{pdf}" />" class="btn btn-info">PDF</a>
             </s:if>
             <s:else>
                 Banco del proveedor para realizar el pago: <s:property value="%{bank}" />
@@ -36,7 +36,7 @@
                     <s:param name="id" value="%{id}"/><!--Id del pedido -->
                 </s:url>
                 <div>
-                    <s:a href="%{pagar}">Pagado!</s:a>
+                    <s:a href="%{pagar}" cssClass="btn btn-success">Pagado!</s:a>
                     </div>
             </s:else>
 
